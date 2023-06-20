@@ -1,6 +1,6 @@
 import random
 
-#id, nombre, laboratorio, fecha de caducidad, stock
+#id, nombre, laboratorio, precio en soles, unidad por blister, stock
 
 def generar_tuplas(n):
     nombre  = [
@@ -308,6 +308,7 @@ def generar_tuplas(n):
     tuplas = []
     
 
+
     for i in range(n):
         id = random.randint(1000, 9999)
         while True:
@@ -315,27 +316,20 @@ def generar_tuplas(n):
             if nombres not in [t[1] for t in tuplas]:
                 break
         laboratorio = random.choice(laboratorios)
-        fecha_caducidad = generar_fecha()
         stock = random.randint(1, 100)
-        tupla = (id, nombres, laboratorio, fecha_caducidad, stock)
+        precio = round(random.uniform(10.0, 1000.0), 2)
+        unidad = random.randint(10,30)
+        tupla = (id, nombres, laboratorio, precio, unidad, stock)
         tuplas.append(tupla) 
     return tuplas
 
-
-#generamos fecha de nacimiento
-def generar_fecha():
-    dia = random.randint(1, 28)
-    mes = random.randint(1, 12)
-    ano = random.randint(2023, 2027)
-    fecha = f"{dia}/{mes}/{ano}"
-    return fecha  
 
 tuplas_generadas = generar_tuplas(150)
 
 with open("medicamentos.txt", "w") as archivo:
     for tupla in tuplas_generadas:
-        id, nombres, laboratorio, fecha_caducidad, stock = tupla
-        linea = f"{id}, {nombres}, {laboratorio}, {fecha_caducidad}, {stock}\n"
+        id, nombres, laboratorio, precio, unidad, stock = tupla
+        linea = f"{id}, {nombres}, {laboratorio}, {precio}, {unidad}, {stock}\n"
         archivo.write(linea)
 
 print("Archivo generado exitosamente")
