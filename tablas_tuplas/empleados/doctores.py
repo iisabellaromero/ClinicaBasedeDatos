@@ -27,7 +27,7 @@ def generar_tuplas(n):
             "Luna", "Olivares", "Avila", "Espinoza", "Cortés", "Herrera", "Ponce", "Zúñiga", "Cáceres",
             "Fuentes", "Bravo", "Guzmán", "Tapia", "Vásquez", "Parra", "Pizarro", "Paredes", "Carvajal",
             "Carrasco", "Valdés", "Abarca", "Vidal", "Venegas", "Andrade", "Alarcón", "Aravena", "Bustos",
-            "Bello", "Cisternas", "Cifuentes", "Duarte", "Estrada", "Gallardo", "Godoy", "Hidalgo", "Ibacache",]
+            "Bello", "Cisternas", "Cifuentes", "Duarte", "Estrada", "Gallardo", "Godoy", "Hidalgo", "Ibacache"]
     
     especialidades = ["Medicina General", "Pediatría","Obstetricia y Ginecología","Cardiología","Dermatología","Gastroenterología",
             "Neurología","Psiquiatría","Oftalmología","Otorrinolaringología","Cirugía General","Cirugía Plástica","Urología","Nefrología",
@@ -80,7 +80,24 @@ def generar_dni(tuplas):
 
 tuplas_generadas = generar_tuplas(150)
 
-with open("doctores.txt", "w") as archivo:
+#asignar a cada doctor un consultorio, estos se componen por una letra de la A a la J y un numero del 100 al 999 random
+consultorios = []
+letras = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+for i in range(10):
+    for j in range(100, 1000):
+        letra = random.choice(letras)
+        consultorio = letra + str(j)
+        consultorios.append(consultorio)
+
+
+#guardar en un archivo de texto el codigo del doctor con su respectivo consultorio
+with open("consultorios.csv", "w") as archivo:
+    for i in range(len(tuplas_generadas)):
+        codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialiadad = tuplas_generadas[i]
+        linea = f"{codigo}, {consultorios[i]}\n"
+        archivo.write(linea)
+
+with open("doctores.csv", "w") as archivo:
     for tupla in tuplas_generadas:
         codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialiadad = tupla
         linea = f"{codigo}, {codigo_cmp}, {nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}, {especialiadad}\n"
