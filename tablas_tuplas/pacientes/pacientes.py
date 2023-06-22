@@ -123,7 +123,7 @@ for _ in range(100):
     with open("paciente.txt", "a") as archivo:
         for tupla in tuplas_generadas:
             nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni = tupla
-            email = f"{nombre.lower()}.{apellido1.lower()}@hotmail.com"
+            email = f"{nombre.lower()}.{apellido1.lower()}.{apellido2.lower()}@hotmail.com"
             linea = f"{nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}\n"
             archivo.write(linea)
 
