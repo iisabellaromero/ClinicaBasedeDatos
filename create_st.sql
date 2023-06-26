@@ -4,14 +4,14 @@ CREATE SCHEMA IF NOT EXISTS clinica;
 -- set search path clinica schema
 SET search_path = clinica;
 
--- Tabla turnos
+-- Tabla turnos 
 CREATE TABLE IF NOT EXISTS turnos (
   Hora_inicio TIMESTAMP NOT NULL,
   Hora_fin TIMESTAMP NOT NULL,
   PRIMARY KEY (Hora_fin, Hora_inicio)
-);
+); -- 1/2 PODRIA SER UN POCO REDUNDANTE, la tabla horarios CREO que basta
 
--- Tabla doctores
+-- Tabla doctores DONE
 CREATE TABLE IF NOT EXISTS doctores (
   Codigo VARCHAR(5) NOT NULL,
   Nombre VARCHAR(45) NOT NULL,
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS doctores (
   Email VARCHAR(255) NOT NULL,
   Contrasena VARCHAR(12) NOT NULL,
   PRIMARY KEY (Codigo),
-);
+); --2/2
 
--- Tabla Consultorio
+-- Tabla Consultorio DONE
 CREATE TABLE IF NOT EXISTS Consultorio (
   Consultorio_numero VARCHAR(4) NOT NULL,
   Codigo.doctor VARCHAR(5) NOT NULL,
@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS Consultorio (
     REFERENCES doctores (Codigo)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --2/2
 
--- Tabla farmacistas
+-- Tabla farmacistas DONE
 CREATE TABLE IF NOT EXISTS farmacistas (
   Codigo VARCHAR(5) NOT NULL,
   Nombre VARCHAR(45) NOT NULL,
@@ -43,14 +43,15 @@ CREATE TABLE IF NOT EXISTS farmacistas (
   DNI VARCHAR(9) NOT NULL,
   Telefono INT NULL,
   PRIMARY KEY (Codigo)
-);
+); --2/2
 
--- Tabla Horario
+-- Tabla Horario DONE
 CREATE TABLE IF NOT EXISTS Horario (
+  -- YO PUSE DIA DE LA SEMANA (algo constante tipo todos los lunes de 7am a 11am)
   Hora_fin TIMESTAMP NOT NULL,
   Hora_inicio TIMESTAMP NOT NULL,
   Codigo_doctor VARCHAR(5) NOT NULL,
-  Estado SMALLINT NOT NULL,
+  -- Estado BOOLEAN NOT NULL,
   PRIMARY KEY (Hora_fin, Hora_inicio, Codigo_doctor),
   CONSTRAINT fk_horario_turnos
     FOREIGN KEY (Hora_fin, Hora_inicio)
@@ -62,9 +63,10 @@ CREATE TABLE IF NOT EXISTS Horario (
     REFERENCES doctores (Codigo)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --2/2
 
--- Tabla pacientes
+
+-- Tabla pacientes DONE
 CREATE TABLE IF NOT EXISTS pacientes (
   Nombre VARCHAR(45) NOT NULL,
   Apellido VARCHAR(255) NOT NULL,
@@ -74,14 +76,14 @@ CREATE TABLE IF NOT EXISTS pacientes (
   Edad INT NOT NULL,
   Contrasena VARCHAR(12) NOT NULL,
   PRIMARY KEY (DNI)
-);
+); --2/2
 
 -- Tabla Seguro
 CREATE TABLE IF NOT EXISTS Seguro (
   Id INT NOT NULL,
   Nombre INT NOT NULL,
   PRIMARY KEY (Id)
-);
+); --1/2
 
 -- Tabla Poliza
 CREATE TABLE IF NOT EXISTS Poliza (
@@ -96,7 +98,7 @@ CREATE TABLE IF NOT EXISTS Poliza (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
-
+ --1/2
 
 -- Tabla asegurados
 CREATE TABLE IF NOT EXISTS asegurados (
@@ -114,7 +116,7 @@ CREATE TABLE IF NOT EXISTS asegurados (
     REFERENCES Poliza (ID, Seguro_Id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --1/2
 
 
 
@@ -122,9 +124,11 @@ CREATE TABLE IF NOT EXISTS asegurados (
 CREATE TABLE IF NOT EXISTS Citas (
   Hora_fin TIMESTAMP NOT NULL,
   Hora_inicio TIMESTAMP NOT NULL,
+  fecha DATE NOT NULL,
   doctor_codigo VARCHAR(5) NOT NULL,
   pacientes_DNI INT NOT NULL,
-  PRIMARY KEY (Hora_fin, Hora_inicio, doctor_codigo, pacientes_DNI),
+  -- PRIMARY KEY (fecha, Hora_fin, Hora_inicio, doctor_codigo),
+  PRIMARY KEY (Hora_fin, Hora_inicio, doctor_codigo, pacientes_DNI), 
   CONSTRAINT fk_citas_horario
     FOREIGN KEY (Hora_fin, Hora_inicio, doctor_codigo)
     REFERENCES Horario (Hora_fin, Hora_inicio, Codigo_doctor)
@@ -135,7 +139,7 @@ CREATE TABLE IF NOT EXISTS Citas (
     REFERENCES pacientes (DNI)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --1/2
 
 -- Tabla recetas
 CREATE TABLE IF NOT EXISTS recetas (
@@ -148,7 +152,7 @@ CREATE TABLE IF NOT EXISTS recetas (
     REFERENCES Citas (doctor_codigo, pacientes_DNI)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --1/2
 
 -- Tabla medicamento
 CREATE TABLE IF NOT EXISTS medicamento (
@@ -158,7 +162,7 @@ CREATE TABLE IF NOT EXISTS medicamento (
   Marca VARCHAR(255) NOT NULL,
   Nombre VARCHAR(255) NOT NULL,
   PRIMARY KEY (ID)
-);
+); --2/2
 
 -- Tabla medicamentos_recetados
 CREATE TABLE IF NOT EXISTS medicamentos_recetados (
@@ -178,7 +182,7 @@ CREATE TABLE IF NOT EXISTS medicamentos_recetados (
     REFERENCES medicamento (ID)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --1/2
 
 -- Tabla recetas_aprobadas
 CREATE TABLE IF NOT EXISTS recetas_aprobadas (
@@ -198,4 +202,4 @@ CREATE TABLE IF NOT EXISTS recetas_aprobadas (
     REFERENCES farmacistas (Codigo)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-);
+); --1/2

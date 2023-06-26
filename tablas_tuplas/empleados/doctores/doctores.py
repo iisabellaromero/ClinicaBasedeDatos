@@ -1,5 +1,5 @@
 import random
-
+from datetime import datetime, timedelta
 #codigo, nombre, apellido1, apellido2, fecha_nacimiento, telefono, sueldo, dni, email
 
 def generar_tuplas(n):
@@ -90,15 +90,44 @@ for i in range(10):
         consultorio = letra + str(j)
         consultorios.append(consultorio)
 
+#tabla horarios
+
+#generamos horainicio y horafin junto con dia de la semana y estado (disponible o no disponible) con el codigo del doctor
+def generar_horarios(tuplas):
+    dias = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"]
+    horarios = []
+    #tiene que haber minimo un horario para cada doctor
+    for i in range(len(tuplas_generadas)):
+        codigo_doctor = tuplas_generadas[i][0]
+        for j in range(20):
+            dia = random.choice(dias)
+            hora_inicio = random.randint(8, 20)
+            hora_fin = hora_inicio + 1
+            if hora_fin >= 24:
+                hora_fin -= 24
+            inicio = datetime.strptime(str(hora_inicio), "%H")
+            fin = datetime.strptime(str(hora_fin), "%H")
+            hora_inicio_formateada = f"{hora_inicio:02d}:00"
+            hora_fin_formateada = f"{hora_fin:02d}:00"
+            horario = (dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor)
+            horarios.append(horario)
+    return horarios
+horarios = generar_horarios()
+
+with open("tablas_tuplas/empleados/doctores/horarios.csv", "w") as archivo:
+    for horario in horarios:
+        dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor = horario
+        linea = f"{dia}, {hora_inicio_formateada}, {hora_fin_formateada}, {codigo_doctor}\n"
+        archivo.write(linea)
 
 #guardar en un archivo de texto el codigo del doctor con su respectivo consultorio
-with open("consultorios.csv", "w") as archivo:
+with open("tablas_tuplas/empleados/doctores/consultorios.csv", "w") as archivo:
     for i in range(len(tuplas_generadas)):
         codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialiadad = tuplas_generadas[i]
         linea = f"{codigo}, {consultorios[i]}\n"
         archivo.write(linea)
 
-with open("doctores.csv", "w") as archivo:
+with open("tablas_tuplas/empleados/doctores/doctores.csv", "w") as archivo:
     for tupla in tuplas_generadas:
         codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialiadad = tupla
         linea = f"{codigo}, {codigo_cmp}, {nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}, {especialiadad}\n"
