@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS farmacistas (
 CREATE TABLE IF NOT EXISTS Horario (
   Hora_fin TIMESTAMP NOT NULL,
   Hora_inicio TIMESTAMP NOT NULL,
-  Codigo_doctor INT NOT NULL,
+  Codigo_doctor VARCHAR(5) NOT NULL,
   Estado SMALLINT NOT NULL,
   PRIMARY KEY (Hora_fin, Hora_inicio, Codigo_doctor),
   CONSTRAINT fk_horario_turnos
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS asegurados (
 CREATE TABLE IF NOT EXISTS Citas (
   Hora_fin TIMESTAMP NOT NULL,
   Hora_inicio TIMESTAMP NOT NULL,
-  doctor_codigo INT NOT NULL,
+  doctor_codigo VARCHAR(5) NOT NULL,
   pacientes_DNI INT NOT NULL,
   PRIMARY KEY (Hora_fin, Hora_inicio, doctor_codigo, pacientes_DNI),
   CONSTRAINT fk_citas_horario
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS Citas (
 -- Tabla recetas
 CREATE TABLE IF NOT EXISTS recetas (
   Codigo INT NOT NULL,
-  Doctor_codigo INT NOT NULL,
+  Doctor_codigo VARCHAR(5) NOT NULL,
   paciente_codigo INT NOT NULL,
   PRIMARY KEY (Codigo),
   CONSTRAINT fk_recetas_citas
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS medicamentos_recetados (
 CREATE TABLE IF NOT EXISTS recetas_aprobadas (
   recetas_Codigo INT NOT NULL,
   recetas_paciente_codigo INT NOT NULL,
-  farmacistas_Codigo INT NOT NULL,
+  farmacistas_Codigo VARCHAR(5) NOT NULL,
   Hora TIMESTAMP NOT NULL,
   codigo_venta INT NOT NULL,
   PRIMARY KEY (codigo_venta),
