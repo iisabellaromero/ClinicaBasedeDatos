@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS pacientes (
   PRIMARY KEY (DNI)
 ); --2/2
 
--- Tabla Seguro
+-- Tabla Seguro 
 CREATE TABLE IF NOT EXISTS Seguro (
   Id INT NOT NULL,
   Nombre INT NOT NULL,

@@ -116,16 +116,18 @@ def generar_dni(tuplas):
             break
     return dni
 
-tuplas_generadas = generar_tuplas(10000)  # Cambia el número 10 por la cantidad de tuplas que desees generar
+tuplas_generadas = set()  # Utilizamos un conjunto para evitar repeticiones
 
-#hice un bucle para que el archivo se corra 100 veces, ya que solo me deja generar hasta 10 mil tuplas a la vez
-for _ in range(100):
-    with open("paciente.txt", "a") as archivo:
-        for tupla in tuplas_generadas:
-            nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni = tupla
-            email = f"{nombre.lower()}.{apellido1.lower()}.{apellido2.lower()}@hotmail.com"
-            linea = f"{nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}\n"
-            archivo.write(linea)
+while len(tuplas_generadas) < 1000000:
+    nuevas_tuplas = generar_tuplas(1000)
+    tuplas_generadas.update(nuevas_tuplas)
+
+with open("tablas_tuplas/pacientes/paciente.csv", "a") as archivo:
+    for tupla in tuplas_generadas:
+        nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni = tupla
+        email = f"{nombre.lower()}.{apellido1.lower()}.{apellido2.lower()}@hotmail.com"
+        linea = f"{nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}\n"
+        archivo.write(linea)
 
 print("Archivo generado exitosamente")
 
