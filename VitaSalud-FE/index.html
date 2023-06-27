@@ -106,7 +106,7 @@
     <div class="container">
       <h1>Bienvenido a VitaSalud</h1>
       <h2>Tu camino hacia una vida plena y saludable</h2>
-      <a href="#about" class="btn-get-started scrollto">Empieza aquí</a>
+      <a href="#about" class="btn-get-started scrollto" onclick = "iniciarSesion()">Empieza aquí</a>
     </div>
   </section><!-- End Hero -->
 
@@ -334,7 +334,7 @@
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3">
@@ -457,6 +457,95 @@
 
       </div>
     </section><!-- End Doctors Section -->
+
+    <!-- INICIO SESION -->
+    <section id="login" class="appointment section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Inicia Sesión</h2>
+          <p>Accede a tu cuenta para disfrutar de todos los beneficios y servicios personalizados que ofrecemos. Iniciar sesión te permitirá gestionar tus citas médicas, acceder a tu historial de salud y mucho más.</p>
+        </div>
+    
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form action="forms/login.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo electrónico" data-rule="email" data-msg="Por favor, introduce un correo electrónico válido" required>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Tu contraseña" data-rule="minlen:6" data-msg="Por favor, introduce al menos 6 caracteres para la contraseña" required>
+                  <div class="validate"></div>
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <div class="loading">Cargando</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Tu solicitud de inicio de sesión ha sido enviada correctamente. ¡Gracias!</div>
+              </div>
+    
+              <div class="text-center">
+                <button type="submit">Iniciar Sesión</button>
+                <p class="mt-3">¿No tienes cuenta? <a href="#" id="registro-link">Regístrate aquí</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="registro" class="appointment section-bg hidden">
+      <div class="container">
+        <div class="section-title">
+          <h2>Regístrate</h2>
+          <p>Crea una cuenta para acceder a todos nuestros servicios y disfrutar de una experiencia personalizada. Regístrate ahora y comienza a aprovechar los beneficios que ofrecemos.</p>
+        </div>
+    
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <form action="forms/registro.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu nombre" data-rule="minlen:4" data-msg="Por favor, introduce al menos 4 caracteres para el nombre" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Tu apellido paterno" data-rule="minlen:4" data-msg="Por favor, introduce al menos 2 caracteres para el apellido" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Tu apellido materno" data-rule="minlen:4" data-msg="Por favor, introduce al menos 2 caracteres para el apellido" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="date" name="fecha" class="form-control" id="fecha" placeholder="Tu fecha de nacimiento" data-rule="minlen:4" data-msg="Por favor, introduce al menos 4 caracteres para la fecha" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="int" name="telefono" class="form-control" id="tlf" placeholder="Tu número de teléfono" data-rule="minlen:8" data-msg="Por favor, introduce 9 caracteres para el número telefónico" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="int" name="dni" class="form-control" id="dni" placeholder="Tu DNI" data-rule="minlen:8" data-msg="Por favor, introduce al menos 8 caracteres para el DNI" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo electrónico" data-rule="email" data-msg="Por favor, introduce un correo electrónico válido" required>
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <div class="loading">Cargando</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Tu solicitud de registro ha sido enviada correctamente. ¡Gracias!</div>
+              </div>
+    
+              <div class="text-center">
+              <div class="text-center"><button type="submit">Registrarse</button></div>
+              <p class="mt-3">¿Ya tienes cuenta? <a href="#" id="sesion-link">Inicia Sesión aquí</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
@@ -816,6 +905,7 @@
         </div>
       </div>
     </div>
+        
 
     <div class="container d-md-flex py-4">
 
@@ -874,6 +964,7 @@
   var contenidoInicial9 = document.getElementById("hero");
   var contenidoInicial10 = document.getElementById("contact");
   var nuevoContenido = document.getElementById("appointment");
+  var nuevoContenido2 = document.getElementById("login");
   
   // Ocultar contenido inicial
   contenidoInicial.classList.add("hidden");
@@ -890,4 +981,46 @@
   // Mostrar nuevo contenido
   nuevoContenido.classList.remove("hidden");
 }
+
+function iniciarSesion(){
+  // Obtener elementos por su id
+  var contenidoInicial = document.getElementById("testimonials");
+  var contenidoInicial2 = document.getElementById("gallery");
+  var contenidoInicial3 = document.getElementById("faq");
+  var contenidoInicial4 = document.getElementById("doctors");
+  var contenidoInicial5 = document.getElementById("services");
+  var contenidoInicial6 = document.getElementById("counts");
+  var contenidoInicial7 = document.getElementById("about");
+  var contenidoInicial8 = document.getElementById("why-us");
+  var contenidoInicial9 = document.getElementById("hero");
+  var contenidoInicial10 = document.getElementById("contact");
+  var nuevoContenido = document.getElementById("login");
+
+  // Ocultar contenido inicial
+  contenidoInicial.classList.add("hidden");
+  contenidoInicial2.classList.add("hidden");
+  contenidoInicial3.classList.add("hidden");
+  contenidoInicial4.classList.add("hidden");
+  contenidoInicial5.classList.add("hidden");
+  contenidoInicial6.classList.add("hidden");
+  contenidoInicial7.classList.add("hidden");
+  contenidoInicial8.classList.add("hidden");
+  contenidoInicial9.classList.add("hidden");
+  contenidoInicial10.classList.add("hidden");
+  
+  // Mostrar nuevo contenido
+  nuevoContenido.classList.remove("hidden");
+}
+
+document.getElementById("registro-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("registro").classList.remove("hidden");
+  });
+
+  document.getElementById("sesion-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("registro").classList.add("hidden");
+    document.getElementById("login").classList.remove("hidden");
+  });
 </script>

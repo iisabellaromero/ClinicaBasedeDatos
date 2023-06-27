@@ -1,3 +1,4 @@
+-- FALTAN RESTRICCIONES Y CHECKS
 -- Schema clinica
 CREATE SCHEMA IF NOT EXISTS clinica;
 
@@ -206,4 +207,63 @@ CREATE TABLE IF NOT EXISTS recetas_aprobadas (
     REFERENCES farmacistas (Codigo)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-); --2/2
+); 
+
+--Triggers
+CREATE OR REPLACE FUNCTION calculate_citas_precio_deducible()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- Retrieve the poliza_id from asegurados table using paciente_dni
+  SELECT poliza_id INTO NEW.poliza_id
+  FROM asegurados
+  WHERE pacientes_dni = NEW.pacientes_dni;
+
+  -- Retrieve the cobertura from Poliza table using poliza_id
+  SELECT cobertura INTO NEW.cobertura
+  FROM poliza
+  WHERE id = NEW.poliza_id;
+
+  -- Calculate and set the value for Citas.precio_deducible
+  NEW.precio_deducible := (NEW.precio * (NEW.cobertura / 100));
+
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Trigger2
+CREATE TRIGGER set_citas_precio_deducible
+BEFORE INSERT ON citas
+FOR EACH ROW
+EXECUTE FUNCTION calculate_citas_precio_deducible();
+
+CREATE OR REPLACE FUNCTION calculate_medicamento_recetado_precio_regular()
+RETURNS TRIGGER AS $$
+DECLARE
+  poliza_cobertura INT;
+BEGIN
+  -- Retrieve the medicamento price from medicamentos table
+  SELECT precio INTO NEW.precio_regular
+  FROM medicamento
+  WHERE id = NEW.medicamento_codigo;
+
+  -- Retrieve the poliza_id and cobertura from asegurados and poliza tables using paciente_dni
+  SELECT a.poliza_id, p.cobertura INTO NEW.poliza_id, poliza_cobertura
+  FROM asegurados a
+  JOIN poliza p ON p.id = a.poliza_id
+  WHERE a.pacientes_dni = NEW.paciente_codigo;
+
+  -- Calculate and set the value for medicamentos_recetados.precio_regular
+  NEW.precio_regular := (NEW.precio_regular * NEW.cantidad);
+
+  -- Calculate and set the value for medicamentos_recetados.precio_deducible
+  NEW.precio_deducible := (NEW.precio_regular * (poliza_cobertura / 100));
+
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_medicamento_recetado_precios
+BEFORE INSERT ON medicamentos_recetados
+FOR EACH ROW
+EXECUTE FUNCTION calculate_medicamento_recetado_precio_regular();
