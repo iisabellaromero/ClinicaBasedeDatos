@@ -51,9 +51,13 @@ def generar_tuplas(n):
 #generamos fecha de nacimiento
 def generar_fecha():
     dia = random.randint(1, 28)
+    if dia<10:
+        dia = "0" + str(dia)
     mes = random.randint(1, 12)
+    if mes<10:
+        mes = "0" + str(mes)
     ano = random.randint(1930, 2023)
-    fecha = f"{dia}/{mes}/{ano}"
+    fecha = f"{ano}-{mes}-{dia}"
     return fecha
 
 #generamos telefono
@@ -77,7 +81,7 @@ tuplas_generadas = generar_tuplas(150)
 with open("tablas_tuplas/empleados/farmaceuticos/farmaceuticos.csv", "w") as archivo:
     for tupla in tuplas_generadas:
         codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email= tupla
-        linea = f"{codigo}, {nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}\n"
+        linea = f"{codigo},{nombre},{apellido1},{apellido2},{fecha_nacimiento},{telefono},{dni},{email}\n"
         archivo.write(linea)
 
 print("Archivo generado exitosamente")

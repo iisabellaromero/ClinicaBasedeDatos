@@ -55,5 +55,5 @@ def generar_tuplas(n):
 with open("tablas_tuplas/recetas/recetas_aprobadas.csv", "w") as archivo:
     for tupla in generar_tuplas(61):
         receta_codigo, receta_paciente_codigo, farmacista_codigo, hora_formateada, codigo_venta = tupla
-        linea = f"{receta_codigo}, {receta_paciente_codigo}, {farmacista_codigo}, {hora_formateada}, {codigo_venta}\n"
+        linea = f"{receta_codigo},{receta_paciente_codigo},{farmacista_codigo},{hora_formateada},{codigo_venta}\n"
         archivo.write(linea)

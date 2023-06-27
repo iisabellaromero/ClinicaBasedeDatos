@@ -5,34 +5,34 @@ from datetime import datetime, timedelta
 def generar_tuplas(n):
     nombres = ["Juan", "Pedro", "Luis", "Carlos", "Jorge", "Miguel", "Alberto", "Manuel", "Ricardo", "Javier",
            "Fernando", "Daniel", "Alejandro", "Francisco", "Pablo", "Sergio", "Antonio", "José", "David",
-           "Diego", "Jesús", "Joaquín", "Rubén", "Adrián", "Óscar", "Marcos", "Tomás", "Enrique", "Mariano",
-           "Andrés", "Rafael", "Vicente", "Julián", "Jordi", "Eduardo", "Jaime", "Hugo",
-           "Ignacio", "Alfonso", "Gonzalo", "Salvador", "Roberto", "Guillermo", "Emilio", "Miguel Ángel",
-           "Santiago", "Víctor", "Ramón", "Aitor", "Iván", "Martín", "María", "Ana", "Isabel", "Carmen", "Laura", "Marta", "Dolores", "Sara", "Cristina", "Andrea",
-            "Paula", "Alba", "Sandra", "Rosa", "Lucía", "Elena", "Raquel", "Patricia", "Nuria", "Silvia",
-            "Mónica", "Beatriz", "Eva", "Camila", "Mercedes", "Belén", "Cielo", "Luz", "Ángela", "Clara","Lourdes", "Natalia", 
-            "Marina", "Ángela", "Nerea", "Aitana", "Clara", "Irene", "Gloria", "Lidia",
+           "Diego", "Jesús", "Joaquin", "Rubén", "Adrian", "Óscar", "Marcos", "Tomas", "Enrique", "Mariano",
+           "Andrés", "Rafael", "Vicente", "Julian", "Jordi", "Eduardo", "Jaime", "Hugo",
+           "Ignacio", "Alfonso", "Gonzalo", "Salvador", "Roberto", "Guillermo", "Emilio", "Miguel angel",
+           "Santiago", "Victor", "Ramón", "Aitor", "Ivan", "Martin", "Maria", "Ana", "Isabel", "Carmen", "Laura", "Marta", "Dolores", "Sara", "Cristina", "Andrea",
+            "Paula", "Alba", "Sandra", "Rosa", "Lucia", "Elena", "Raquel", "Patricia", "Nuria", "Silvia",
+            "Mónica", "Beatriz", "Eva", "Camila", "Mercedes", "Belén", "Cielo", "Luz", "angela", "Clara","Lourdes", "Natalia", 
+            "Marina", "angela", "Nerea", "Aitana", "Clara", "Irene", "Gloria", "Lidia",
             "Luna", "Olga", "Victoria", "Carolina", "Noelia", "Amparo", "Helena", "Aurora", "Ariadna", "Abril",
-            "Estela", "Gisela", "Julia", "Celia", "Inés", "Sonia", "Elsa", "Íria", "Ada", "Isidora", "Valeria",
-            "Daniela", "Elisa", "Manuela", "Adela", "Rocío", "Margarita", "Montserrat", "Cecilia", "Naiara",
-            "Almudena", "Ainhoa", "Ximena", "Carla", "Esther", "África", "Eugenia", "Amelia", "Claudia", "Helga",
+            "Estela", "Gisela", "Julia", "Celia", "Inés", "Sonia", "Elsa", "iria", "Ada", "Isidora", "Valeria",
+            "Daniela", "Elisa", "Manuela", "Adela", "Rocio", "Margarita", "Montserrat", "Cecilia", "Naiara",
+            "Almudena", "Ainhoa", "Ximena", "Carla", "Esther", "africa", "Eugenia", "Amelia", "Claudia", "Helga",
             "Miriam", "Renata", "Paloma", "Leire", "Salma", "Julieta", "Nora", "Adriana", "Linda", "Yolanda",
             "Berta", "Ariadna", "Emilia" ]
 
-    apellidos = ["Gómez", "López", "Rodríguez", "Pérez", "Martínez", "García", "Hernández", "Fernández", "González",
-            "Sánchez", "Ramírez", "Torres", "Flores", "Rivera", "Vargas", "Ruiz", "Díaz", "Reyes", "Morales",
-            "Ortega", "Castillo", "Chávez", "Mendoza", "Delgado", "Silva", "Rojas", "Jiménez", "Navarro",
-            "Cruz", "Valenzuela", "Ríos", "Gutiérrez", "Romero", "Vega", "Guerrero", "Álvarez", "Montes",
+    apellidos = ["Gómez", "López", "Rodriguez", "Pérez", "Martinez", "Garcia", "Hernandez", "Fernandez", "Gonzalez",
+            "Sanchez", "Ramirez", "Torres", "Flores", "Rivera", "Vargas", "Ruiz", "Diaz", "Reyes", "Morales",
+            "Ortega", "Castillo", "Chavez", "Mendoza", "Delgado", "Silva", "Rojas", "Jiménez", "Navarro",
+            "Cruz", "Valenzuela", "Rios", "Gutiérrez", "Romero", "Vega", "Guerrero", "alvarez", "Montes",
             "Salazar", "Acosta", "Barrera", "Peña", "Cabrera", "Molina", "Soto", "Campos", "Ibarra", "Vera",
             "Peralta", "Figueroa", "Escobar", "Araya", "Lara", "Aguilar", "Miranda", "Sepúlveda", "Contreras",
-            "Luna", "Olivares", "Avila", "Espinoza", "Cortés", "Herrera", "Ponce", "Zúñiga", "Cáceres",
-            "Fuentes", "Bravo", "Guzmán", "Tapia", "Vásquez", "Parra", "Pizarro", "Paredes", "Carvajal",
+            "Luna", "Olivares", "Avila", "Espinoza", "Cortés", "Herrera", "Ponce", "Zúñiga", "Caceres",
+            "Fuentes", "Bravo", "Guzman", "Tapia", "Vasquez", "Parra", "Pizarro", "Paredes", "Carvajal",
             "Carrasco", "Valdés", "Abarca", "Vidal", "Venegas", "Andrade", "Alarcón", "Aravena", "Bustos",
             "Bello", "Cisternas", "Cifuentes", "Duarte", "Estrada", "Gallardo", "Godoy", "Hidalgo", "Ibacache"]
     
-    especialidades = ["Medicina General", "Pediatría","Obstetricia y Ginecología","Cardiología","Dermatología","Gastroenterología",
-            "Neurología","Psiquiatría","Oftalmología","Otorrinolaringología","Cirugía General","Cirugía Plástica","Urología","Nefrología",
-            "Endocrinología","Oncología","Radiología","Anestesiología","Medicina Interna","Medicina Familiar y Comunitaria"]
+    especialidades = ["Medicina General", "Pediatria","Obstetricia y Ginecologia","Cardiologia","Dermatologia","Gastroenterologia",
+            "Neurologia","Psiquiatria","Oftalmologia","Otorrinolaringologia","Cirugia General","Cirugia Plastica","Urologia","Nefrologia",
+            "Endocrinologia","Oncologia","Radiologia","Anestesiologia","Medicina Interna","Medicina Familiar y Comunitaria"]
 
 
     nombres = list(set(nombres))
@@ -58,9 +58,13 @@ def generar_tuplas(n):
 #generamos fecha de nacimiento
 def generar_fecha():
     dia = random.randint(1, 28)
+    if dia<10:
+        dia = "0" + str(dia)
     mes = random.randint(1, 12)
+    if mes<10:
+        mes = "0" + str(mes)
     ano = random.randint(1930, 2023)
-    fecha = f"{dia}/{mes}/{ano}"
+    fecha = f"{ano}-{mes}-{dia}"
     return fecha
 
 #generamos telefono
@@ -93,45 +97,56 @@ for i in range(10):
 #tabla horarios
 
 #generamos horainicio y horafin junto con dia de la semana y estado (disponible o no disponible) con el codigo del doctor
+import random
+
 def generar_horarios(tuplas):
-    dias = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"]
+    dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado", "Domingo"]
     horarios = []
-    #tiene que haber minimo un horario para cada doctor
-    for i in range(len(tuplas_generadas)):
-        codigo_doctor = tuplas_generadas[i][0]
-        for j in range(20):
+    horarios_generados = set()
+    
+    for tupla in tuplas:
+        codigo_doctor = tupla[0]
+        horarios_doctor = set()
+        
+        while len(horarios_doctor) < 20:
             dia = random.choice(dias)
             hora_inicio = random.randint(8, 20)
-            hora_fin = hora_inicio + 1
-            if hora_fin >= 24:
-                hora_fin -= 24
-            inicio = datetime.strptime(str(hora_inicio), "%H")
-            fin = datetime.strptime(str(hora_fin), "%H")
+            hora_fin = (hora_inicio + 1) % 24
             hora_inicio_formateada = f"{hora_inicio:02d}:00"
             hora_fin_formateada = f"{hora_fin:02d}:00"
-            estado = True
-            horario = (dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor,estado)
+            
+            horario = (dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor, True)
+            
+            # Verificar si el horario ya ha sido generado para el doctor actual
+            if horario in horarios_doctor:
+                continue  # Si el horario ya existe, continuar con la siguiente iteración
+            
             horarios.append(horario)
+            horarios_doctor.add(horario)
+        
+        horarios_generados.update(horarios_doctor)
+    
     return horarios
+
 horarios = generar_horarios(tuplas_generadas)
 
 with open("tablas_tuplas/empleados/doctores/horarios.csv", "w") as archivo:
     for horario in horarios:
         dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor,estado = horario
-        linea = f"{dia}, {hora_inicio_formateada}, {hora_fin_formateada}, {codigo_doctor}, {estado}\n"
+        linea = f"{dia},{hora_inicio_formateada},{hora_fin_formateada},{codigo_doctor},{estado}\n"
         archivo.write(linea)
 
 #guardar en un archivo de texto el codigo del doctor con su respectivo consultorio
 with open("tablas_tuplas/empleados/doctores/consultorios.csv", "w") as archivo:
     for i in range(len(tuplas_generadas)):
         codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialiadad = tuplas_generadas[i]
-        linea = f"{codigo}, {consultorios[i]}\n"
+        linea = f"{codigo},{consultorios[i]}\n"
         archivo.write(linea)
 
 with open("tablas_tuplas/empleados/doctores/doctores.csv", "w") as archivo:
     for tupla in tuplas_generadas:
         codigo, codigo_cmp,nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialiadad = tupla
-        linea = f"{codigo}, {codigo_cmp}, {nombre}, {apellido1}, {apellido2}, {fecha_nacimiento}, {telefono}, {dni}, {email}, {especialiadad}\n"
+        linea = f"{codigo},{codigo_cmp},{nombre},{apellido1},{apellido2},{fecha_nacimiento},{telefono},{dni},{email},{especialiadad}\n"
         archivo.write(linea)
 
 print("Archivo generado exitosamente")

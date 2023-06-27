@@ -58,9 +58,7 @@ while len(tuplas_generadas) < 600000:
 with open("tablas_tuplas/asegurados/asegurado.csv", "a") as archivo_csv:
     for tupla in tuplas_generadas:
         paciente_DNI, poliza_id, seguro_id = tupla
-        linea = f"{paciente_DNI}, {poliza_id}, {seguro_id}\n"
+        linea = f"{paciente_DNI},{poliza_id},{seguro_id}\n"
         archivo_csv.write(linea)
 
 print("Archivo generado exitosamente5")
-
-

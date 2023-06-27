@@ -36,7 +36,7 @@ def generar_tuplas(n):
     "Enalapril",
     "Warfarina",
     "Amlodipino",
-    "Fenitoína",
+    "Fenitoina",
     "Carbamazepina",
     "Risperidona",
     "Metoclopramida",
@@ -65,7 +65,7 @@ def generar_tuplas(n):
     "Hierro",
     "Magnesio",
     "Potasio",
-    "Acetaminofén",
+    "Acetaminofen",
     "Cefalexina",
     "Cloranfenicol",
     "Fenilefrina",
@@ -116,7 +116,7 @@ def generar_tuplas(n):
     "Clobetasol",
     "Salbutamol",
     "Mometasona",
-    "Ondansetrón",
+    "Ondansetron",
     "Loperamida",
     "Clotrimazol",
     "Fexofenadina",
@@ -180,13 +180,13 @@ def generar_tuplas(n):
     "Aspirina",
     "Clopidogrel",
     "Warfarina",
-    "Dabigatrán",
+    "Dabigatran",
     "Enoxaparina",
-    "Rivaroxabán",
+    "Rivaroxaban",
     "Levetiracetam",
     "Lamotrigina",
     "Valproato",
-    "Fenitoína",
+    "Fenitoina",
     "Olanzapina",
     "Quetiapina",
     "Risperidona",
@@ -326,10 +326,10 @@ def generar_tuplas(n):
 
 tuplas_generadas = generar_tuplas(150)
 
-with open("medicamentos.txt", "w") as archivo:
+with open("tablas_tuplas/medicamentos/medicamentos.csv", "w") as archivo:
     for tupla in tuplas_generadas:
         id, nombres, laboratorio, precio, unidad, stock = tupla
-        linea = f"{id}, {nombres}, {laboratorio}, {precio}, {unidad}, {stock}\n"
+        linea = f"{id},{nombres},{laboratorio},{precio},{unidad},{stock}\n"
         archivo.write(linea)
 
 print("Archivo generado exitosamente")

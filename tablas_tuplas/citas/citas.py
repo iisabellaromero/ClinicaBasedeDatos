@@ -47,12 +47,16 @@ citas_generadas = set()  # Utilizamos un conjunto para evitar repeticiones
 #generamos fecha de la cita
 def generar_fecha():
     dia = random.randint(1, 28)
+    if dia<10:
+        dia = "0" + str(dia)
     mes = random.randint(7, 12)
+    if mes<10:
+        mes = "0" + str(mes)
     ano = 2023
-    fecha = f"{dia}/{mes}/{ano}"
+    fecha = f"{ano}-{mes}-{dia}"
     return fecha
 
-
+ 
 # Lista de citas
 def generar_citas(n):
     citas = []
@@ -82,7 +86,7 @@ def generar_citas(n):
 with open("tablas_tuplas/citas/cita.csv", "w") as archivo_csv:
     for cita in generar_citas(numero_citas):
         paciente,fecha, hora_inicio_formateada, doctor_codigo, especialidad, consultorio_codigo, precio, precio_deducible = cita
-        linea = f"{paciente}, {fecha}, {hora_inicio_formateada}, {doctor_codigo}, {especialidad},{consultorio_codigo}, {precio}, {precio_deducible}\n"
+        linea = f"{paciente},{fecha},{hora_inicio_formateada},{doctor_codigo},{especialidad},{consultorio_codigo},{precio},{precio_deducible}\n"
         archivo_csv.write(linea)
 
 print("Citas generadas")

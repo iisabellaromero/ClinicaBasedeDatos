@@ -1,61 +1,370 @@
-40979,  34030599, F6233, 08:00, 6229
-82596,  27997085, F3387, 14:00, 9269
-52783,  26408474, F8183, 12:00, 6409
-95574,  16945940, F5660, 08:00, 8331
-31553,  84026430, F9660, 14:00, 8048
-67047,  54699890, F1862, 10:00, 1229
-52744,  96713470, F5975, 08:00, 8181
-39165,  43298776, F6397, 16:00, 8183
-55033,  25832287, F9089, 11:00, 5385
-16031,  59817884, F6334, 20:00, 1362
-82596,  27997085, F4090, 21:00, 7232
-25736,  38249960, F9728, 16:00, 8311
-65280,  65757350, F9674, 18:00, 3582
-96665,  96425392, F7001, 18:00, 8172
-34001,  12359807, F6556, 10:00, 8634
-80303,  60736437, F8982, 09:00, 1168
-60907,  86679523, F4874, 16:00, 6500
-69714,  21092816, F8788, 13:00, 4113
-16031,  59817884, F9213, 14:00, 4514
-19193,  51066619, F5010, 12:00, 4409
-50684,  98118077, F9925, 16:00, 3662
-82100,  64820016, F5969, 18:00, 4055
-56599,  94738773, F5493, 08:00, 5246
-67614,  61863732, F3394, 21:00, 3652
-67614,  61863732, F1180, 21:00, 1869
-58994,  87484412, F8800, 17:00, 5549
-90669,  65035317, F6556, 18:00, 4527
-31553,  84026430, F8982, 08:00, 4751
-43691,  47346237, F1962, 08:00, 6420
-87344,  89151060, F3881, 14:00, 1365
-41176,  21567296, F9732, 17:00, 5724
-58994,  87484412, F7640, 14:00, 4060
-39978,  78662813, F7554, 20:00, 1448
-52783,  26408474, F9116, 08:00, 7513
-56599,  94738773, F5950, 21:00, 8402
-49384,  67288253, F4567, 21:00, 1185
-90190,  18361242, F5535, 14:00, 7956
-50684,  98118077, F9263, 16:00, 7318
-49384,  67288253, F5417, 15:00, 1891
-41176,  21567296, F7001, 19:00, 9559
-55033,  25832287, F8696, 17:00, 3050
-67075,  74093910, F5975, 14:00, 2024
-43691,  47346237, F5789, 08:00, 3352
-55033,  25832287, F4879, 18:00, 3717
-67047,  54699890, F3387, 11:00, 2651
-86438,  10623564, F7508, 20:00, 9364
-69714,  21092816, F2862, 15:00, 1086
-67614,  61863732, F7034, 14:00, 4950
-86160,  34083303, F1669, 13:00, 4402
-83257,  55255962, F9732, 21:00, 9944
-34001,  12359807, F4927, 12:00, 2239
-52783,  26408474, F8270, 08:00, 8212
-27511,  15475429, F6827, 10:00, 4438
-65280,  65757350, F6869, 20:00, 2413
-56599,  94738773, F1865, 17:00, 4615
-90190,  18361242, F5969, 17:00, 7844
-67614,  61863732, F9438, 20:00, 8464
-48352,  16827085, F5326, 13:00, 7538
-39165,  43298776, F9960, 17:00, 3970
-39978,  78662813, F8800, 20:00, 5016
-90669,  65035317, F9225, 15:00, 8085
+48052,8126,Raltegravir,3
+48052,2747,Tramadol,9
+48052,2007,Lorazepam,9
+48052,5749,Escitalopram,9
+48052,9299,Ciprofloxacino,8
+48052,6073,Efavirenz,10
+93921,8679,Nitroglicerina,2
+93921,7066,Fluoxetina,6
+93921,7095,Isosorbide,7
+93921,3354,Duloxetina,6
+93921,6673,Meloxicam,4
+93921,3844,Pregabalina,9
+25582,9227,Flurazepam,2
+25582,6301,Darunavir,8
+25582,3099,VitaminaC,1
+25582,8003,Insulina,8
+25582,8244,Terbinafina,5
+25582,3567,Tacrina,5
+84323,2749,Fenofibrato,8
+84323,6301,Darunavir,4
+84323,2656,Paroxetina,1
+84323,4883,Metamizol,8
+80207,5298,Rivaroxabán,1
+80207,9673,Alprazolam,1
+80207,8766,Clobetasol,5
+80207,2403,Hidroxicloroquina,10
+80207,7066,Fluoxetina,1
+80207,8884,Rosiglitazona,10
+80207,7986,Ibuprofeno,4
+88631,5686,Tenofovir,8
+88631,6673,Meloxicam,3
+88631,2649,Potasio,10
+88631,1221,Citalopram,6
+88631,1931,Levocetirizina,7
+88631,2718,Lamivudina,9
+88631,3861,VitaminaB12,9
+66104,8244,Terbinafina,3
+66104,5686,Tenofovir,8
+81230,5749,Escitalopram,5
+81230,8435,Clonazepam,8
+81230,2724,Tamsulosina,8
+85202,8435,Clonazepam,10
+85202,5832,Cefalexina,5
+85202,5732,Mometasona,10
+66104,4263,Piroxicam,7
+66104,7748,Dipirona,7
+66104,7652,Dexametasona,4
+66104,7652,Dexametasona,10
+66104,5887,Digoxina,8
+66104,5362,Warfarina,5
+14106,4257,Lisinopril,9
+48168,5793,Sulfametoxazol,5
+48168,3788,Aciclovir,10
+48168,6157,Vildagliptina,5
+48168,5362,Warfarina,7
+48168,5488,Magnesio,7
+17719,8936,Cefixima,4
+17719,9039,Atorvastatina,3
+17719,2707,Metronidazol,5
+17719,8219,Alendronato,3
+17719,9182,Nevirapina,7
+17719,9712,Risperidona,9
+43712,6385,Diclofenaco,6
+43712,8583,Fluconazol,4
+43712,4655,Sitagliptina,7
+43712,8359,Ranitidina,3
+43712,4866,Quetiapina,6
+88631,8435,Clonazepam,2
+88631,4362,Hierro,10
+88631,5135,Hidrocortisona,5
+25582,5630,Dabigatrán,4
+25582,2007,Lorazepam,10
+77391,3386,Tadalafil,7
+77391,8219,Alendronato,5
+77391,8244,Terbinafina,7
+77391,9345,Nifedipino,9
+10598,3099,VitaminaC,9
+10598,8244,Terbinafina,5
+10598,3386,Tadalafil,6
+10598,3968,Tacrolimus,7
+10598,9345,Nifedipino,5
+10598,4655,Sitagliptina,8
+10598,2656,Paroxetina,10
+38844,4022,Doxorrubicina,1
+38844,8762,Levetiracetam,10
+38844,3386,Tadalafil,6
+38844,1656,Morfina,8
+38844,8936,Cefixima,9
+48052,4866,Quetiapina,1
+48052,5832,Cefalexina,9
+48052,5940,Cloranfenicol,2
+48052,3629,Paracetamol,1
+48052,2877,Omeprazol,2
+48052,7327,Diazepam,10
+48052,5055,Prednisona,3
+94621,4108,Oxicodona,8
+94621,3874,Amoxicilina,10
+94621,5362,Amitriptilina,3
+94621,4362,Hierro,8
+94621,6673,Meloxicam,5
+94621,2049,Loperamida,9
+55790,6922,Ritonavir,1
+55790,2114,Furosemida,8
+55790,2007,Lorazepam,4
+55790,2795,Benznidazol,1
+55790,9640,Fenitoína,4
+55790,3295,Simvastatina,7
+65653,5362,Warfarina,5
+65653,5832,Cefalexina,1
+65653,8936,Cefixima,5
+91858,5686,Tenofovir,3
+91858,3874,Amoxicilina,6
+91858,6080,Olanzapina,4
+77391,8762,Levetiracetam,9
+77391,1931,Levocetirizina,6
+77391,7085,Lamotrigina,7
+88631,7578,Enalapril,2
+88631,7652,Dexametasona,3
+88631,5269,Pioglitazona,10
+88631,6441,Salbutamol,10
+91080,1886,Pseudoefedrina,6
+45453,5755,Prazosina,1
+45453,5832,Cefalexina,8
+45453,8219,Alendronato,7
+97940,4866,Quetiapina,7
+97940,8244,Terbinafina,5
+97940,5298,Rivaroxabán,5
+97940,2649,Potasio,4
+97940,2656,Paroxetina,1
+97940,2747,Tramadol,6
+97940,3143,Lopinavir,8
+25582,4257,Lisinopril,10
+25582,5793,Sulfametoxazol,9
+55790,1936,Cefuroxima,1
+55790,2656,Paroxetina,7
+55790,8679,Nitroglicerina,4
+55790,3143,Lopinavir,8
+55790,2854,Sertralina,1
+55790,6641,Allopurinol,1
+55790,8244,Terbinafina,4
+55790,7851,Dexketoprofeno,8
+55790,8126,Raltegravir,5
+55790,8435,Clonazepam,4
+55790,4257,Lisinopril,4
+55790,8583,Fluconazol,8
+55790,6894,Rosuvastatina,5
+11884,3861,VitaminaB12,3
+11884,6524,Propranolol,6
+11884,9293,BromurodeOtilonio,5
+11884,5131,Ondansetrón,10
+11884,9182,Nevirapina,8
+11884,5755,Prazosina,7
+11884,8244,Terbinafina,8
+81230,9227,Flurazepam,10
+81230,3629,Paracetamol,7
+81230,1656,Morfina,2
+81230,1992,Clotrimazol,5
+81230,8115,Levofloxacino,8
+81230,3099,VitaminaC,5
+88631,3749,Mirtazapina,5
+88631,5269,Pioglitazona,9
+88631,1886,Pseudoefedrina,4
+88631,9963,Pantoprazol,7
+88631,5488,Magnesio,5
+88631,9398,Amiodarona,8
+21347,7623,Trimetoprima,5
+98402,1142,Hidroclorotiazida,8
+98402,2998,Esomeprazol,10
+98402,3629,Paracetamol,3
+25233,7899,Levotiroxina,3
+25233,7469,Permetrina,3
+25233,3354,Duloxetina,6
+25233,9293,BromurodeOtilonio,10
+25233,9299,Ciprofloxacino,9
+25233,4362,Hierro,9
+10700,6301,Darunavir,2
+10700,4022,Doxorrubicina,4
+10700,4257,Lisinopril,9
+10700,8583,Fluconazol,6
+10700,3843,Metoclopramida,2
+10700,5686,Tenofovir,7
+10700,7899,Levotiroxina,9
+33489,1992,Clotrimazol,7
+33489,9182,Nevirapina,4
+45453,2707,Metronidazol,7
+45453,3845,Montelukast,8
+45453,9398,Amiodarona,10
+45453,5707,Pravastatina,1
+45453,9299,Ciprofloxacino,3
+45453,2877,Omeprazol,5
+45453,2403,Hidroxicloroquina,6
+21347,2795,Benznidazol,6
+21347,2877,Omeprazol,8
+38844,4257,Lisinopril,3
+38844,4597,Venlafaxina,9
+38844,6189,Clindamicina,5
+38844,4108,Oxicodona,1
+38844,3968,Tacrolimus,6
+38844,6673,Meloxicam,2
+11884,4866,Quetiapina,3
+80207,3386,Tadalafil,1
+80207,8126,Raltegravir,6
+80207,7469,Permetrina,8
+80207,7300,Oxcarbazepina,3
+80207,4883,Metamizol,3
+80207,2854,Sertralina,8
+12349,1992,Clotrimazol,5
+80739,6385,Diclofenaco,8
+80739,2749,Fenofibrato,8
+80739,1656,Morfina,4
+80739,6157,Vildagliptina,2
+80739,4329,Carbamazepina,5
+80739,5732,Mometasona,7
+80739,7899,Levotiroxina,1
+17719,9640,Fenitoína,1
+17719,6894,Rosuvastatina,5
+17719,4883,Metamizol,5
+17719,4108,Oxicodona,3
+91080,5686,Tenofovir,9
+91080,7300,Oxcarbazepina,3
+91080,6441,Salbutamol,10
+91080,4883,Metamizol,7
+91080,4257,Lisinopril,5
+11604,7652,Dexametasona,5
+11604,8335,Cetirizina,1
+11604,5131,Ondansetrón,8
+11604,7066,Fluoxetina,6
+11604,4024,Enoxaparina,3
+11604,5269,Pioglitazona,2
+11604,1656,Morfina,9
+89046,7095,Isosorbide,10
+17538,8766,Clobetasol,4
+17538,7085,Lamotrigina,9
+17538,4221,Itraconazol,7
+79141,6404,Metildopa,8
+79141,9293,BromurodeOtilonio,2
+79141,6479,Ezetimiba,10
+79141,1592,Clozapina,5
+55790,9039,Atorvastatina,9
+55790,7652,Dexametasona,2
+55790,5073,Acetaminofén,1
+32956,2877,Omeprazol,7
+17538,6385,Diclofenaco,3
+17538,5131,Ondansetrón,4
+17538,6441,Salbutamol,10
+17538,6441,Salbutamol,7
+45453,1885,Fexofenadina,3
+45453,5131,Ondansetrón,6
+14106,9640,Fenitoína,8
+14106,6404,Metildopa,10
+14106,3861,VitaminaB12,1
+14106,7066,Fluoxetina,9
+80207,1142,Hidroclorotiazida,4
+77391,3644,Doxazosina,7
+77391,3845,Montelukast,6
+85202,7327,Diazepam,4
+55790,6404,Metildopa,9
+55790,8335,Cetirizina,4
+55790,5362,Warfarina,4
+55790,9712,Risperidona,4
+55790,4597,Venlafaxina,9
+55790,6385,Diclofenaco,3
+55790,2718,Lamivudina,6
+69260,7085,Lamotrigina,5
+69260,3874,Amoxicilina,7
+69260,2998,Esomeprazol,5
+69260,8244,Terbinafina,2
+25582,6673,Meloxicam,6
+25582,4655,Sitagliptina,9
+25582,8679,Nitroglicerina,4
+25582,9299,Ciprofloxacino,9
+25582,1885,Fexofenadina,5
+25582,6641,Allopurinol,5
+80207,3295,Simvastatina,10
+80207,9345,Nifedipino,7
+80207,4108,Oxicodona,1
+80207,7578,Enalapril,7
+80207,4866,Quetiapina,5
+80207,2049,Loperamida,7
+80207,1656,Morfina,2
+22845,2877,Omeprazol,6
+22845,5135,Hidrocortisona,8
+22845,1390,Calcio,2
+22845,3567,Tacrina,4
+98402,3644,Doxazosina,2
+98402,3354,Duloxetina,6
+79141,8762,Levetiracetam,5
+79141,3295,Simvastatina,8
+79141,2656,Paroxetina,5
+79141,8583,Fluconazol,9
+79141,1390,Calcio,2
+79141,6301,Darunavir,2
+79141,9712,Risperidona,5
+91080,3845,Montelukast,10
+91080,6073,Efavirenz,5
+91080,5488,Magnesio,3
+65816,5648,Spironolactona,8
+65816,9524,Indometacina,6
+65816,5686,Tenofovir,1
+45453,4418,Lansoprazol,5
+80207,1142,Hidroclorotiazida,8
+80207,5648,Spironolactona,3
+80207,1221,Citalopram,3
+80207,3843,Metoclopramida,5
+80207,4108,Oxicodona,7
+31849,6385,Diclofenaco,2
+31849,5615,VitaminaD,9
+31849,5755,Prazosina,8
+79141,6385,Diclofenaco,2
+79141,2749,Fenofibrato,9
+36843,8126,Raltegravir,9
+36843,5055,Prednisona,2
+36843,1656,Morfina,8
+91080,7652,Dexametasona,5
+91080,5707,Pravastatina,5
+91080,4418,Lansoprazol,8
+91080,7095,Isosorbide,4
+91080,4655,Sitagliptina,6
+91080,2649,Potasio,9
+26894,5332,Clopidogrel,5
+26894,5055,Prednisona,9
+26894,2749,Fenofibrato,10
+26894,4221,Itraconazol,9
+21347,3354,Duloxetina,10
+21347,2724,Tamsulosina,4
+22827,2718,Lamivudina,4
+65653,7899,Levotiroxina,4
+65653,7986,Ibuprofeno,9
+65653,1992,Clotrimazol,1
+65653,6080,Olanzapina,4
+65653,5055,Prednisona,3
+65653,5940,Cloranfenicol,6
+17719,2718,Lamivudina,5
+17719,7327,Diazepam,8
+17719,7587,Losartan,1
+77391,5615,VitaminaD,4
+77391,5055,Prednisona,8
+77391,4597,Venlafaxina,8
+77391,5648,Spironolactona,10
+77391,2749,Fenofibrato,9
+77391,6073,Efavirenz,2
+66104,8583,Fluconazol,10
+66104,7748,Dipirona,2
+66104,7085,Lamotrigina,6
+38563,6479,Ezetimiba,4
+38563,6073,Efavirenz,3
+38563,7300,Oxcarbazepina,4
+26894,4784,Atenolol,1
+26894,7085,Lamotrigina,6
+26894,1936,Cefuroxima,7
+26894,5732,Mometasona,5
+11604,5707,Pravastatina,7
+11604,7085,Lamotrigina,9
+11604,4024,Enoxaparina,3
+76456,2747,Tramadol,1
+76456,5362,Amitriptilina,3
+76456,3354,Duloxetina,8
+76456,4418,Lansoprazol,8
+76456,2114,Furosemida,6
+76456,2403,Hidroxicloroquina,3
+48052,1936,Cefuroxima,6
+48052,9398,Amiodarona,6
+48052,2656,Paroxetina,3
+38844,8435,Clonazepam,1
+38844,5055,Prednisona,7
+38844,3354,Duloxetina,5
+38844,3644,Doxazosina,3
+81230,3386,Tadalafil,2
+81230,1390,Calcio,3
+81230,2732,Oseltamivir,7

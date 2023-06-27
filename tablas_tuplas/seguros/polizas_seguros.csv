@@ -1,80 +1,82 @@
-91455, 11797, Seguro de Rehabilitación, 19
-91455, 40020, Cobertura Global de Salud, 58
-82200, 72959, Seguro de Medicina Alternativa, 45
-82200, 78637, Cobertura de Cirugías, 51
-17532, 29201, Cobertura de Medicamentos, 45
-17532, 88367, Cobertura Global de Salud, 15
-17532, 87856, Protección Ocular, 50
-17532, 95564, Seguro de Terapia Física, 70
-17532, 70837, Seguro de Rehabilitación, 15
-40546, 70697, Cuidado Preventivo, 63
-40546, 62998, Protección Vitalicia, 61
-43115, 59673, Seguro de Asistencia Médica, 18
-43115, 27770, Cobertura de Medicamentos, 63
-95509, 69661, Cobertura de Cirugías, 39
-95509, 22651, Protección Ocular, 66
-95509, 49916, Bienestar Activo, 44
-95509, 66619, Familia Sana, 41
-59524, 23047, Cuidado Total, 48
-69960, 22379, Salud Flexible, 14
-10395, 64364, Cuidado Total, 34
-33826, 94169, Cobertura Global de Salud, 11
-33826, 62383, Bienestar Mental, 25
-33826, 75166, Salud Flexible, 16
-33826, 34271, Familia Sana, 38
-33826, 79772, Cobertura de Tratamientos Especiales, 42
-38737, 35302, Cobertura Global de Salud, 19
-38737, 40320, Protección en Emergencias, 66
-38737, 30174, Plan de Salud Holístico, 60
-38737, 28433, Cobertura Global de Salud, 64
-38737, 99805, Bienestar Mental, 20
-91548, 97347, Protección en Emergencias, 23
-91548, 56112, Bienestar Mental, 51
-15937, 92352, Prevención Total, 34
-15937, 86795, Plan Materno-Infantil, 26
-87572, 36221, Plan Materno-Infantil, 22
-87572, 26929, Cobertura de Cirugías, 53
-87572, 83364, Seguro de Terapia Física, 11
-87572, 36475, Protección en Emergencias, 19
-87572, 76869, Cuidado Preventivo, 43
-92627, 17781, Cobertura de Medicamentos, 47
-92627, 87610, Cuidado Preventivo, 23
-92627, 55160, Protección Vitalicia, 60
-92627, 21135, Cuidado Preventivo, 48
-92627, 59010, Familia Sana, 11
-75202, 54745, Protección Ocular, 51
-75202, 40197, Plan de Salud Holístico, 52
-75202, 95122, Salud Protegida, 61
-20405, 73164, Protección Vitalicia, 13
-20405, 27416, Prevención Total, 34
-20405, 23727, Seguro de Rehabilitación, 61
-20405, 66817, Seguro Médico Integral, 62
-64251, 32790, Seguro de Medicina Alternativa, 37
-12585, 67822, Cobertura Médica Plus, 59
-80396, 99240, Protección Ocular, 38
-80396, 77587, Bienestar Activo, 53
-82452, 69662, Seguro de Asistencia Médica, 13
-82452, 20553, Cuidado Geriátrico, 46
-82452, 58205, Plan de Salud Holístico, 17
-62980, 24478, Plan Materno-Infantil, 44
-62980, 97765, Seguro de Medicina Alternativa, 42
-62980, 50593, Cuidado Total, 10
-62980, 14491, Seguro Dental Completo, 69
-62980, 73337, Cuidado Geriátrico, 12
-76366, 39369, Bienestar Activo, 47
-76366, 19583, Plan de Salud Holístico, 18
-76366, 25784, Salud Primordial, 20
-76366, 68311, Cobertura Global de Salud, 30
-44815, 15516, Prevención Total, 14
-44815, 47492, Protección en Emergencias, 16
-44815, 45927, Cuidado Geriátrico, 36
-44815, 40314, Plan Materno-Infantil, 48
-87892, 74267, Protección Vitalicia, 43
-87892, 63600, Seguro de Enfermedades Crónicas, 64
-46415, 97784, Bienestar Activo, 35
-46415, 37429, Seguro Dental Completo, 32
-46415, 27702, Prevención Total, 53
-42546, 19519, Cuidado Total, 27
-27657, 30054, Cobertura de Tratamientos Especiales, 36
-49939, 12006, Seguro de Terapia Física, 24
-50331, 46290, Plan Materno-Infantil, 16
+67474,65578,Seguro Dental Completo,43
+67474,34511,Bienestar Activo,57
+67474,54418,Seguro de Rehabilitación,49
+67474,79870,Cuidado Geriátrico,14
+58710,31772,Cobertura Médica Plus,12
+58710,27709,Cobertura de Tratamientos Especiales,60
+16392,26625,Cobertura Médica Plus,12
+16392,17682,Seguro de Medicina Alternativa,10
+16392,12627,Salud Flexible,67
+44404,89682,Cuidado Preventivo,44
+44404,11759,Salud Flexible,39
+44404,13262,Protección en Emergencias,37
+33702,80569,Cobertura de Medicamentos,39
+33702,30475,Cuidado Preventivo,69
+33702,72399,Salud Protegida,38
+33702,11180,Seguro Dental Completo,15
+50853,35946,Cuidado Preventivo,13
+68446,56541,Seguro Dental Completo,67
+68446,58428,Bienestar Activo,25
+23127,48684,Salud Flexible,17
+73754,15468,Seguro de Enfermedades Crónicas,65
+80813,11069,Cobertura de Tratamientos Especiales,20
+80813,63550,Seguro Dental Completo,26
+80813,17425,Seguro Médico Integral,64
+80813,84109,Plan Materno-Infantil,28
+62147,84604,Cuidado Preventivo,31
+62147,32691,Bienestar Activo,14
+62147,81041,Cobertura de Medicamentos,66
+78845,31706,Seguro Médico Integral,12
+78845,55518,Salud Primordial,12
+78845,86594,Cobertura de Cirugías,19
+78845,40946,Cobertura Médica Plus,54
+23404,53786,Seguro de Asistencia Médica,27
+30272,57835,Seguro de Terapia Física,36
+30272,89918,Cuidado Geriátrico,11
+30272,54793,Bienestar Activo,61
+73707,29155,Protección Ocular,40
+73707,55196,Seguro de Rehabilitación,30
+35434,56753,Plan de Nutrición y Dietética,41
+35434,46277,Salud Flexible,36
+44343,65264,Cuidado Total,55
+44343,20935,Prevención Total,62
+44343,74102,Plan de Salud Holístico,24
+55801,64393,Protección Ocular,52
+55801,97043,Bienestar Activo,63
+55801,36075,Seguro de Medicina Alternativa,13
+55801,85771,Protección Ocular,70
+55801,18678,Cobertura de Tratamientos Especiales,27
+58058,30645,Bienestar Mental,14
+58058,45614,Familia Sana,36
+58058,19707,Bienestar Activo,27
+58058,61933,Cuidado Preventivo,69
+80314,16392,Cobertura Médica Plus,47
+52353,39014,Salud Primordial,32
+52353,43481,Plan Materno-Infantil,66
+52353,33359,Seguro Médico Integral,32
+52353,37641,Cuidado Total,29
+24545,79098,Seguro Dental Completo,32
+24545,54738,Protección Ocular,21
+24545,40007,Familia Sana,26
+56054,97590,Seguro de Medicina Alternativa,59
+56054,85080,Seguro de Enfermedades Crónicas,23
+56054,69464,Salud Protegida,36
+84570,11674,Seguro de Enfermedades Crónicas,63
+84570,56998,Cuidado Geriátrico,23
+74665,24666,Protección en Emergencias,15
+98467,74774,Cuidado Preventivo,62
+98467,22747,Familia Sana,17
+98467,98554,Cobertura Médica Plus,66
+98467,84685,Protección Vitalicia,33
+98467,89961,Protección en Emergencias,14
+89061,41863,Cobertura de Tratamientos Especiales,53
+89061,80234,Prevención Total,70
+89061,16106,Plan Materno-Infantil,29
+89061,53298,Plan de Bienestar Familiar,45
+25275,96507,Cobertura Global de Salud,63
+25275,85695,Familia Sana,38
+87072,38346,Plan de Nutrición y Dietética,54
+87072,97499,Cobertura de Tratamientos Especiales,46
+87072,21373,Seguro de Enfermedades Crónicas,14
+90586,80834,Plan Materno-Infantil,15
+90586,78012,Salud Protegida,25

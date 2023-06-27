@@ -47,9 +47,10 @@ def generate_medicamentos_recetados(n):
             medic_recetados.append(medic_recetado)
     return medic_recetados
 
-with open("tablas_tuplas/recetas/medicamentos_recetados.csv", "w") as archivo_csv:
+
+with open("tablas_tuplas/recetas/recetas_aprobadas.csv", "w") as archivo_csv:
     for medic_recetado in generate_medicamentos_recetados(90):
         codigo_receta, codigo_medicamento, nombre_medicamento, cantidad = medic_recetado
-        archivo_csv.write(f"{codigo_receta},{codigo_medicamento},{nombre_medicamento},{cantidad}\n")
-
+        linea = f"{codigo_receta},{codigo_medicamento},{nombre_medicamento},{cantidad}\n"
+        archivo_csv.write(linea)
 print("Medicamentos recetados generados")
