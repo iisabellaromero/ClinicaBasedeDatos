@@ -72,22 +72,21 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Mi historia</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
+              <li><a href="#">Mis citas</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Mis recetas</a></li>
+                  <li><a href="#">Farmacia en línea</a></li>
                   <li><a href="#">Deep Drop Down 3</a></li>
                   <li><a href="#">Deep Drop Down 4</a></li>
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Mis recetas</a></li>
+              <li><a href="#">Farmacia en línea</a></li>
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
@@ -459,7 +458,7 @@
     </section><!-- End Doctors Section -->
 
     <!-- INICIO SESION -->
-    <section id="login" class="appointment section-bg">
+    <section id="login" class="appointment section-bg hidden">
       <div class="container">
         <div class="section-title">
           <h2>Inicia Sesión</h2>
@@ -471,11 +470,11 @@
             <form action="forms/login.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo electrónico" data-rule="email" data-msg="Por favor, introduce un correo electrónico válido" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ingresa tu correo electrónico" data-rule="email" data-msg="Por favor, introduce un correo electrónico válido" required>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Tu contraseña" data-rule="minlen:6" data-msg="Por favor, introduce al menos 6 caracteres para la contraseña" required>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Ingresa tu contraseña" data-rule="minlen:6" data-msg="Por favor, introduce al menos 6 caracteres para la contraseña" required>
                   <div class="validate"></div>
                 </div>
               </div>
@@ -508,25 +507,25 @@
             <form action="forms/registro.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Tu nombre" data-rule="minlen:4" data-msg="Por favor, introduce al menos 4 caracteres para el nombre" required>
+                  <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingresa tu nombre" data-rule="minlen:4" data-msg="Por favor, introduce al menos 4 caracteres para el nombre" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Tu apellido paterno" data-rule="minlen:4" data-msg="Por favor, introduce al menos 2 caracteres para el apellido" required>
+                  <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Ingresa tu apellido paterno" data-rule="minlen:4" data-msg="Por favor, introduce al menos 2 caracteres para el apellido" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Tu apellido materno" data-rule="minlen:4" data-msg="Por favor, introduce al menos 2 caracteres para el apellido" required>
+                  <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Ingresa tu apellido materno" data-rule="minlen:4" data-msg="Por favor, introduce al menos 2 caracteres para el apellido" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="date" name="fecha" class="form-control" id="fecha" placeholder="Tu fecha de nacimiento" data-rule="minlen:4" data-msg="Por favor, introduce al menos 4 caracteres para la fecha" required>
+                  <input type="date" name="fecha" class="form-control" id="fecha" placeholder="Ingresa tu fecha de nacimiento" data-rule="minlen:4" data-msg="Por favor, introduce al menos 4 caracteres para la fecha" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="int" name="telefono" class="form-control" id="tlf" placeholder="Tu número de teléfono" data-rule="minlen:8" data-msg="Por favor, introduce 9 caracteres para el número telefónico" required>
+                  <input type="int" name="telefono" class="form-control" id="tlf" placeholder="Ingresa tu número de teléfono" data-rule="minlen:8" data-msg="Por favor, introduce 9 caracteres para el número telefónico" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="int" name="dni" class="form-control" id="dni" placeholder="Tu DNI" data-rule="minlen:8" data-msg="Por favor, introduce al menos 8 caracteres para el DNI" required>
+                  <input type="int" name="dni" class="form-control" id="dni" placeholder="Ingresa tu DNI" data-rule="minlen:8" data-msg="Por favor, introduce al menos 8 caracteres para el DNI" required>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo electrónico" data-rule="email" data-msg="Por favor, introduce un correo electrónico válido" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Ingresa tu correo electrónico" data-rule="email" data-msg="Por favor, introduce un correo electrónico válido" required>
                 </div>
               </div>
     
