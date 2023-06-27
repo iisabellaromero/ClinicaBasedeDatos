@@ -1,4 +1,4 @@
-#TUPLA -> (fecha, Hora_inicio, doctor_codigo, especialidad, paciente_dni, consultorio_codigo)
+#TUPLA -> (fecha, Hora_inicio, doctor_codigo, especialidad, paciente_dni, consultorio_codigo, precio, precio_deducible)
 import csv
 import random
 from datetime import datetime, timedelta
@@ -7,7 +7,6 @@ from datetime import datetime, timedelta
 doctores_csv = "tablas_tuplas/empleados/doctores/doctores.csv"
 pacientes_csv = "tablas_tuplas/pacientes/paciente.csv"
 consultorios_csv = "tablas_tuplas/empleados/doctores/consultorios.csv"
-
 numero_citas = 100
 
 # Lista de doctores
@@ -64,6 +63,8 @@ def generar_citas(n):
         hora_inicio_formateada = f"{hora_inicio:02d}:00"
         consultorio = random.choice(consultorios)
         paciente = random.choice(pacientes)[5]
+        precio = 200
+        precio_deducible = 0
         
         doctor = None
         especialidad = None
@@ -75,13 +76,13 @@ def generar_citas(n):
                 break
         
         if doctor is not None and especialidad is not None:
-            citas.append((paciente,fecha, hora_inicio_formateada, doctor[0], especialidad, consultorio[1]))
+            citas.append((paciente,fecha, hora_inicio_formateada, doctor[0], especialidad, consultorio[1], precio, precio_deducible))
     return citas
 
 with open("tablas_tuplas/citas/cita.csv", "w") as archivo_csv:
     for cita in generar_citas(numero_citas):
-        paciente,fecha, hora_inicio_formateada, doctor_codigo, especialidad, consultorio_codigo = cita
-        linea = f"{paciente}, {fecha}, {hora_inicio_formateada}, {doctor_codigo}, {especialidad},{consultorio_codigo}\n"
+        paciente,fecha, hora_inicio_formateada, doctor_codigo, especialidad, consultorio_codigo, precio, precio_deducible = cita
+        linea = f"{paciente}, {fecha}, {hora_inicio_formateada}, {doctor_codigo}, {especialidad},{consultorio_codigo}, {precio}, {precio_deducible}\n"
         archivo_csv.write(linea)
 
 print("Citas generadas")

@@ -43,7 +43,7 @@ def generar_tuplas(n):
         fecha_nacimiento = generar_fecha()
         telefono = "9" + str(generar_telefono(tuplas))
         dni = generar_dni(tuplas)
-        email = f"{nombre.lower()}.{apellido1.lower()}@hotmail.com"
+        email = f"{nombre.lower()}.{apellido1.lower()}@vitasalud.com"
         tupla = (codigo, codigo_cmp, nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email)
         tuplas.append(tupla)
     return tuplas

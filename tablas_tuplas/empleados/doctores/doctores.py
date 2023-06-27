@@ -1,6 +1,6 @@
 import random
 from datetime import datetime, timedelta
-#codigo, nombre, apellido1, apellido2, fecha_nacimiento, telefono, sueldo, dni, email
+#codigo, codigo_cmp, nombre, apellido1, apellido2, fecha_nacimiento, telefono,  dni, email
 
 def generar_tuplas(n):
     nombres = ["Juan", "Pedro", "Luis", "Carlos", "Jorge", "Miguel", "Alberto", "Manuel", "Ricardo", "Javier",
@@ -49,7 +49,7 @@ def generar_tuplas(n):
         fecha_nacimiento = generar_fecha()
         telefono = "9" + str(generar_telefono(tuplas))
         dni = generar_dni(tuplas)
-        email = f"{nombre.lower()}.{apellido1.lower()}@hotmail.com"
+        email = f"{nombre.lower()}.{apellido1.lower()}@vitasalud.com"
         especialidad = random.choice(especialidades)
         tupla = (codigo, codigo_cmp, nombre, apellido1, apellido2, fecha_nacimiento, telefono, dni, email, especialidad)
         tuplas.append(tupla)
@@ -109,15 +109,16 @@ def generar_horarios(tuplas):
             fin = datetime.strptime(str(hora_fin), "%H")
             hora_inicio_formateada = f"{hora_inicio:02d}:00"
             hora_fin_formateada = f"{hora_fin:02d}:00"
-            horario = (dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor)
+            estado = True
+            horario = (dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor,estado)
             horarios.append(horario)
     return horarios
-horarios = generar_horarios()
+horarios = generar_horarios(tuplas_generadas)
 
 with open("tablas_tuplas/empleados/doctores/horarios.csv", "w") as archivo:
     for horario in horarios:
-        dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor = horario
-        linea = f"{dia}, {hora_inicio_formateada}, {hora_fin_formateada}, {codigo_doctor}\n"
+        dia, hora_inicio_formateada, hora_fin_formateada, codigo_doctor,estado = horario
+        linea = f"{dia}, {hora_inicio_formateada}, {hora_fin_formateada}, {codigo_doctor}, {estado}\n"
         archivo.write(linea)
 
 #guardar en un archivo de texto el codigo del doctor con su respectivo consultorio
