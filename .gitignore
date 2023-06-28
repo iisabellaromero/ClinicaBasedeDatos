@@ -2,7 +2,9 @@
 Pipfile.lock
 
 # Ignorar el directorio .venv del entorno virtual
-.virtualclinic
+.virtualclinic/
+.mi_env/
+
 
 # Ignorar archivos de activación/desactivación del entorno virtual
 *.pyc

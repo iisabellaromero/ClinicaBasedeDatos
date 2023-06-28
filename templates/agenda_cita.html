@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+
+
+{% block main %}
+<section id="appointment" class="appointment section-bg ">
+    <div class="container">
+      <!-- tenemos que modificar todo esto y si es posible hacerlo en una pagina distinta -->
+      <div class="section-title">
+        <h2>Agenda tu cita</h2>
+        <p>Simplifica tu proceso de programación de citas médicas con nuestro sistema de reservas en línea fácil de usar. Ahora puedes asegurar tu cita de manera conveniente y rápida, ahorrando tiempo y evitando demoras.</p>
+      </div>
+
+      <form action="/agendar-cita" method="post">
+        <div class="row row-style">
+          <div class="col-md-4 form-group mt-3 centered-content">
+            <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Fecha de la Cita" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+            <div class="validate"></div>
+          </div>
+          <div class="col-md-4 form-group mt-3">
+            <select name="department" id="department" class="form-select">
+              <option value="">Seleccionar Departamento</option>
+              <option value="Medicina General">Medicina General</option>
+              <option value="Pediatria">Pediatria</option>
+              <option value="Obstetricia y Ginecologia">Obstetricia y Ginecologia</option>
+              <option value="Cardiologia">Cardiologia</option>
+              <option value="Dermatologia">Dermatologia</option>
+              <option value="Gastroenterologia">Gastroenterologia</option>
+              <option value="Neurologia">Neurologia</option>
+              <option value="Psiquiatria">Psiquiatria</option>
+              <option value="Oftalmologia">Oftalmologia</option>
+              <option value="Otorrinolaringologia">Otorrinolaringologia</option>
+              <option value="Cirugia General">Cirugia General</option>
+              <option value="Cirugia Plastica">Cirugia Plastica</option>
+              <option value="Urologia">Urologia</option>
+              <option value="Nefrologia">Nefrologia</option>
+              <option value="Endocrinologia">Endocrinologia</option>
+              <option value="Oncologia">Oncologia</option>
+              <option value="Radiologia">Radiologia</option>
+              <option value="Anestesiologia">Anestesiologia</option>
+              <option value="Medicina Interna">Medicina Interna</option>
+              <option value="Medicina Familiar y Comunitaria">Medicina Familiar y Comunitaria</option>
+            </select>
+            <div class="validate"></div>
+          </div>
+        </div>
+        
+          <div class="radio-container">
+            <input type="radio" id="op1" name="radio-option">
+            <label for="op1">7:00 - Luis, Romero, Fernandez, Gastroenterologia</label>
+            <br>
+            <input type="radio" id="op2" name="radio-option">
+            <label for="op2">9:00 - Luisa, Zolezzi, Flores, Gastroenterologia</label>
+            <br>
+            <input type="radio" id="op3" name="radio-option">
+            <label for="op3">13:00 - Sergio, Gil, Caceres, Gastroenterologia</label>
+          </div>
+        <div class="text-center"><button type="submit" id="enviar_busqueda" value="Buscar">Ver doctores disponibles</button></div>
+      </form>
+    </div>
+  </section><!-- End Appointment Section -->
+
+{%endblock%}
