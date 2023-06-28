@@ -46,7 +46,7 @@ def generate_recetas(n):
     return recetas
 
 with open("tablas_tuplas/recetas/receta.csv", "w") as archivo_csv:
-    for receta in generate_recetas(90):
+    for receta in generate_recetas(100):
         codigo_receta, fecha_receta, doctor_codigo, paciente_codigo = receta
         linea = f"{codigo_receta},{fecha_receta},{doctor_codigo},{paciente_codigo}\n"
         archivo_csv.write(linea)

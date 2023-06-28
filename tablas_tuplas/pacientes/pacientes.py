@@ -24,7 +24,7 @@ def generar_tuplas(n):
                "Alexa", "Ignacio", "Valentina", "Mateo", "Julieta", "Manuel", "Paulina", "Andres", "Regina",
                "Esteban", "Brenda", "Mario", "Melissa", "Cristian", "Paola", "Simon", "Laura", "Oscar",
                "Estefania", "Arturo", "Fabiana", "Edgar", "Florencia", "Samuel", "Juliana", "Raul", "Elisa",
-               "Francisco", "Gabriela", "angel", "Natalia", "Diego", "Paula", "Jose Luis", "Mariana", "Maximiliano",
+               "Francisco", "Gabriela", "Angel", "Natalia", "Diego", "Paula", "Jose Luis", "Mariana", "Maximiliano",
                "Monica", "Eduardo", "Adriana", "Alejandro", "Veronica", "Pablo", "Ximena", "Oliver", "Esmeralda",
                "Joel", "Isabel", "Victor", "Raquel", "Marcos", "Rosa", "Rafael", "Marisol", "Damian", "Patricia",
                "Fabian", "Jennifer", "Leandro", "Carmen", "Miguel-Angel", "Emily", "Matias", "Silvia", "Edwin",
@@ -114,17 +114,17 @@ def generar_telefono(tuplas):
 
 #genramos dni
 def generar_dni(tuplas):
-    while True:
-        dni = random.randint(10000000, 99999999)
-        if dni not in [t[5] for t in tuplas]:
-            break
+    dni = random.randint(10000000, 99999999)  # Generar un DNI aleatorio de 8 dígitos
+
+    # Verificar si el DNI ya existe en las tuplas
+    while any(dni == t[0] for t in tuplas):
+        dni = random.randint(10000000, 99999999)  # Generar un nuevo DNI aleatorio si ya existe
     return dni
 
 tuplas_generadas = set()  # Utilizamos un conjunto para evitar repeticiones
 
 while len(tuplas_generadas) < 1000000:
-    nuevas_tuplas = generar_tuplas(1000)
-    tuplas_generadas.update(nuevas_tuplas)
+    tuplas_generadas.update(generar_tuplas(1000000 - len(tuplas_generadas)))
 
 with open("tablas_tuplas/pacientes/paciente.csv", "a") as archivo:
     for tupla in tuplas_generadas:

@@ -3,16 +3,16 @@ import random
 #codigo, nombre, apellido1, apellido2, fecha_nacimiento, telefono, sueldo, dni, email
 
 def generar_tuplas(n):
-    nombres = ["Luis", "Juan", "Carlos", "Jorge", "Pedro", "José", "Miguel", "Fernando", "Ricardo", "Manuel",
-                "César", "Marco", "Antonio", "Daniel", "David", "Héctor", "Javier", "Oscar", "Raúl", "Enrique",
+    nombres = ["Luis", "Juan", "Carlos", "Jorge", "Pedro", "Jose", "Miguel", "Fernando", "Ricardo", "Manuel",
+                "Cesar", "Marco", "Antonio", "Daniel", "David", "Hector", "Javier", "Oscar", "Raul", "Enrique",
                 "Eduardo", "Walter", "Roberto", "Alberto", "Wilfredo", "Julio", "Gustavo", "Francisco", "Mario",
                 "Ernesto", "Alejandro", "Gonzalo", "Hugo", "Diego", "Felix", "Nelson", "Armando", "Erick", "Renzo",
                 "Josue", "Pablo", "Efrain", "Marcos", "Nestor", "Victor", "Frank", "Sergio", "Ciro", "Edgar",
                 "Marcelo", "Orlando", "Eloy", "Henry", "Fredy", "Marlon", "Edwin", "Guido", "Albert", "Roger",
-                "Andres", "Emilio", "María", "Carmen", "Rosa", "Ana", "Luz", "Isabel", "Elena", "Juana",
+                "Andres", "Emilio", "Maria", "Carmen", "Rosa", "Ana", "Luz", "Isabel", "Elena", "Juana",
                 "Margarita", "Gloria", "Patricia", "Cecilia", "Sandra", "Claudia", "Ruth", "Susana", "Elizabeth",
-                "Angélica", "Victoria", "Teresa", "Liliana", "Sara", "Adriana", "Rocio", "Maribel", "Nancy",
-                "Martha", "Pilar", "Gisela", "Yolanda", "Ingrid", "Roxana", "Alicia", "Mónica", "Magdalena",
+                "Angelica", "Victoria", "Teresa", "Liliana", "Sara", "Adriana", "Rocio", "Maribel", "Nancy",
+                "Martha", "Pilar", "Gisela", "Yolanda", "Ingrid", "Roxana", "Alicia", "Monica", "Magdalena",
                 "Silvia", "Eva", "Veronica", "Rita", "Olga", "Beatriz", "Lidia", "Miriam", "Laura", "Lucia",
                 "Cristina", "Lourdes", "Carolina", "Diana", "Julia", "Raquel", "Elsa", "Janet", "Gabriela",
                 "Lilia", "Marlene", "Fiorella", "Rina", "Lissette", "Linda", "Pamela", "Esther", "Wendy", "Flor",

@@ -4,30 +4,30 @@ from datetime import datetime, timedelta
 
 def generar_tuplas(n):
     nombres = ["Juan", "Pedro", "Luis", "Carlos", "Jorge", "Miguel", "Alberto", "Manuel", "Ricardo", "Javier",
-           "Fernando", "Daniel", "Alejandro", "Francisco", "Pablo", "Sergio", "Antonio", "José", "David",
-           "Diego", "Jesús", "Joaquin", "Rubén", "Adrian", "Óscar", "Marcos", "Tomas", "Enrique", "Mariano",
-           "Andrés", "Rafael", "Vicente", "Julian", "Jordi", "Eduardo", "Jaime", "Hugo",
+           "Fernando", "Daniel", "Alejandro", "Francisco", "Pablo", "Sergio", "Antonio", "Jose", "David",
+           "Diego", "Jesus", "Joaquin", "Ruben", "Adrian", "oscar", "Marcos", "Tomas", "Enrique", "Mariano",
+           "Andres", "Rafael", "Vicente", "Julian", "Jordi", "Eduardo", "Jaime", "Hugo",
            "Ignacio", "Alfonso", "Gonzalo", "Salvador", "Roberto", "Guillermo", "Emilio", "Miguel angel",
-           "Santiago", "Victor", "Ramón", "Aitor", "Ivan", "Martin", "Maria", "Ana", "Isabel", "Carmen", "Laura", "Marta", "Dolores", "Sara", "Cristina", "Andrea",
+           "Santiago", "Victor", "Ramon", "Aitor", "Ivan", "Martin", "Maria", "Ana", "Isabel", "Carmen", "Laura", "Marta", "Dolores", "Sara", "Cristina", "Andrea",
             "Paula", "Alba", "Sandra", "Rosa", "Lucia", "Elena", "Raquel", "Patricia", "Nuria", "Silvia",
-            "Mónica", "Beatriz", "Eva", "Camila", "Mercedes", "Belén", "Cielo", "Luz", "angela", "Clara","Lourdes", "Natalia", 
+            "Monica", "Beatriz", "Eva", "Camila", "Mercedes", "Belen", "Cielo", "Luz", "angela", "Clara","Lourdes", "Natalia", 
             "Marina", "angela", "Nerea", "Aitana", "Clara", "Irene", "Gloria", "Lidia",
             "Luna", "Olga", "Victoria", "Carolina", "Noelia", "Amparo", "Helena", "Aurora", "Ariadna", "Abril",
-            "Estela", "Gisela", "Julia", "Celia", "Inés", "Sonia", "Elsa", "iria", "Ada", "Isidora", "Valeria",
+            "Estela", "Gisela", "Julia", "Celia", "Ines", "Sonia", "Elsa", "iria", "Ada", "Isidora", "Valeria",
             "Daniela", "Elisa", "Manuela", "Adela", "Rocio", "Margarita", "Montserrat", "Cecilia", "Naiara",
             "Almudena", "Ainhoa", "Ximena", "Carla", "Esther", "africa", "Eugenia", "Amelia", "Claudia", "Helga",
             "Miriam", "Renata", "Paloma", "Leire", "Salma", "Julieta", "Nora", "Adriana", "Linda", "Yolanda",
             "Berta", "Ariadna", "Emilia" ]
 
-    apellidos = ["Gómez", "López", "Rodriguez", "Pérez", "Martinez", "Garcia", "Hernandez", "Fernandez", "Gonzalez",
+    apellidos = ["Gomez", "Lopez", "Rodriguez", "Perez", "Martinez", "Garcia", "Hernandez", "Fernandez", "Gonzalez",
             "Sanchez", "Ramirez", "Torres", "Flores", "Rivera", "Vargas", "Ruiz", "Diaz", "Reyes", "Morales",
-            "Ortega", "Castillo", "Chavez", "Mendoza", "Delgado", "Silva", "Rojas", "Jiménez", "Navarro",
-            "Cruz", "Valenzuela", "Rios", "Gutiérrez", "Romero", "Vega", "Guerrero", "alvarez", "Montes",
+            "Ortega", "Castillo", "Chavez", "Mendoza", "Delgado", "Silva", "Rojas", "Jimenez", "Navarro",
+            "Cruz", "Valenzuela", "Rios", "Gutierrez", "Romero", "Vega", "Guerrero", "alvarez", "Montes",
             "Salazar", "Acosta", "Barrera", "Peña", "Cabrera", "Molina", "Soto", "Campos", "Ibarra", "Vera",
-            "Peralta", "Figueroa", "Escobar", "Araya", "Lara", "Aguilar", "Miranda", "Sepúlveda", "Contreras",
-            "Luna", "Olivares", "Avila", "Espinoza", "Cortés", "Herrera", "Ponce", "Zúñiga", "Caceres",
+            "Peralta", "Figueroa", "Escobar", "Araya", "Lara", "Aguilar", "Miranda", "Sepulveda", "Contreras",
+            "Luna", "Olivares", "Avila", "Espinoza", "Cortes", "Herrera", "Ponce", "Zuñiga", "Caceres",
             "Fuentes", "Bravo", "Guzman", "Tapia", "Vasquez", "Parra", "Pizarro", "Paredes", "Carvajal",
-            "Carrasco", "Valdés", "Abarca", "Vidal", "Venegas", "Andrade", "Alarcón", "Aravena", "Bustos",
+            "Carrasco", "Valdes", "Abarca", "Vidal", "Venegas", "Andrade", "Alarcon", "Aravena", "Bustos",
             "Bello", "Cisternas", "Cifuentes", "Duarte", "Estrada", "Gallardo", "Godoy", "Hidalgo", "Ibacache"]
     
     especialidades = ["Medicina General", "Pediatria","Obstetricia y Ginecologia","Cardiologia","Dermatologia","Gastroenterologia",
@@ -100,7 +100,7 @@ for i in range(10):
 import random
 
 def generar_horarios(tuplas):
-    dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado", "Domingo"]
+    dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
     horarios = []
     horarios_generados = set()
     
@@ -119,7 +119,7 @@ def generar_horarios(tuplas):
             
             # Verificar si el horario ya ha sido generado para el doctor actual
             if horario in horarios_doctor:
-                continue  # Si el horario ya existe, continuar con la siguiente iteración
+                continue  # Si el horario ya existe, continuar con la siguiente iteracion
             
             horarios.append(horario)
             horarios_doctor.add(horario)

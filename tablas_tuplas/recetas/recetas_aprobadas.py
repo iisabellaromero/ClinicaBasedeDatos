@@ -33,20 +33,19 @@ def generar_tuplas(n):
         farmacista = random.choice(farmacistas)
         
         receta_codigo = receta[0]
-        receta_paciente_codigo = receta[3]
         farmacista_codigo = farmacista[0]
         hora = random.randint(8, 21)
         hora2 = datetime.strptime(str(hora), "%H")
         hora_formateada = f"{hora:02d}:00"
         codigo_venta = random.randint(1000, 9999)
         
-        # Verificar si la receta ya ha sido aprobada
-        if (receta_codigo, farmacista_codigo) in recetas_aprobadas_set:
-            continue  # Si la receta ya ha sido aprobada por este farmacista, continuar
+        # Verificar si la receta ya ha sido aprobada por algún farmacista
+        if receta_codigo in recetas_aprobadas_set:
+            continue  # Si la receta ya ha sido aprobada, continuar
         
-        tupla = (receta_codigo, receta_paciente_codigo, farmacista_codigo, hora_formateada, codigo_venta)
+        tupla = (receta_codigo, farmacista_codigo, hora_formateada, codigo_venta)
         recetas_approved.append(tupla)
-        recetas_aprobadas_set.add((receta_codigo, farmacista_codigo)) 
+        recetas_aprobadas_set.add(receta_codigo) 
     
     return recetas_approved
 
@@ -54,6 +53,8 @@ def generar_tuplas(n):
 
 with open("tablas_tuplas/recetas/recetas_aprobadas.csv", "w") as archivo:
     for tupla in generar_tuplas(61):
-        receta_codigo, receta_paciente_codigo, farmacista_codigo, hora_formateada, codigo_venta = tupla
-        linea = f"{receta_codigo},{receta_paciente_codigo},{farmacista_codigo},{hora_formateada},{codigo_venta}\n"
+        receta_codigo, farmacista_codigo, hora_formateada, codigo_venta = tupla
+        linea = f"{receta_codigo},{farmacista_codigo},{hora_formateada},{codigo_venta}\n"
         archivo.write(linea)
+
+print("Recetas aprobadas generadas")
