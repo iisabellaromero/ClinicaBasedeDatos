@@ -5,6 +5,7 @@ Pipfile.lock
 .virtualclinic/
 .mi_env/
 
+
 # Ignorar archivos de activación/desactivación del entorno virtual
 *.pyc
 *.pyo
