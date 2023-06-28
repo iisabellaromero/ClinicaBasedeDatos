@@ -2,14 +2,15 @@ from flask import Flask, redirect, render_template
 import psycopg2
 from flask import jsonify, request
 import pdb
+from datetime import datetime
+
+
 
 app = Flask(__name__)
 app.config['DATABASE'] = {
     'host': 'localhost',
     'port': 5432,
-    'database': 'postgres',
-    'password': 'china',
-    'schema': 'clinica'
+    'database': 'postgres'
 }
 
 @app.route('/')
@@ -22,10 +23,60 @@ def index():
 def load_agendar():
     return render_template('agenda_cita.html')
 
+def get_day_name(date_string):
+    # Parse the date string into a datetime object
+    date = datetime.strptime(date_string, '%Y-%m-%d')
+    
+    # Get the name of the day
+    day_name = date.strftime('%A')
+
+    # Dictionary mapping English day names to Spanish
+    day_names_spanish = {
+        'Monday': 'Lunes',
+        'Tuesday': 'Martes',
+        'Wednesday': 'Miércoles',
+        'Thursday': 'Jueves',
+        'Friday': 'Viernes',
+        'Saturday': 'Sábado',
+        'Sunday': 'Domingo'
+    }
+
+    # Get the corresponding Spanish day name from the dictionary
+    day_name_spanish = day_names_spanish.get(day_name)
+
+    return day_name_spanish
+
+
 @app.route('/agendar-cita', methods=['POST'])
 def send_agendar():
-    pdb.set_trace()
-    return redirect('/')
+
+    date = request.form['date']
+    especialidad = request.form['department']
+    dia = get_day_name(date)
+    conn = psycopg2.connect(
+                host="localhost",
+                port = 5432,
+                dbname="postgres"
+            )
+
+
+    # Crear un cursor para ejecutar consultas
+    cursor = conn.cursor()
+    query = '''
+            SELECT D.nombre, D.apellido, D.apellido_materno, H.dia, H.hora_inicio, H.hora_fin, D.especialidad, H.estado
+            FROM clinica.doctores D
+            JOIN clinica.horario H ON D.Codigo = H.doctor_codigo
+            WHERE H.dia = %s
+            AND D.especialidad = %s
+            order by D.codigo; '''
+
+    cursor.execute(query,(dia,especialidad))
+    resultados = cursor.fetchall()
+
+
+    return render_template('resultados_citas.html', resultados = resultados, date=date)
+
+
 
 
 # @app.route('/buscar', methods=['GET', 'POST'])
