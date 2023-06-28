@@ -1758,3 +1758,23 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+.radio-container {
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+  cursor: pointer;
+  margin-left: 25px;
+  background: #1977cc;
+  color: #fff;
+  border-radius: 15px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+  border-color: transparent;
+}

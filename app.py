@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template
 import psycopg2
 from flask import jsonify, request
 import pdb
@@ -8,6 +8,7 @@ app.config['DATABASE'] = {
     'host': 'localhost',
     'port': 5432,
     'database': 'postgres',
+    'password': 'china',
     'schema': 'clinica'
 }
 
