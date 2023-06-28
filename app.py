@@ -7,14 +7,18 @@ app.config['DATABASE'] = {
     'host': 'localhost',
     'port': 5432,
     'database': 'postgres',
-    'user': 'postgres',
-    'password': 'china',
     'schema': 'clinica'
 }
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+
+@app.route('/agendar_cita', methods=['GET'])
+def load_agendar():
+    return render_template('agenda_cita.html')
 
 @app.route('/buscar', methods=['GET', 'POST'])
 def buscar_citas_route():
@@ -29,9 +33,9 @@ def buscar_citas_route():
             # Establecer la conexión a la base de datos
             conn = psycopg2.connect(
                 host="localhost",
-                database="vitasalud",
-                user="postgres",
-                password="china"
+                port = 5432,
+                database="postgres",
+                schema="clinica"
             )
 
             # Crear un cursor para ejecutar consultas
