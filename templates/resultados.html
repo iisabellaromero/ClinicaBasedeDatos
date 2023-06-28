@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados de búsqueda</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Apellido Materno</th>
+                <th>Día</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Especialidad</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+            <tr>
+                <td>{{ resultado[0] }}</td>
+                <td>{{ resultado[1] }}</td>
+                <td>{{ resultado[2] }}</td>
+                <td>{{ resultado[3] }}</td>
+                <td>{{ resultado[4] }}</td>
+                <td>{{ resultado[5] }}</td>
+                <td>{{ resultado[6] }}</td>
+                <td>{{ resultado[7] }}</td>

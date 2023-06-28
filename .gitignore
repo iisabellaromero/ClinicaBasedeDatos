@@ -1,0 +1,11 @@
+# Ignorar el directorio del entorno virtual
+Pipfile.lock
+
+# Ignorar el directorio .venv del entorno virtual
+.virtualclinic/
+
+# Ignorar archivos de activación/desactivación del entorno virtual
+*.pyc
+*.pyo
+*.pyd
+__pycache__/

@@ -9,21 +9,21 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="static/all.min.css" rel="stylesheet">
+  <link href="static//animate.min.css" rel="stylesheet">
+  <link href="static/bootstrap.min.css" rel="stylesheet">
+  <link href="static/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/boxicons.min.css" rel="stylesheet">
+  <link href="static/glightbox.min.css" rel="stylesheet">
+  <link href="static/vendor/remixicon/remixicon.woff" rel="stylesheet">
+  <link href="static/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/style.css">
 
   <!-- Template Main CSS File -->
@@ -67,7 +67,7 @@
 
       <h1 class="logo me-auto"><a href="index.html">VitaSalud</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="index.html" class="logo me-auto"><img src="static/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -316,7 +316,7 @@
           <p>Simplifica tu proceso de programación de citas médicas con nuestro sistema de reservas en línea fácil de usar. Ahora puedes asegurar tu cita de manera conveniente y rápida, ahorrando tiempo y evitando demoras.</p>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+        <form action="/buscar" method="POST" role="form" class="php-email-form">
           <!-- <div class="row">
             <div class="col-md-4 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
@@ -388,7 +388,7 @@
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="static/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Ignacio Jiménez</h4>
                 <span>Cardiología</span>
@@ -405,7 +405,7 @@
 
           <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="static/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Isidora Araya</h4>
                 <span>Gastroenterología</span>
@@ -422,7 +422,7 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="static/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Guillermo Tapia</h4>
                 <span>Obstetricia y Ginecología</span>
@@ -439,7 +439,7 @@
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="static/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
                 <h4>Lourdes Guzmán</h4>
                 <span>Cirugía Plástica</span>
@@ -531,7 +531,7 @@
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <img src="static/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                   <h3>Saul Goodman</h3>
                   <h4>Ceo &amp; Founder</h4>
                   <p>
@@ -546,7 +546,7 @@
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <img src="static/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                   <h3>Sara Wilsson</h3>
                   <h4>Designer</h4>
                   <p>
@@ -561,7 +561,7 @@
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <img src="static/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                   <h3>Jena Karlis</h3>
                   <h4>Store Owner</h4>
                   <p>
@@ -576,7 +576,7 @@
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <img src="static/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                   <h3>Matt Brandon</h3>
                   <h4>Freelancer</h4>
                   <p>
@@ -590,7 +590,7 @@
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <img src="static/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                   <h3>John Larson</h3>
                   <h4>Entrepreneur</h4>
                   <p>
@@ -624,64 +624,64 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-1.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-2.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-3.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-4.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-5.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-6.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-7.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+              <a href="static/img/gallery/gallery-8.jpg" class="galelry-lightbox">
+                <img src="static/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
               </a>
             </div>
           </div>
@@ -847,14 +847,14 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="static/js/main.js"></script>
 
 </body>
 </html>
@@ -907,7 +907,7 @@
       
       // Enviar una solicitud al servidor
       $.ajax({
-        url: '/buscar_citas', // Ruta de la API en el servidor
+        url: '/buscar', // Ruta de la API en el servidor
         method: 'POST', // Método de solicitud
         data: { fecha: fecha, departamento: departamento }, // Datos enviados al servidor
         success: function(response) {
