@@ -8,9 +8,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['DATABASE'] = {
-    'host': 'localhost',
+    'host': '127.0.0.1',
     'port': 5432,
-    'database': 'postgres'
+    'database': 'postgres',
+    'user' : "postgres",
+    'password': 'china'
 }
 
 @app.route('/')
@@ -34,10 +36,10 @@ def get_day_name(date_string):
     day_names_spanish = {
         'Monday': 'Lunes',
         'Tuesday': 'Martes',
-        'Wednesday': 'Miércoles',
+        'Wednesday': 'Miercoles',
         'Thursday': 'Jueves',
         'Friday': 'Viernes',
-        'Saturday': 'Sábado',
+        'Saturday': 'Sabado',
         'Sunday': 'Domingo'
     }
 
@@ -54,9 +56,11 @@ def send_agendar():
     especialidad = request.form['department']
     dia = get_day_name(date)
     conn = psycopg2.connect(
-                host="localhost",
+                host="127.0.0.1",
                 port = 5432,
-                dbname="postgres"
+                dbname="postgres",
+                user="postgres",
+                password="china"
             )
 
 
@@ -72,9 +76,21 @@ def send_agendar():
 
     cursor.execute(query,(dia,especialidad))
     resultados = cursor.fetchall()
+    pdb.set_trace()
 
+    return render_template('resultados_citas.html', date=date, especialidad=especialidad, resultados = resultados)
 
-    return render_template('resultados_citas.html', resultados = resultados, date=date)
+# @app.route('/agendar-cita/<date>/<especialidad>', methods=['GET'])
+# def load_agendar2(date, especialidad):
+#     pdb.set_trace()
+
+#     date = '2023-01-01'
+#     especialidad = 'Medicina General'
+
+#     resultados = [[1,2,3,4,4],2,3,4,5,6,7,7,8,5]
+#     pdb.set_trace()
+
+#     return render_template('resultados_citas.html', date=date, especialidad=especialidad, resultados = resultados)
 
 
 

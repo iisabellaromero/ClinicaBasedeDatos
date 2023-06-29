@@ -1,42 +1,32 @@
-{%extends 'index.html'%}
+{% extends 'index.html' %}
 
-{%block main%}
-<h1>Resultados de búsqueda</h1>
-<h3>Para fecha {{resultados[0][3]}} {{date}}</h3>
-<table>
-    <form action="/confirmacion-cita">
-
-    <thead>
-
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Apellido Materno</th>
-            <th>Hora Inicio</th>
-            <th>Hora Fin</th>
-            <th>Especialidad</th>
-            <th>Estado</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for resultado in resultados %}
-        <tr>
-                <td>{{ resultado[0] }}</td>
-                <td>{{ resultado[1] }}</td>
-                <td>{{ resultado[2] }}</td>
-                <td>{{ resultado[4] }}</td>
-                <td>{{ resultado[5] }}</td>
-                <td>{{ resultado[6] }}</td>
-                <td>{{ resultado[7] }}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-</table>
-<input type="text" placeholder="nombre">
-<input type="text">email
-<button type="submit"> agendar tu cita </button>
-</form>
-
-
-
+{% block main %}
+<div class="container7">
+  <h2>Resultados de búsqueda para {{ resultados[0][6] }}</h2>
+  <h3>En la fecha {{ resultados[0][3] }} {{ date }}</h3>
+  <table>
+    <form action="/confirmacion-cita" method="post">
+        <div class="container">
+          <select name="doctor" id="select2">
+            <option value="">Selecciona el horario de tu preferencia</option>
+            {% for resultado in resultados %}
+            <option value="{{ loop.index }}">{{ resultado[2] }} {{ resultado[1] }}, {{ resultado[0] }} - {{ resultado[6] }}  -   {{ resultado[4] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </form> 
+      <div class="input-container7">
+        <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+        <input type="text" name="apellido" placeholder="Ingresa tu apellido">
+        <input type="text" name="apellido2" placeholder="Ingresa tu segundo apellido">
+        <input type="text" name="dni" placeholder="Ingresa tu DNI">
+        <input type="date" name="nacimiento" placeholder="Ingresa tu fecha de nacimiento">
+        <input type="email" name="email" placeholder="Ingresa tu email">
+        <input type="text" name="telefono" placeholder="Ingresa tu teléfono">
+      </div>
+      <div class="container3">
+        <button type="submit" class="btn">Confirmar cita</button>
+      </div>
+    </table>
+</div>
 {% endblock %}

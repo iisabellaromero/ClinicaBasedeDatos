@@ -3,7 +3,7 @@
 
 {% block main %}
 <section id="appointment" class="appointment section-bg ">
-    <div class="container">
+    <div class="container7">
       <!-- tenemos que modificar todo esto y si es posible hacerlo en una pagina distinta -->
       <div class="section-title">
         <h2>Agenda tu cita</h2>
@@ -17,7 +17,7 @@
             <div class="validate"></div>
           </div>
           <div class="col-md-4 form-group mt-3">
-            <select name="department" id="department" class="form-select">
+            <select name="department" id="department" class="form-select select2">
               <option value="">Seleccionar Departamento</option>
               <option value="Medicina General">Medicina General</option>
               <option value="Pediatria">Pediatria</option>
@@ -43,17 +43,6 @@
             <div class="validate"></div>
           </div>
         </div>
-        
-          <div class="radio-container">
-            <input type="radio" id="op1" name="radio-option">
-            <label for="op1">7:00 - Luis, Romero, Fernandez, Gastroenterologia</label>
-            <br>
-            <input type="radio" id="op2" name="radio-option">
-            <label for="op2">9:00 - Luisa, Zolezzi, Flores, Gastroenterologia</label>
-            <br>
-            <input type="radio" id="op3" name="radio-option">
-            <label for="op3">13:00 - Sergio, Gil, Caceres, Gastroenterologia</label>
-          </div>
         <div class="text-center"><button type="submit" id="enviar_busqueda" value="Buscar">Ver doctores disponibles</button></div>
       </form>
     </div>
