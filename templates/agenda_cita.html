@@ -18,27 +18,9 @@
           </div>
           <div class="col-md-4 form-group mt-3">
             <select name="department" id="department" class="form-select select2">
-              <option value="">Seleccionar Departamento</option>
-              <option value="Medicina General">Medicina General</option>
-              <option value="Pediatria">Pediatria</option>
-              <option value="Obstetricia y Ginecologia">Obstetricia y Ginecologia</option>
-              <option value="Cardiologia">Cardiologia</option>
-              <option value="Dermatologia">Dermatologia</option>
-              <option value="Gastroenterologia">Gastroenterologia</option>
-              <option value="Neurologia">Neurologia</option>
-              <option value="Psiquiatria">Psiquiatria</option>
-              <option value="Oftalmologia">Oftalmologia</option>
-              <option value="Otorrinolaringologia">Otorrinolaringologia</option>
-              <option value="Cirugia General">Cirugia General</option>
-              <option value="Cirugia Plastica">Cirugia Plastica</option>
-              <option value="Urologia">Urologia</option>
-              <option value="Nefrologia">Nefrologia</option>
-              <option value="Endocrinologia">Endocrinologia</option>
-              <option value="Oncologia">Oncologia</option>
-              <option value="Radiologia">Radiologia</option>
-              <option value="Anestesiologia">Anestesiologia</option>
-              <option value="Medicina Interna">Medicina Interna</option>
-              <option value="Medicina Familiar y Comunitaria">Medicina Familiar y Comunitaria</option>
+              {%for especialidad in especialidades%}
+              <option value="{{especialidad}}">{{especialidad}}</option>
+              {%endfor%}
             </select>
             <div class="validate"></div>
           </div>

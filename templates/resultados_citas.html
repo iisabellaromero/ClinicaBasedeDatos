@@ -2,32 +2,20 @@
 
 {% block main %}
 <div class="container7">
-  <h2>Resultados de búsqueda para {{ resultados[0][6] }}</h2>
-  <h3>En la fecha {{ resultados[0][3] }} {{ date }}</h3>
+  <h2>Resultados de búsqueda para {{esp}}</h2>
+  <h3>En la fecha {{ resultados[0].dia}} {{ date }}</h3>
   <table>
     <form action="/confirmacion-cita" method="post">
         <div class="container">
           <select name="doctor" id="select2">
             <option value="">Selecciona el horario de tu preferencia</option>
-            {% for resultado in resultados %}
-            <option value="{{ loop.index }}">{{ resultado[2] }} {{ resultado[1] }}, {{ resultado[0] }} - {{ resultado[6] }}  -   {{ resultado[4] }}</option>
+            {% for r in resultados %}
+            <option value="{{r.doctor_codigo}},{{r.hora_inicio}},{{r.dia}},{{date}}">{{r.nombre}} {{ r.apellido}}, {{ r.hora_inicio}}</option>
             {% endfor %}
           </select>
+          <button type="submit" class="btn-primary"> Agendar </button>
         </div>
       </form> 
-      <div class="input-container7">
-        <input type="text" name="nombre" placeholder="Ingresa tu nombre">
-        <input type="text" name="apellido" placeholder="Ingresa tu apellido">
-        <input type="text" name="apellido2" placeholder="Ingresa tu segundo apellido">
-        <input type="text" name="dni" placeholder="Ingresa tu DNI">
-        <input type="date" name="nacimiento" placeholder="Ingresa tu fecha de nacimiento">
-        <input type="email" name="email" placeholder="Ingresa tu email">
-        <input type="text" name="telefono" placeholder="Ingresa tu teléfono">
-      </div>
-      <div class="container3">
-        <button type="submit" class="btn" id="btn">Confirmar cita</button>
-      </div>
-    </table>
 </div>
 
 <script>

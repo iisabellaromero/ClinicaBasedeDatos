@@ -251,7 +251,7 @@ BEGIN
     END;
 
     -- Calculate and set the value for Citas.precio_deducible
-    NEW.precio_deducible := (NEW.precio * (cobertura_value / 100));
+    NEW.precio_deducible := NEW.precio - (NEW.precio * (cobertura_value / 100));
 
     RETURN NEW;
 END;
@@ -298,6 +298,22 @@ CREATE TRIGGER set_medicamento_recetado_precios
     BEFORE INSERT ON medicamentos_recetados
     FOR EACH ROW
 EXECUTE FUNCTION calculate_medicamento_recetado_precios();
+
+
+-- alteraciones: 
+ALTER TABLE citas
+DROP COLUMN especialidad;
+
+ALTER TABLE citas 
+drop column hora_fin;
+
+alter table horario
+drop column estado;
+
+
+CREATE MATERIALIZED VIEW Horarios_Doctores as
+SELECT d.nombre, d.apellido, c.doctor_codigo, c.hora_inicio, c.dia FROM Horario c
+join doctores d on c.doctor_codigo = d.codigo
 
 
 select count(codigo) from doctores;
@@ -350,3 +366,15 @@ select precio, precio_deducible, p.cobertura from citas
 join asegurados a on Citas.paciente_dni = a.paciente_dni
 join poliza p on a.poliza_id = p.id;
 
+
+
+
+
+--Consultas backend: 
+
+-- Citas: 
+
+select * from clinica.horarios_doctores where
+                                            horarios_doctores.doctor_codigo in
+                                        (select codigo from clinica.doctores where especialidad= 'Pediatria')
+and dia  = 'Martes'
