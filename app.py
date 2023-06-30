@@ -84,6 +84,7 @@ def confirmacion_cita():
     return render_template('cita_confirmada.html', cita = cita, doctor = doctor, paciente = paciente)
 
 
+
 @app.route('/home-paciente')
 def citas_agendadas_route():
     if 'user' not in session or session['user'] == None:
@@ -117,7 +118,18 @@ def register_paciente_post():
         }
         return redirect('/home-paciente')
     else: 
-        return redirect('/')
+        flash("El correo ya existe", 'error')
+        return redirect('/register')
+
+def register_paciente_post(): #hacer que el si el dni ya existe te salga un error
+    dni = request.form['dni']
+    if Paciente.exists(dni):
+        flash("Usted ya está registrado", 'error')
+        return redirect('/register')
+    else:
+        paciente = Paciente.create(request.form)
+        session['user']['dni'] = paciente.dni
+        return redirect('/citas-agendadas')
 
 @app.route('/login-paciente',methods=["POST"])
 def login_paciente():

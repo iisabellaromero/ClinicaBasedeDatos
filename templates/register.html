@@ -2,60 +2,34 @@
 {%block hero%}
 {%endblock%}
 {%block main%}
-<div style="padding-top:5rem">
+
+<!-- <div class="container" style = "margin-top: 150px; margin-bottom: 100px;">
+<form id="inicio-sesion-form" class="register" action="/register" method="post">
+    <div class="input-container7">
+        <h2 class = "inicio">Inicia Sesión</h2>
+        <input type="text" placeholder="Ingresa tu dni" name="dni" required>
+        <input type="password" placeholder="Ingresa tu contraseña" name="psw" required>
+        <button type="submit" class="btn-form">Iniciar Sesión</button>
+    </div>
+    <div class="container2">
+        <span class="psw" id="element">¿No tienes cuenta? <a href="#" id="registro-link">Regístrate aquí</a></span>
+    </div>
+</form>
+</div> -->
+
+<div class="container" style = "margin-top: 150px; margin-bottom: 100px;">
     <form class="register" action="/register" method="post">
-        <h5 class="text-light">Crea tu cuenta!</h5>
-        <input class="form-input" type="text" name="nombre" id="nombre" placeholder="nombre">
-        <input class="form-input" type="text" name="apellido" id="apellido" placeholder="apellido">
-        <input class="form-input" type="text" name="apellido_materno" id="apellido_materno" placeholder="apellido_materno">
-        <input class="form-input" type="text" name="telefono" id="telefono" placeholder="telefono">
-        <input class="form-input" type="text" name="dni" id="dni" placeholder="dni">
-        <input class="form-input" type="text" name="email" id="email" placeholder="email">
-        <input class="form-input" type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="fecha_nacimiento">
+        <div class="input-container7">
+        <h2 class="inicio">Registro</h2>
+        <input class="form-input" type="text" name="nombre" id="nombre" placeholder="Ingresa tu nombre">
+        <input class="form-input" type="text" name="apellido" id="apellido" placeholder="Ingresa tu apellido paterno">
+        <input class="form-input" type="text" name="apellido_materno" id="apellido_materno" placeholder="Ingresa tu apellido materno">
+        <input class="form-input" type="text" name="telefono" id="telefono" placeholder="Ingresa tu número de telefono">
+        <input class="form-input" type="text" name="dni" id="dni" placeholder="Ingresa tu DNI">
+        <input class="form-input" type="text" name="email" id="email" placeholder="Ingresa tu email">
+        <input class="form-input" type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Ingresa tu fecha de nacimiento">
     <button type="submit" class="btn-form">Registrate</button>
     </form>
 </div>
 
-{%endblock%}
-
-{%block scripts%}
-<style>
-    .register {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #1977cc;
-        padding: 5rem;
-        width: 50%;
-        border-radius: 5rem;
-        margin: auto;
-        margin-top: 5rem;
-    }
-    /*padding on placeholder*/
-    ::placeholder {
-        padding-left: 1rem;
-    }
-    .form-input{
-        width: 20rem;
-        height: 3rem;
-        margin: 1rem;
-        border-radius: 10.5em;
-        border: none;
-    }
-
-    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-    cursor: pointer;
-    margin-left: 25px;
-    background: #fcfeff;
-    color: #1977cc;
-    border-radius: 15px;
-    padding: 8px 25px;
-    white-space: nowrap;
-    transition: 0.3s;
-    font-size: 14px;
-    display: inline-block;
-    border-color: transparent;
-}
-</style>
 {%endblock%}

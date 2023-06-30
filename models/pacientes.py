@@ -9,7 +9,9 @@ import psycopg2
 conn = psycopg2.connect(
                 host="localhost",
                 port = 5432,
-                dbname="postgres"
+                dbname="postgres",
+                user = "postgres",
+                password = "china"
             )
 
     # Crear un cursor para ejecutar consultas
@@ -61,5 +63,21 @@ class Paciente:
         resultados = cursor.fetchall()
         print(resultados)
         return cls(resultados[0])
+    
+    @staticmethod
+    def exists(dni):
+        conn = psycopg2.connect(
+            host="127.0.0.1",
+            port=5432,
+            dbname="postgres",
+            password="china",
+        )
+        cursor = conn.cursor()
+        query = "SELECT COUNT(*) FROM pacientes WHERE dni = %s"
+        cursor.execute(query, (dni,))
+        count = cursor.fetchone()[0]
+        cursor.close()
+        conn.close()
+        return count > 0
         
     

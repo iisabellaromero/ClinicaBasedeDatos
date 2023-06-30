@@ -17,73 +17,9 @@
           <button type="submit" class="btn-primary"> Agendar </button>
         </div>
       </form> 
+  </table>
+
 </div>
 
-<script>
-  let error = 0;
-function validarFormulario() {
-  var dni = document.forms["formulario"]["dni"].value;
-  var telefono = document.forms["formulario"]["telefono"].value;
-  var email = document.forms["formulario"]["email"].value;
-  var nacimiento = document.forms["formulario"]["nacimiento"].value;
-  var nombre = document.forms["formulario"]["nombre"].value;
-  var apellido = document.forms["formulario"]["apellido"].value;
-  var apellido2 = document.forms["formulario"]["apellido2"].value;
-  var select = document.forms["formulario"]["select2"].value;
-
-  if (dni.length != 8) {
-    alert("El DNI debe tener 8 dígitos");
-    error +=1;
-    return false;
-  }
-  if (telefono.length != 9) {
-    alert("El teléfono debe tener 9 dígitos");
-    error +=1;
-    return false;
-  }
-  if (telefono.charAt(0) != 9) {
-    alert("El teléfono debe empezar por 9");
-    error +=1;
-    return false;
-  }
-  if (email.indexOf("@") == -1) {
-    alert("Ingrese un mail valido");
-    return false;
-  }
-  if (nacimiento > Date.now()) {
-    alert("La fecha de nacimiento debe ser menor a la actual");
-    error +=1;
-    return false;
-  }
-  if (nombre == "") {
-    alert("El nombre no puede estar vacío");
-    error +=1;
-    return false;
-  }
-  if (apellido == "") {
-    alert("El apellido no puede estar vacío");
-    error +=1;
-    return false;
-  }
-  if (apellido2 == "") {
-    alert("El segundo apellido no puede estar vacío");
-    error +=1;
-    return false;
-  }
-  if (select == "") {
-    alert("Debes seleccionar un horario");
-    error +=1;
-    return false;
-  }
-}
-
-// Cuando apretes el botón de confirmar cita, se ejecutará la función validarFormulario
-document.getElementById("btn").addEventListener("click", validarFormulario);
-if (error < 0) {
-  alert("Su cita ha sido confirmada");
-}
-
-
-</script>
-
 {% endblock %}
+```
