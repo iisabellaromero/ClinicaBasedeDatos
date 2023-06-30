@@ -80,4 +80,8 @@ class Paciente:
         conn.close()
         return count > 0
         
-    
+    @classmethod
+    def login(cls, dni, email):
+        persona = cls.get(dni)
+        if persona.email == email:
+            return persona

@@ -61,7 +61,6 @@ class Doctor:
         query='''SELECT * FROM clinica.doctores where codigo = %s;'''  
         cursor.execute(query,(codigo,))
         resultados = cursor.fetchall()
-        pdb.set_trace()
         print(resultados)
         return cls(resultados[0])
         
