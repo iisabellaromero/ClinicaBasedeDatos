@@ -424,4 +424,3 @@ where paciente_dni = '11939913';
 select precio, precio_deducible, p.cobertura from citas
 join asegurados a on Citas.paciente_dni = a.paciente_dni
 join poliza p on a.poliza_id = p.id;
-
