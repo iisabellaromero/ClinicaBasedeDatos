@@ -1,0 +1,61 @@
+{%extends 'index.html'%}
+{%block hero%}
+{%endblock%}
+{%block main%}
+<div style="padding-top:5rem">
+    <form class="register" action="/register" method="post">
+        <h5 class="text-light">Crea tu cuenta!</h5>
+        <input class="form-input" type="text" name="nombre" id="nombre" placeholder="nombre">
+        <input class="form-input" type="text" name="apellido" id="apellido" placeholder="apellido">
+        <input class="form-input" type="text" name="apellido_materno" id="apellido_materno" placeholder="apellido_materno">
+        <input class="form-input" type="text" name="telefono" id="telefono" placeholder="telefono">
+        <input class="form-input" type="text" name="dni" id="dni" placeholder="dni">
+        <input class="form-input" type="text" name="email" id="email" placeholder="email">
+        <input class="form-input" type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="fecha_nacimiento">
+    <button type="submit" class="btn-form">Registrate</button>
+    </form>
+</div>
+
+{%endblock%}
+
+{%block scripts%}
+<style>
+    .register {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #1977cc;
+        padding: 5rem;
+        width: 50%;
+        border-radius: 5rem;
+        margin: auto;
+        margin-top: 5rem;
+    }
+    /*padding on placeholder*/
+    ::placeholder {
+        padding-left: 1rem;
+    }
+    .form-input{
+        width: 20rem;
+        height: 3rem;
+        margin: 1rem;
+        border-radius: 10.5em;
+        border: none;
+    }
+
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+    margin-left: 25px;
+    background: #fcfeff;
+    color: #1977cc;
+    border-radius: 15px;
+    padding: 8px 25px;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 14px;
+    display: inline-block;
+    border-color: transparent;
+}
+</style>
+{%endblock%}

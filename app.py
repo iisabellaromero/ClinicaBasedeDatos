@@ -1,12 +1,16 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, session 
 import psycopg2
 from flask import jsonify, request
 import pdb
 from datetime import datetime
+from flask import flash
+from models.pacientes import Paciente
 
 
 
 app = Flask(__name__)
+#set up secret key
+app.secret_key ='super secret key'
 app.config['DATABASE'] = {
     'host': '127.0.0.1',
     'port': 5432,
@@ -17,9 +21,9 @@ app.config['DATABASE'] = {
 
 @app.route('/')
 def index():
+   
+
     return render_template('index.html')
-
-
 
 @app.route('/agendar-cita', methods=['GET'])
 def load_agendar():
@@ -63,7 +67,6 @@ def send_agendar():
                 password="china"
             )
 
-
     # Crear un cursor para ejecutar consultas
     cursor = conn.cursor()
     query = '''
@@ -91,6 +94,58 @@ def send_agendar():
 #     pdb.set_trace()
 
 #     return render_template('resultados_citas.html', date=date, especialidad=especialidad, resultados = resultados)
+
+
+@app.route('/home-paciente')
+def citas_agendadas_route():
+    paciente = Paciente.get(session['user']['dni'])
+    if 'user' not in session or session['user'] == None:
+        return redirect('/register')
+    # dni = session['user']['dni']
+    # citas = Citas.get_by_dni(dni)
+    # recetas = Recetas.get_by_dni(dni)
+    return render_template('home_paciente.html', paciente = paciente)#, citas = citas, recetas = recetas
+
+@app.route('/login-paciente')
+def show_login():
+    return render_template('login_patient.html')
+
+
+@app.route('/register')
+def register_paciente():
+    return render_template('register.html')
+
+
+@app.route('/register', methods=["POST"])
+def register_paciente_post():
+    if Paciente.email_free(request.form):
+        paciente = Paciente.create(request.form)
+        session['user'] = {
+            'dni' : paciente.dni,
+            'nombre': paciente.nombre,
+            'apellido': paciente.apellido,  
+            'telefono': paciente.telefono,
+            'email': paciente.email
+        }
+        return redirect('/home-paciente')
+    else: 
+        return redirect('/')
+
+@app.route('/login-paciente',methods=["POST"])
+def login_paciente():
+    paciente = Paciente.login(request.form)
+    if paciente:
+        session['user'] = paciente
+        return redirect('/citas-agendadas')
+    else:
+        flash("Error de autenticacion",'error')
+        return redirect('/login-paciente')
+
+
+
+
+
+
 
 
 
