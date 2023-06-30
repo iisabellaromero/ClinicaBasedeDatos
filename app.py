@@ -1,8 +1,11 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, session 
 import psycopg2
 from flask import jsonify, request
 import pdb
 from datetime import datetime
+from flask import flash
+from models.pacientes import Paciente
+
 
 
 
@@ -75,6 +78,65 @@ def send_agendar():
 
 
     return render_template('resultados_citas.html', resultados = resultados, date=date)
+
+
+@app.route('/citas-agendadas')
+def citas_agendadas_route():
+    if 'user' not in session or session['user'] == None:
+        return redirect('/login-paciente')
+    dni = session['user']['dni']
+    paciente = Paciente.get(dni)
+    citas = Citas.get_by_dni(dni)
+    recetas = Recetas.get_by_dni(dni)
+    return render_template('patient_home.html', paciente = paciente, citas = citas, recetas = recetas)
+    
+
+
+@app.route('/recetas')
+def recetas_usuario():
+    if 'user' not in session or session['user'] == None:
+        return redirect('/login-paciente')
+    dni = session['user']['dni']
+    paciente = Paciente.get(dni)
+    citas = Citas.get_by_dni(dni)
+    recetas = Recetas.get_by_dni(dni)
+    return render_template('patient_home.html', paciente = paciente, citas = citas, recetas = recetas)
+
+@app.route('/login-paciente')
+def show_login():
+    return render_template('login_patient.html')
+
+
+@app.route('/register')
+def register_paciente():
+    return render_template('register.html')
+
+
+@app.route('/register', methods=["POST"])
+def register_paciente_post():
+    pdb.set_trace()
+    if Paciente.email_free(request.form):
+        paciente = Paciente.create(request.form)
+        session['user']['dni'] = paciente.dni
+        return redirect('/citas-agendadas')
+    else: 
+        return redirect('/')
+
+@app.route('/login-paciente',methods=["POST"])
+def login_paciente():
+    paciente = Paciente.login(request.form)
+    if paciente:
+        session['user'] = paciente
+        return redirect('/citas-agendadas')
+    else:
+        flash("Error de autenticacion",'error')
+        return redirect('/login-paciente')
+
+
+
+
+
+
 
 
 
