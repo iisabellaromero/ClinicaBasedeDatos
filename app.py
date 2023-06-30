@@ -20,9 +20,10 @@ app.config['DATABASE'] = {
 
 @app.route('/')
 def index():
+    pdb.set_trace()
+    session['user'] = None
+
     return render_template('index.html')
-
-
 
 @app.route('/agendar-cita', methods=['GET'])
 def load_agendar():
@@ -64,7 +65,6 @@ def send_agendar():
                 dbname="postgres"
             )
 
-
     # Crear un cursor para ejecutar consultas
     cursor = conn.cursor()
     query = '''
@@ -84,7 +84,6 @@ def send_agendar():
 
 @app.route('/home-paciente')
 def citas_agendadas_route():
-    paciente = Paciente.get(74450872)
     if 'user' not in session or session['user'] == None:
         return redirect('/register')
     # dni = session['user']['dni']
@@ -106,7 +105,10 @@ def register_paciente():
 def register_paciente_post():
     if Paciente.email_free(request.form):
         dni_paciente = Paciente.create(request.form)
+        pdb.set_trace()
+
         paciente = Paciente.get(dni_paciente)
+        pdb.set_trace()
         session['user']={
             'dni': paciente.dni,
             'nombre': paciente.nombre,
@@ -116,7 +118,7 @@ def register_paciente_post():
         }
         return redirect('/home-paciente')
     else: 
-        return redirect('/')
+        return redirect('/home-paciente')
 
 @app.route('/login-paciente',methods=["POST"])
 def login_paciente():
