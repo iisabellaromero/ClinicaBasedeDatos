@@ -1,0 +1,21 @@
+{%extends "index.html"%}
+{%block hero%}
+{%endblock%}
+
+{%block main%}
+
+<div class="main" style="padding-top:10rem;">
+    <div class="container" style="height: 50vh
+    ;">
+
+        <h2>Bienvenid@ {{paciente.nombre}}</h2>
+        <div class="section">
+            <h3>Tus citas</h3>
+        </div>
+        <div class="section">
+            <h3>Tus Recetas</h3>
+        </div>
+        <a href="/agendar-cita" class="btn-primary"> Agenda una cita </a>
+    </div>
+</div>
+{%endblock%}

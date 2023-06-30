@@ -10,6 +10,8 @@ from models.pacientes import Paciente
 
 
 app = Flask(__name__)
+#set up secret key
+app.secret_key ='super secret key'
 app.config['DATABASE'] = {
     'host': 'localhost',
     'port': 5432,
@@ -80,27 +82,15 @@ def send_agendar():
     return render_template('resultados_citas.html', resultados = resultados, date=date)
 
 
-@app.route('/citas-agendadas')
+@app.route('/home-paciente')
 def citas_agendadas_route():
+    paciente = Paciente.get(74450872)
     if 'user' not in session or session['user'] == None:
-        return redirect('/login-paciente')
-    dni = session['user']['dni']
-    paciente = Paciente.get(dni)
-    citas = Citas.get_by_dni(dni)
-    recetas = Recetas.get_by_dni(dni)
-    return render_template('patient_home.html', paciente = paciente, citas = citas, recetas = recetas)
-    
-
-
-@app.route('/recetas')
-def recetas_usuario():
-    if 'user' not in session or session['user'] == None:
-        return redirect('/login-paciente')
-    dni = session['user']['dni']
-    paciente = Paciente.get(dni)
-    citas = Citas.get_by_dni(dni)
-    recetas = Recetas.get_by_dni(dni)
-    return render_template('patient_home.html', paciente = paciente, citas = citas, recetas = recetas)
+        return redirect('/register')
+    # dni = session['user']['dni']
+    # citas = Citas.get_by_dni(dni)
+    # recetas = Recetas.get_by_dni(dni)
+    return render_template('home_paciente.html', paciente = paciente)#, citas = citas, recetas = recetas)
 
 @app.route('/login-paciente')
 def show_login():
@@ -114,11 +104,17 @@ def register_paciente():
 
 @app.route('/register', methods=["POST"])
 def register_paciente_post():
-    pdb.set_trace()
     if Paciente.email_free(request.form):
-        paciente = Paciente.create(request.form)
-        session['user']['dni'] = paciente.dni
-        return redirect('/citas-agendadas')
+        dni_paciente = Paciente.create(request.form)
+        paciente = Paciente.get(dni_paciente)
+        session['user']={
+            'dni': paciente.dni,
+            'nombre': paciente.nombre,
+            'apellido': paciente.apellido,  
+            'telefono': paciente.telefono,
+            'email': paciente.email,
+        }
+        return redirect('/home-paciente')
     else: 
         return redirect('/')
 
