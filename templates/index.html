@@ -104,7 +104,7 @@
     <div class="container">
       <h1>Bienvenido a VitaSalud</h1>
       <h2>Tu camino hacia una vida plena y saludable</h2>
-      <a href="#about" class="btn-get-started scrollto" onclick = "iniciarSesion()">Empieza aquí</a>
+      <a href="#about" class="btn-get-started scrollto" id="mostrar-formulario-btn">Empieza aquí</a>
     </div>
   </section><!-- End Hero -->
   {% block main %}
@@ -798,66 +798,8 @@
 
 
 <script>
-  function mostrarNuevoContenido() {
-  // Obtener elementos por su id
-  var contenidoInicial = document.getElementById("testimonials");
-  var contenidoInicial2 = document.getElementById("gallery");
-  var contenidoInicial3 = document.getElementById("faq");
-  var contenidoInicial4 = document.getElementById("doctors");
-  var contenidoInicial5 = document.getElementById("services");
-  var contenidoInicial6 = document.getElementById("counts");
-  var contenidoInicial7 = document.getElementById("about");
-  var contenidoInicial8 = document.getElementById("why-us");
-  var contenidoInicial9 = document.getElementById("hero");
-  var contenidoInicial10 = document.getElementById("contact");
-  var nuevoContenido = document.getElementById("appointment");
-  var nuevoContenido2 = document.getElementById("login");
-  
-  // Ocultar contenido inicial
-  contenidoInicial.classList.add("hidden");
-  contenidoInicial2.classList.add("hidden");
-  contenidoInicial3.classList.add("hidden");
-  contenidoInicial4.classList.add("hidden");
-  contenidoInicial5.classList.add("hidden");
-  contenidoInicial6.classList.add("hidden");
-  contenidoInicial7.classList.add("hidden");
-  contenidoInicial8.classList.add("hidden");
-  contenidoInicial9.classList.add("hidden");
-  contenidoInicial10.classList.add("hidden");
-  
-  // Mostrar nuevo contenido
-  nuevoContenido.classList.remove("hidden");
-}
 
-</script>
-
-<!-- <scriprpt src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-<!-- <script>
-  $(document).ready(function() {
-    // Manejar el evento clic del botón
-    $('#enviar_busqueda').click(function(e) {
-      e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
-      
-      // Obtener los valores del formulario
-      var fecha = $('#date').val();
-      var departamento = $('#department').val();
-      
-      // Enviar una solicitud al servidor
-      $.ajax({
-        url: '/buscar', // Ruta de la API en el servidor
-        method: 'POST', // Método de solicitud
-        data: { fecha: fecha, departamento: departamento }, // Datos enviados al servidor
-        success: function(response) {
-          // Manipular los resultados de la consulta y actualizar la interfaz de usuario
-          // Aquí puedes implementar la lógica para mostrar los resultados en tu HTML
-          console.log(response); // Imprimir los resultados en la consola para fines de depuración
-        },
-        error: function(error) {
-          // Manejar errores de la solicitud
-          console.log(error);
-        }
-      });
-    });
+  document.getElementById("mostrar-formulario-btn").addEventListener("click", function() {
+    window.location.href = "registro.html";
   });
-  </script> -->
-  
+</script>

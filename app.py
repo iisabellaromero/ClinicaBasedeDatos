@@ -72,7 +72,7 @@ def send_agendar():
             JOIN clinica.horario H ON D.Codigo = H.doctor_codigo
             WHERE H.dia = %s
             AND D.especialidad = %s
-            order by D.codigo; '''
+            order by D.codigo, H.hora_inicio; '''
 
     cursor.execute(query,(dia,especialidad))
     resultados = cursor.fetchall()
