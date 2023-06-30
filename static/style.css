@@ -1777,9 +1777,10 @@ section {
   font-size: 14px;
   display: inline-block;
   border-color: transparent;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 34px;
   width: 300px;
+  margin-left: -2px;
 }
 
 .radio-container input[type="radio"] {
@@ -1887,4 +1888,32 @@ select:focus {
   position: relative;
   color: #2c4964;
   margin-top: -212px;
+}
+
+.input-container7 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 17px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.container2{
+  text-align: center;
+  margin-top: -27px;
+}
+
+.inicio {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
