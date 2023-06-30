@@ -19,11 +19,49 @@ app.config['DATABASE'] = {
     'database': 'postgres'
 }
 
+def pseudodecorator():
+    if not session['user'] or session == None:
+        return False
+    else:
+        return True
+
 @app.route('/')
 def index():
-   
+    logged = pseudodecorator
+    return render_template('index.html' , logged = logged )
 
-    return render_template('index.html')
+@app.route('/login')
+def show_login():
+    if 'user' not in session or session == None:
+        return render_template("login.html")
+    else:
+        redirect('/home-paciente')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
+
+@app.route('/login',methods=["POST"])
+def exec_login():
+    dni = request.form['dni']
+    email = request.form['email']
+    if Paciente.email_free(request.form):
+        flash('Paciente no existe', 'error')
+        return redirect('/register')
+    if Paciente.login(dni,email):
+        paciente = Paciente.get(dni)
+        session['user']={
+            'dni' : paciente.dni,
+            'nombre': paciente.nombre,
+            'apellido': paciente.apellido,  
+            'telefono': paciente.telefono,
+            'email': paciente.email
+        }
+        return redirect('/home-paciente')
+    else:
+        flash("falla de login",'error')
+        return redirect('/login')
 
 @app.route('/agendar-cita', methods=['GET'])
 def load_agendar():
@@ -95,9 +133,7 @@ def citas_agendadas_route():
     # recetas = Recetas.get_by_dni(dni)
     return render_template('home_paciente.html', paciente = paciente, citas = citas) #recetas = recetas
 
-@app.route('/login-paciente')
-def show_login():
-    return render_template('login_patient.html')
+
 
 
 @app.route('/register')
@@ -131,15 +167,6 @@ def register_paciente_post(): #hacer que el si el dni ya existe te salga un erro
         session['user']['dni'] = paciente.dni
         return redirect('/citas-agendadas')
 
-@app.route('/login-paciente',methods=["POST"])
-def login_paciente():
-    paciente = Paciente.login(request.form)
-    if paciente:
-        session['user'] = paciente
-        return redirect('/citas-agendadas')
-    else:
-        flash("Error de autenticacion",'error')
-        return redirect('/login-paciente')
 
 
 

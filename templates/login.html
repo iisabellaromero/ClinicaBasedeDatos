@@ -1,0 +1,21 @@
+{%extends 'index.html'%}
+{%block hero%}
+{%endblock%}
+{%block main%}
+
+<div class="container" style = "margin-top: 150px; margin-bottom: 100px;">
+<form id="inicio-sesion-form" class="register" action="/login" method="post">
+    <div class="input-container7">
+        <h2 class = "inicio">Inicia Sesión</h2>
+        <input type="email" placeholder="Ingresa tu email" name="email" required>
+        <input type="password" placeholder="Ingresa tu contraseña (DNI)" name="dni" required>
+        <button type="submit" class="btn-form">Iniciar Sesión</button>
+    </div>
+    <div class="container2">
+        <span class="psw" id="element">¿No tienes cuenta? <a href="#" id="registro-link">Regístrate aquí</a></span>
+    </div>
+</form>
+</div>
+
+
+{%endblock%}
