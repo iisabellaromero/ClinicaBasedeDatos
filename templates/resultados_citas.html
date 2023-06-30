@@ -1,21 +1,24 @@
 {% extends 'index.html' %}
 
 {% block main %}
-<div class="container7">
-  <h2>Resultados de búsqueda para {{ resultados[0][6] }}</h2>
-  <h3>En la fecha {{ resultados[0][3] }} {{ date }}</h3>
+<div class="mt-5"></div>
+<div class="container">
+  <h2>Resultados de búsqueda para {{esp}}</h2>
+  <h3>En la fecha {{ resultados[0].dia}} {{ date }}</h3>
   <table>
     <form action="/confirmacion-cita" method="post">
         <div class="container">
           <select name="doctor" id="select2">
             <option value="">Selecciona el horario de tu preferencia</option>
-            {% for resultado in resultados %}
-            <option value="{{ loop.index }}">{{ resultado[2] }} {{ resultado[1] }}, {{ resultado[0] }} - {{ resultado[6] }}  -   {{ resultado[4] }}</option>
+            {% for r in resultados %}
+            <option value="{{r.doctor_codigo}},{{r.hora_inicio}},{{r.dia}},{{date}}">{{r.nombre}} {{ r.apellido}}, {{ r.hora_inicio}}</option>
             {% endfor %}
           </select>
+          <button type="submit" class="btn-primary"> Agendar </button>
         </div>
       </form> 
   </table>
+
 </div>
 
 {% endblock %}

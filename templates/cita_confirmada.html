@@ -1,0 +1,35 @@
+{%extends "index.html"%}
+{%block hero%}
+{%endblock%}
+
+{%block main%}
+<div class="container p-4">
+    <h1 class="h1">Tu cita ha sido confirmada</h1>
+    <p class="text">
+    <p>
+        Doctor: {{doctor.nombre}} {{doctor.apellido}}
+    </p>
+    <p>
+        Codigo CMP: {{doctor.codigo_cmp}}
+    </p>
+    <p>
+        Especialidad: {{doctor.especialidad}}
+    </p>
+    <p>
+        Fecha: {{cita.dia}} {{cita.fecha}}
+    </p>
+
+    <p> Paciente:
+    </p>
+    <p>
+
+        Nombre Completo: {{paciente.nombre }} {{paciente.apellido}} {{paciente.apellido_materno}}
+    </p>
+    <p>
+
+        DNI: {{paciente.dni}}
+    </p>
+    </p>
+
+</div>
+{%endblock%}
