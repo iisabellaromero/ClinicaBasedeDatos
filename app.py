@@ -8,7 +8,6 @@ from models.pacientes import Paciente
 
 
 
-
 app = Flask(__name__)
 #set up secret key
 app.secret_key ='super secret key'
@@ -20,8 +19,7 @@ app.config['DATABASE'] = {
 
 @app.route('/')
 def index():
-    pdb.set_trace()
-    session['user'] = None
+   
 
     return render_template('index.html')
 
@@ -84,12 +82,13 @@ def send_agendar():
 
 @app.route('/home-paciente')
 def citas_agendadas_route():
+    paciente = Paciente.get(session['user']['dni'])
     if 'user' not in session or session['user'] == None:
         return redirect('/register')
     # dni = session['user']['dni']
     # citas = Citas.get_by_dni(dni)
     # recetas = Recetas.get_by_dni(dni)
-    return render_template('home_paciente.html', paciente = paciente)#, citas = citas, recetas = recetas)
+    return render_template('home_paciente.html', paciente = paciente)#, citas = citas, recetas = recetas
 
 @app.route('/login-paciente')
 def show_login():
@@ -104,21 +103,18 @@ def register_paciente():
 @app.route('/register', methods=["POST"])
 def register_paciente_post():
     if Paciente.email_free(request.form):
-        dni_paciente = Paciente.create(request.form)
+        paciente = Paciente.create(request.form)
         pdb.set_trace()
-
-        paciente = Paciente.get(dni_paciente)
-        pdb.set_trace()
-        session['user']={
-            'dni': paciente.dni,
+        session['user'] = {
+            'dni' : paciente.dni,
             'nombre': paciente.nombre,
             'apellido': paciente.apellido,  
             'telefono': paciente.telefono,
-            'email': paciente.email,
+            'email': paciente.email
         }
         return redirect('/home-paciente')
     else: 
-        return redirect('/home-paciente')
+        return redirect('/')
 
 @app.route('/login-paciente',methods=["POST"])
 def login_paciente():
