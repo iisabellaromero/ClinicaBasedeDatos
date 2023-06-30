@@ -8,21 +8,27 @@
     <div class="container" style="height: 50vh
     ;">
 
-        <h2>Bienvenid@ {{paciente.nombre}}</h2>
-        <div class="section">
-            <h3>Tus citas</h3>
-            {%for cita in citas%}
-            <br>
-            <!-- CITA -->
-            <h5>{{cita.fecha}} {{cita.hora_inicio}}</h5>
-            <h6>Dr.{{cita.doctor.nombre}} {{cita.doctor.apellido}} {{cita.doctor.especialidad}}</h6>
-            {%endfor%}
-            <br> 
+        <h2 class="mb-5">Bienvenid@ {{paciente.nombre}}</h2>
+        <div class="section" style="background-color: #f1f7fd; padding: 5rem; border-radius: 1rem;">
+            <div class="row">
+                <div class="col-5">
+                    <h3>Tus citas</h3>
+                    {%for cita in citas%}
+                    <br>
+                    <!-- CITA -->
+                    <h5>{{cita.fecha}} {{cita.hora_inicio}}</h5>
+                    <h6>Dr.{{cita.doctor.nombre}} {{cita.doctor.apellido}} {{cita.doctor.especialidad}}</h6>
+                    {%endfor%}
+                    <br> 
+                </div>
+                <div class="col-5">
+                    <h3>Tus Recetas</h3>
+                </div>
+            </div>
         </div>
-        <div class="section">
-            <h3>Tus Recetas</h3>
-        </div>
-        <a href="/agendar-cita" class="btn-primary"> Agenda una cita </a>
+        
+        <a href="/agendar-cita" class="appointment-btn scrollto mt-5 m-5" > Agenda una cita </a>
+        
     </div>
 </div>
 {%endblock%}

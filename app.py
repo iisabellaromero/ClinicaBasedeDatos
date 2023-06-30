@@ -63,6 +63,18 @@ def exec_login():
         flash("falla de login",'error')
         return redirect('/login')
 
+@app.route('/edit-user')
+def show_edit():
+    dni = session['user']['dni']
+    user = Paciente.get(dni)
+    return render_template('edit_user.html', user=user)
+
+@app.route('/edit-user', methods=['POST'])
+def edit_user():
+    dni = session['user']['dni']
+    Paciente.edit(request.form, dni)
+    return redirect('/home-paciente')
+
 @app.route('/agendar-cita', methods=['GET'])
 def load_agendar():
     if 'user' not in session or session == None: 
