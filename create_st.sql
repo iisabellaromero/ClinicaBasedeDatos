@@ -226,7 +226,7 @@ CREATE TABLE IF NOT EXISTS Citas (
                                              ON UPDATE CASCADE
 );
 
-
+ALTER TABLE DROP DEFAULT precio_deducible;
 --
 CREATE TABLE IF NOT EXISTS recetas (
                                        Codigo INT NOT NULL,

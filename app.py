@@ -16,7 +16,9 @@ app.secret_key ='super secret key'
 app.config['DATABASE'] = {
     'host': 'localhost',
     'port': 5432,
-    'database': 'postgres'
+    'database': 'postgres',
+    'username': 'postgres',
+    'password': 'china'
 }
 
 def pseudodecorator():

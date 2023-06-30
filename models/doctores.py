@@ -10,7 +10,9 @@ from models.horarios import Horario
 conn = psycopg2.connect(
                 host="localhost",
                 port = 5432,
-                dbname="postgres"
+                dbname="postgres",
+                user = "postgres",
+                password = "china"
             )
 
     # Crear un cursor para ejecutar consultas
