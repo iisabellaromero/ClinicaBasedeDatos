@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS Citas (
                                      doctor_codigo VARCHAR(5) NOT NULL,
                                      especialidad VARCHAR(45) NOT NULL,
                                      consultorio VARCHAR(4) NOT NULL,
-                                     precio INT,
+                                     precio INT DEFAULT 200,
                                      precio_deducible INT DEFAULT 200,
                                      dia varchar(9),
                                      Hora_fin time,
@@ -309,6 +309,9 @@ drop column hora_fin;
 
 alter table horario
 drop column estado;
+
+alter table citas
+drop column consultorio;
 
 
 CREATE MATERIALIZED VIEW Horarios_Doctores as

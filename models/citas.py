@@ -7,6 +7,7 @@ from flask import Flask, redirect, render_template, session
 import psycopg2
 import ast
 from datetime import datetime, time
+from models.doctores import Doctor
 
 
 conn = psycopg2.connect(
@@ -21,10 +22,10 @@ cursor = conn.cursor()
 
 class Cita:
     def __init__(self,data):
-        self.nombre = data[0]
-        self.apellido = data[1]
-        self.doctor_codigo = data[2]
-        self.hora_inicio = data[3]
+        self.paciente_dni = data[0]
+        self.fecha = data[1]
+        self.hora_inicio = data[2]
+        self.doctor_codigo = data[3]
         self.dia = data[4]
         self.create_pk()
 
@@ -36,7 +37,7 @@ class Cita:
 
     @classmethod
     def to_dict(cls,input_string):
-         # Remove leading and trailing whitespace and single quotes
+        # Remove leading and trailing whitespace and single quotes
         input_string = input_string.strip().strip("'")
         
         # Convert string to dictionary using ast.literal_eval
@@ -47,5 +48,32 @@ class Cita:
         return input_dict
 
     @classmethod
-    def insert(cls,data):
-        return None
+    def create(cls,form_data):
+        query = '''
+                INSERT INTO clinica.citas (paciente_dni,fecha,hora_inicio,doctor_codigo,dia)
+                VALUES (%s,%s,%s,%s,%s) RETURNING paciente_dni,fecha,hora_inicio,doctor_codigo,dia;'''
+
+        doctor_codigo = form_data['doctor_codigo']
+        hora_inicio = form_data['hora_inicio']
+        dia = form_data['dia']
+        fecha = form_data['fecha']
+        paciente_dni = form_data['paciente_dni']
+        cursor.execute(query,(paciente_dni,fecha,hora_inicio,doctor_codigo,dia,))
+        conn.commit()
+        #return what returns from the query
+        obj = cursor.fetchone()
+        cita = cls(obj)
+        return cita
+
+    @classmethod
+    def get_by_dni(cls,paciente_dni):
+
+        query='''SELECT * FROM clinica.citas where paciente_dni = %s;'''  
+        cursor.execute(query,(paciente_dni,))
+        resultados = cursor.fetchall()
+        citas = []
+        for resultado in resultados:
+            cita = cls(resultado)
+            cita.doctor = Doctor.get(cita.doctor_codigo)
+            citas.append(cita)
+        return citas

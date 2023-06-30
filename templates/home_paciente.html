@@ -11,6 +11,13 @@
         <h2>Bienvenid@ {{paciente.nombre}}</h2>
         <div class="section">
             <h3>Tus citas</h3>
+            {%for cita in citas%}
+            <br>
+            <!-- CITA -->
+            <h5>{{cita.fecha}} {{cita.hora_inicio}}</h5>
+            <h6>Dr.{{cita.doctor.nombre}} {{cita.doctor.apellido}} {{cita.doctor.especialidad}}</h6>
+            {%endfor%}
+            <br> 
         </div>
         <div class="section">
             <h3>Tus Recetas</h3>

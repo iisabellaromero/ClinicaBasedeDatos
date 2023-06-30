@@ -63,14 +63,13 @@ def send_agendar():
     especialidad = request.form['department']
     dia = get_day_name(date)
     resultados = Doctor.horarios_filtro(especialidad,dia)
-    pdb.set_trace()
     return render_template('resultados_citas.html', resultados = resultados, date=date, esp = especialidad)
 
 
 @app.route('/confirmacion-cita', methods = ['POST'])
 def confirmacion_cita():
     values = request.form['doctor']
-    values = input_string.split(',')
+    values = values.split(',')
     dict_create = {
         'doctor_codigo' : values[0],
         'hora_inicio' : values[1],
@@ -78,20 +77,22 @@ def confirmacion_cita():
         'fecha' : values[3],
         'paciente_dni' : session['user']['dni']
     }
-    pdb.set_trace()
+    cita = Cita.create(dict_create)
+    doctor = Doctor.get(cita.doctor_codigo)
+    paciente = Paciente.get(session['user']['dni'])
     
-    return redirect('/')
+    return render_template('cita_confirmada.html', cita = cita, doctor = doctor, paciente = paciente)
 
 
 @app.route('/home-paciente')
 def citas_agendadas_route():
-    paciente = Paciente.get(session['user']['dni'])
     if 'user' not in session or session['user'] == None:
         return redirect('/register')
     # dni = session['user']['dni']
-    # citas = Citas.get_by_dni(dni)
+    paciente = Paciente.get(session['user']['dni'])
+    citas = Cita.get_by_dni(session['user']['dni'])
     # recetas = Recetas.get_by_dni(dni)
-    return render_template('home_paciente.html', paciente = paciente)#, citas = citas, recetas = recetas
+    return render_template('home_paciente.html', paciente = paciente, citas = citas) #recetas = recetas
 
 @app.route('/login-paciente')
 def show_login():
