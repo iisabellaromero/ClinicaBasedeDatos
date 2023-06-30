@@ -33,19 +33,3 @@
 </div>
 
 {%endblock%}
-
-{%block scripts%}
-<script>
-    document.getElementById("registro-link").addEventListener("click", function(event) {
-        event.preventDefault();
-        document.getElementById("inicio-sesion-form").classList.add("hidden");
-        document.getElementById("registro-form").classList.remove("hidden");
-    });
-
-    document.getElementById("inicio-sesion-link").addEventListener("click", function(event) {
-        event.preventDefault();
-        document.getElementById("registro-form").classList.add("hidden");
-        document.getElementById("inicio-sesion-form").classList.remove("hidden");
-    });
-</script>
-{%endblock%}

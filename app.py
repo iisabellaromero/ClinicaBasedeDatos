@@ -79,6 +79,7 @@ def send_agendar():
 
     cursor.execute(query,(dia,especialidad))
     resultados = cursor.fetchall()
+    
     pdb.set_trace()
 
     return render_template('resultados_citas.html', date=date, especialidad=especialidad, resultados = resultados)
@@ -129,7 +130,18 @@ def register_paciente_post():
         }
         return redirect('/home-paciente')
     else: 
-        return redirect('/')
+        flash("El correo ya existe", 'error')
+        return redirect('/register')
+
+def register_paciente_post(): #hacer que el si el dni ya existe te salga un error
+    dni = request.form['dni']
+    if Paciente.exists(dni):
+        flash("Usted ya está registrado", 'error')
+        return redirect('/register')
+    else:
+        paciente = Paciente.create(request.form)
+        session['user']['dni'] = paciente.dni
+        return redirect('/citas-agendadas')
 
 @app.route('/login-paciente',methods=["POST"])
 def login_paciente():
