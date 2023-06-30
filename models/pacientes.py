@@ -50,22 +50,16 @@ class Paciente:
                 VALUES (%s, %s, %s, %s, %s,%s, %s) RETURNING dni;'''
         cursor.execute(query,(form_data['nombre'],form_data['apellido'],form_data['apellido_materno'],form_data['telefono'],form_data['email'],form_data['fecha_nacimiento'],form_data['dni']))
         conn.commit()
-        #return dni
-        pdb.set_trace()
         obj = cls.get(form_data['dni'])
-
-
         return obj
    
 
     @classmethod
     def get(cls,dni):
         query='''SELECT * FROM clinica.pacientes where dni = %s;'''  
-        pdb.set_trace()
         cursor.execute(query,(dni,))
         resultados = cursor.fetchall()
         print(resultados)
-        pdb.set_trace()
         return cls(resultados[0])
         
     

@@ -104,7 +104,6 @@ def register_paciente():
 def register_paciente_post():
     if Paciente.email_free(request.form):
         paciente = Paciente.create(request.form)
-        pdb.set_trace()
         session['user'] = {
             'dni' : paciente.dni,
             'nombre': paciente.nombre,
