@@ -34,6 +34,27 @@ CREATE TABLE IF NOT EXISTS doctores (
                                         PRIMARY KEY (Codigo)
 );
 
+-- Agregar restricción de fecha de nacimiento
+ALTER TABLE doctores
+    ADD CONSTRAINT chk_fecha_nacimiento CHECK (Fecha_nacimiento < CURRENT_DATE);
+
+-- Agregar restricción de teléfono
+ALTER TABLE doctores
+    ADD CONSTRAINT chk_telefono CHECK (Telefono ~ '^9\d{8}$');
+
+-- Agregar restricción de DNI
+ALTER TABLE doctores
+    ADD CONSTRAINT chk_dni CHECK (DNI BETWEEN 10000000 AND 99999999);
+
+-- Agregar restricción de email para dominio @vitasalud.com
+ALTER TABLE doctores
+    ADD CONSTRAINT chk_email CHECK (Email ~ '^.+@vitasalud\.com$');
+
+-- Agregar restricción de código de doctor en doctores
+ALTER TABLE doctores
+    ADD CONSTRAINT chk_codigo_doctor CHECK (Codigo LIKE 'D%');
+
+
 -- Tabla Consultorio DONE
 CREATE TABLE IF NOT EXISTS Consultorio (
     doctor_codigo VARCHAR(5) NOT NULL,
@@ -46,6 +67,7 @@ CREATE TABLE IF NOT EXISTS Consultorio (
       ON UPDATE CASCADE
   );
 
+
 -- Tabla farmacistas DONE
 CREATE TABLE IF NOT EXISTS farmacistas (
                                            Codigo VARCHAR(5) NOT NULL,
@@ -53,13 +75,33 @@ CREATE TABLE IF NOT EXISTS farmacistas (
                                            Apellido VARCHAR(255) NOT NULL,
                                            Apellido_materno VARCHAR(255) NOT NULL,
                                            Fecha_nacimiento DATE NOT NULL,
-                                           Telefono INT NULL,
+                                           Telefono VARCHAR(9) NULL,
                                            DNI VARCHAR(9) NOT NULL,
                                            Email VARCHAR(255) NOT NULL,
                                            PRIMARY KEY (Codigo)
 );
 
+-- Agregar restricción de DNI
+ALTER TABLE farmacistas
+    ADD CONSTRAINT chk_dnif CHECK (DNI BETWEEN '10000000' AND '99999999');
 
+-- Agregar restricción de email para dominio @vitasalud.com
+ALTER TABLE farmacistas
+    ADD CONSTRAINT chk_emailf CHECK (Email ~ '^.+@vitasalud\.com$');
+
+-- Agregar restricción de código de farmacista en farmacistas
+ALTER TABLE farmacistas
+    ADD CONSTRAINT chk_codigo_farmacista CHECK (Codigo LIKE 'F%');
+
+ALTER TABLE farmacistas
+    ADD CONSTRAINT chk_telefonof CHECK (Telefono ~ '^9\d{8}$');
+
+-- Agregar restricción de fecha de nacimiento
+ALTER TABLE farmacistas
+    ADD CONSTRAINT chk_fecha_nacimientof CHECK (Fecha_nacimiento < CURRENT_DATE);
+
+
+-- Agregar restricción de teléfono
 CREATE TABLE IF NOT EXISTS Horario (
                                        Dia VARCHAR(9) NOT NULL,
                                        Hora_inicio time NOT NULL,
@@ -73,7 +115,9 @@ CREATE TABLE IF NOT EXISTS Horario (
                                                ON UPDATE CASCADE
 );
 
-
+-- Agregar restricción de hora de inicio y fin en Horario
+ALTER TABLE Horario
+    ADD CONSTRAINT chk_horario CHECK (Hora_inicio < Hora_fin - INTERVAL '1 hour');
 
 -- Alter the data type of Hora_inicio column and handle leading spaces
 ALTER TABLE Horario
@@ -96,6 +140,22 @@ CREATE TABLE IF NOT EXISTS pacientes (
                                          PRIMARY KEY (DNI)
 );
 
+-- Agregar restricción de fecha de nacimiento
+ALTER TABLE pacientes
+    ADD CONSTRAINT chk_fecha_nacimiento_paciente CHECK (Fecha_nacimiento < CURRENT_DATE);
+
+-- Agregar restricción de teléfono
+ALTER TABLE pacientes
+    ADD CONSTRAINT chk_telefono_paciente CHECK (Telefono ~ '^9\d{8}$');
+
+-- Agregar restricción de DNI
+ALTER TABLE pacientes
+    ADD CONSTRAINT chk_dni_paciente CHECK (DNI BETWEEN 10000000 AND 99999999);
+
+-- Agregar restricción de email
+ALTER TABLE pacientes
+    ADD CONSTRAINT chk_email_paciente CHECK (Email ~ '^.+@.+\..+$');
+
 -- Tabla Seguro DONE                                 CHECK
 CREATE TABLE IF NOT EXISTS Seguro (
                                       Id INT NOT NULL,
@@ -117,6 +177,9 @@ CREATE TABLE IF NOT EXISTS Poliza (
                                               ON UPDATE CASCADE
 );
 
+-- Check para que la cobertura sea mayor a cero
+ALTER TABLE Poliza
+    ADD CONSTRAINT chk_cobertura CHECK (Cobertura > 0);
 
 -- Tabla asegurados DONE                                 CHECK
 CREATE TABLE IF NOT EXISTS asegurados (
@@ -188,6 +251,18 @@ CREATE TABLE IF NOT EXISTS medicamentos (
                                            Stock INT NOT NULL,
                                            PRIMARY KEY (ID)
 );
+
+-- Check que el precio sea mayor a cero
+ALTER TABLE medicamentos
+    ADD CONSTRAINT chk_precio_medicamento CHECK (Precio > 0);
+
+-- Check que la unidad sea mayor a cero
+ALTER TABLE medicamentos
+    ADD CONSTRAINT chk_unidad_medicamento CHECK (Unidad > 0);
+
+-- Check que el stock sea igual o mayor a cero
+ALTER TABLE medicamentos
+    ADD CONSTRAINT chk_stock_medicamento CHECK (Stock >= 0);
 
 -- Tabla medicamentos_recetados DONE                                 CHECK
 CREATE TABLE IF NOT EXISTS medicamentos_recetados (
