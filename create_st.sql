@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS doctores (
     Telefono VARCHAR(9) NOT NULL CONSTRAINT chk_telefono CHECK (Telefono ~ '^9\d{8}$'),
     DNI INT NOT NULL CONSTRAINT chk_dni CHECK (DNI BETWEEN 10000000 AND 99999999),
     Email VARCHAR(255) NOT NULL CONSTRAINT chk_email CHECK (Email ~ '^.+@vitasalud\.com$'),
+    Especialidad VARCHAR(255) NOT NULL,
     PRIMARY KEY (Codigo)
 );
 
@@ -368,4 +369,3 @@ select * from clinica.horarios_doctores where
                                             horarios_doctores.doctor_codigo in
                                         (select codigo from clinica.doctores where especialidad= 'Pediatria')
 and dia  = 'Martes'
-
