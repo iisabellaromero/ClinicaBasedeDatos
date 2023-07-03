@@ -772,21 +772,22 @@
 
   <!-- Template Main JS File -->
   <script src="static/js/main.js"></script>
-  <!--  toastr-->
-  <script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js')}}"></script>
 
-  <!-- Template Javascript -->
-  <script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+   <!--  toastr-->
+   <script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js')}}"></script>
 
-  <script>
-    {% with messages = get_flashed_messages(with_categories = true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    toastr.{ { category } } ("{{message}}");
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-  </script>
+   <!-- Template Javascript -->
+   <script type="text/javascript" src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+   <!-- <script>
+       {% with messages = get_flashed_messages(with_categories=true) %} 
+           {% if messages %}
+               {% for category, message in messages %}
+                   toastr.{{category}}("{{message}}");
+               {% endfor %}
+           {% endif %}
+       {% endwith %}
+   </script> -->
 </body>
 
 </html>
