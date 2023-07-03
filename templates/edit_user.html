@@ -1,0 +1,23 @@
+{%extends 'index.html'%}
+{%block hero%}
+{%endblock%}
+{%block main%}
+
+<div class="container" style = "margin-top: 150px; margin-bottom: 100px;">
+<form id="inicio-sesion-form" class="register" action="/edit-user" method="post">
+    <div class="input-container7">
+        <h2 class = "inicio">Edita tus datos:</h2>
+        <input type="text" placeholder="{{user.nombre}}" value="{{user.nombre}}" name="nombre" required>
+        <input type="text" placeholder="{{user.apellido}}" value="{{user.apellido}}" name="apellido" required>
+        <input type="text" placeholder="{{user.apellido_materno}}" value="{{user.apellido_materno}}" name="apellido_materno" required>
+        <input type="text" placeholder="{{user.telefono}}" value="{{user.telefono}}" name="telefono" required>
+        <input type="email" placeholder="{{user.email}}" value="{{user.email}}" name="email" required>
+        <input type="date" placeholder="{{user.fecha}}" value="{{user.date}}" name="fecha_nacimiento" required>
+    </div>
+    <div class="container2">
+        <button type="submit" class="btn-form">Confirmar cambios</button>
+</form>
+</div>
+
+
+{%endblock%}

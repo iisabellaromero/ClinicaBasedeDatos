@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -13,7 +14,9 @@
   <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="static/all.min.css" rel="stylesheet">
@@ -42,8 +45,11 @@
     }
   </style>
 
-   <!--  toastr -->
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/toastr.min.css')}}">
+  <!--  toastr -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/toastr.min.css')}}">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </head>
 
 <body>
@@ -75,13 +81,12 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          
-              <li><a class="nav-link scrollto" href="/citas-agendadas">Mis citas</a></li>
-              <li><a class="nav-link scrollto" href="/recetas">Mis recetas</a></li>
-              <li><a  class="nav-link scrollto" href="/farmacia">Farmacia en línea</a></li>
-            
+          <li><a class="nav-link scrollto" href="/home-paciente">Mis citas</a></li>
+          <li><a class="nav-link scrollto" href="/farmacia">Farmacia en línea</a></li>
+          {%if not logged%}
+          <li><a class="nav-link scrollto" style="font-size: larger;" href="/edit-user"><ion-icon name="settings"></ion-icon></a></li>
+          {% endif %}
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -91,17 +96,17 @@
       <a href="/logout" class="appointment-btn scrollto"><span class="d-none d-md-inline">Cierra</span> sesion</a>
       {% endif %}
     </div>
-  </header><!-- End Header --> 
+  </header><!-- End Header -->
   {%block hero%}
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
       <h1>Bienvenido a VitaSalud</h1>
       <h2>Tu camino hacia una vida plena y saludable</h2>
-      <a href="/register"  class="btn-get-started scrollto" id="mostrar-formulario-btn">Empieza aquí</a>
+      <a href="/register" class="btn-get-started scrollto" id="mostrar-formulario-btn">Empieza aquí</a>
     </div>
   </section><!-- End Hero -->
- 
+
   {% endblock%}
   {%block main%}
 
@@ -116,11 +121,16 @@
             <div class="content">
               <h3>Porque elegir VitaSalud?</h3>
               <p>
-                Vitasalud es la elección perfecta cuando se trata de tu bienestar. Nuestro enfoque integral hacia la salud abarca todos los aspectos de tu vida, 
-                brindándote una atención médica de calidad y personalizada. Nuestro equipo de profesionales altamente capacitados se dedica a comprender tus 
-                necesidades individuales y a proporcionarte soluciones efectivas para mejorar tu calidad de vida. Ya sea que estés buscando servicios médicos 
-                preventivos, tratamientos especializados o cuidado continuo, en Vitasalud encontrarás la experiencia y el compromiso necesarios para cuidar de 
-                ti en todas las etapas de tu vida. Nuestro objetivo es ser tu aliado confiable en el camino hacia una vida saludable y equilibrada. 
+                Vitasalud es la elección perfecta cuando se trata de tu bienestar. Nuestro enfoque integral hacia la
+                salud abarca todos los aspectos de tu vida,
+                brindándote una atención médica de calidad y personalizada. Nuestro equipo de profesionales altamente
+                capacitados se dedica a comprender tus
+                necesidades individuales y a proporcionarte soluciones efectivas para mejorar tu calidad de vida. Ya sea
+                que estés buscando servicios médicos
+                preventivos, tratamientos especializados o cuidado continuo, en Vitasalud encontrarás la experiencia y
+                el compromiso necesarios para cuidar de
+                ti en todas las etapas de tu vida. Nuestro objetivo es ser tu aliado confiable en el camino hacia una
+                vida saludable y equilibrada.
                 Por eso, elige Vitasalud y experimenta la diferencia en tu bienestar.
               </p>
               <div class="text-center">
@@ -142,14 +152,16 @@
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-cube-alt"></i>
                     <h4>Enfoque Integral</h4>
-                    <p>Nos preocupamos por tu bienestar físico, emocional y social, brindando un cuidado completo y personalizado.</p>
+                    <p>Nos preocupamos por tu bienestar físico, emocional y social, brindando un cuidado completo y
+                      personalizado.</p>
                   </div>
                 </div>
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="bx bx-images"></i>
                     <h4>Tecnología Avanzada</h4>
-                    <p>Utilizamos equipos y herramientas de última generación para diagnósticos precisos y tratamientos efectivos.</p>
+                    <p>Utilizamos equipos y herramientas de última generación para diagnósticos precisos y tratamientos
+                      efectivos.</p>
                   </div>
                 </div>
               </div>
@@ -169,26 +181,31 @@
             <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
           </div>
 
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+          <div
+            class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
             <h3>Vita Salud, la clínica de la salud</h3>
-            <p>Reconocido por ofrecer el mejor sistema de citas en línea entre todas las clínicas del Perú, garantizando una experiencia conveniente y eficiente para nuestros pacientes.</p>
+            <p>Reconocido por ofrecer el mejor sistema de citas en línea entre todas las clínicas del Perú, garantizando
+              una experiencia conveniente y eficiente para nuestros pacientes.</p>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-fingerprint"></i></div>
               <h4 class="title"><a href="">Calidez y Empatía</a></h4>
-              <p class="description">Nuestro equipo es amable, comprensivo y empático, creando un ambiente acogedor y de confianza</p>
+              <p class="description">Nuestro equipo es amable, comprensivo y empático, creando un ambiente acogedor y de
+                confianza</p>
             </div>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-gift"></i></div>
               <h4 class="title"><a href="">Innovación y Avances Médicos</a></h4>
-              <p class="description">Estamos a la vanguardia de los avances médicos y tecnológicos, brindándote diagnósticos precisos y tratamientos efectivos.</p>
+              <p class="description">Estamos a la vanguardia de los avances médicos y tecnológicos, brindándote
+                diagnósticos precisos y tratamientos efectivos.</p>
             </div>
 
             <div class="icon-box">
               <div class="icon"><i class="bx bx-atom"></i></div>
               <h4 class="title"><a href="">Enfoque Holístico</a></h4>
-              <p class="description">Proporcionamos cuidado integral y personalizado, considerando tu estado físico, mental y emocional.</p>
+              <p class="description">Proporcionamos cuidado integral y personalizado, considerando tu estado físico,
+                mental y emocional.</p>
             </div>
 
           </div>
@@ -206,7 +223,8 @@
           <div class="col-lg-3 col-md-6">
             <div class="count-box">
               <i class="fas fa-user-md"></i>
-              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"
+                class="purecounter"></span>
               <p>Doctores</p>
             </div>
           </div>
@@ -214,7 +232,8 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="far fa-hospital"></i>
-              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1"
+                class="purecounter"></span>
               <p>Departmentos</p>
             </div>
           </div>
@@ -222,7 +241,8 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="fas fa-flask"></i>
-              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1"
+                class="purecounter"></span>
               <p>Research Labs</p>
             </div>
           </div>
@@ -230,7 +250,8 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
             <div class="count-box">
               <i class="fas fa-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="200" data-purecounter-duration="1"
+                class="purecounter"></span>
               <p>Premios</p>
             </div>
           </div>
@@ -246,7 +267,9 @@
 
         <div class="section-title">
           <h2>Servicios</h2>
-          <p>En nuestra clínica, ofrecemos una amplia gama de servicios médicos y de atención de alta calidad. Nuestro equipo altamente capacitado está dedicado a brindar un cuidado integral a nuestros pacientes, abarcando desde consultas médicas generales hasta especialidades más específicas.</p>
+          <p>En nuestra clínica, ofrecemos una amplia gama de servicios médicos y de atención de alta calidad. Nuestro
+            equipo altamente capacitado está dedicado a brindar un cuidado integral a nuestros pacientes, abarcando
+            desde consultas médicas generales hasta especialidades más específicas.</p>
         </div>
 
         <div class="row">
@@ -254,7 +277,8 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
               <h4><a href="">Doctores de calidad</a></h4>
-              <p>Expertos altamente capacitados y comprometidos con la excelencia médica para brindar una atención personalizada y efectiva a nuestros pacientes.</p>
+              <p>Expertos altamente capacitados y comprometidos con la excelencia médica para brindar una atención
+                personalizada y efectiva a nuestros pacientes.</p>
             </div>
           </div>
 
@@ -262,7 +286,8 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-pills"></i></div>
               <h4><a href="">Farmacia</a></h4>
-              <p>Nuestros farmacéuticos expertos aseguran una atención de primera y la entrega precisa de medicamentos para el bienestar de nuestros clientes.</p>
+              <p>Nuestros farmacéuticos expertos aseguran una atención de primera y la entrega precisa de medicamentos
+                para el bienestar de nuestros clientes.</p>
             </div>
           </div>
 
@@ -270,7 +295,8 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-hospital-user"></i></div>
               <h4><a href="">Citas en línea</a></h4>
-              <p>Nuestro sistema de citas online ofrece una experiencia conveniente y eficiente, brindando a nuestros pacientes la facilidad de programar y gestionar sus citas de manera rápida y segura.</p>
+              <p>Nuestro sistema de citas online ofrece una experiencia conveniente y eficiente, brindando a nuestros
+                pacientes la facilidad de programar y gestionar sus citas de manera rápida y segura.</p>
             </div>
           </div>
 
@@ -278,7 +304,9 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-dna"></i></div>
               <h4><a href="">Base de datos médica completa</a></h4>
-              <p>Tenemos una base de datos integral de nuestros médicos, con información actualizada sobre sus especialidades y experiencia, para brindar a nuestros pacientes la mejor selección de profesionales de la salud.</p>
+              <p>Tenemos una base de datos integral de nuestros médicos, con información actualizada sobre sus
+                especialidades y experiencia, para brindar a nuestros pacientes la mejor selección de profesionales de
+                la salud.</p>
             </div>
           </div>
 
@@ -286,7 +314,8 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
               <h4><a href="">Emergencias eficientes</a></h4>
-              <p>Nuestra sala de emergencias está organizada de manera óptima, con doctores profesionales disponibles en todo momento para brindar atención inmediata y de calidad.</p>
+              <p>Nuestra sala de emergencias está organizada de manera óptima, con doctores profesionales disponibles en
+                todo momento para brindar atención inmediata y de calidad.</p>
             </div>
           </div>
 
@@ -294,7 +323,8 @@
             <div class="icon-box">
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
               <h4><a href="">Medicamentos de primera</a></h4>
-              <p>Contamos con una selección cuidadosamente elegida de medicamentos de los mejores laboratorios a nivel mundial, garantizando la calidad y eficacia en los tratamientos de nuestros pacientes.</p>
+              <p>Contamos con una selección cuidadosamente elegida de medicamentos de los mejores laboratorios a nivel
+                mundial, garantizando la calidad y eficacia en los tratamientos de nuestros pacientes.</p>
             </div>
           </div>
 
@@ -302,18 +332,19 @@
 
       </div>
     </section><!-- End Services Section -->
-    
+
     <!-- ======= Appointment Section ======= -->
 
     <!-- ======= Departments Section ======= -->
-    
+
     <!-- ======= Doctors Section ======= -->
     <section id="doctors" class="doctors">
       <div class="container">
 
         <div class="section-title">
           <h2>Doctores</h2>
-          <p>Nuestro equipo de médicos altamente capacitados y comprometidos está aquí para brindarte la mejor atención médica en una variedad de especialidades para cuidar de tu salud integral.</p>
+          <p>Nuestro equipo de médicos altamente capacitados y comprometidos está aquí para brindarte la mejor atención
+            médica en una variedad de especialidades para cuidar de tu salud integral.</p>
         </div>
 
         <div class="row">
@@ -341,7 +372,8 @@
               <div class="member-info">
                 <h4>Isidora Araya</h4>
                 <span>Gastroenterología</span>
-                <p>Especialista en diagnóstico y tratamiento de trastornos digestivos y enfermedades del sistema gastrointestinal.</p>
+                <p>Especialista en diagnóstico y tratamiento de trastornos digestivos y enfermedades del sistema
+                  gastrointestinal.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -358,7 +390,8 @@
               <div class="member-info">
                 <h4>Guillermo Tapia</h4>
                 <span>Obstetricia y Ginecología</span>
-                <p>Profesional especializado en la salud reproductiva de la mujer, brindando atención médica integral, prevención, diagnóstico y tratamiento de condiciones ginecológicas.</p>
+                <p>Profesional especializado en la salud reproductiva de la mujer, brindando atención médica integral,
+                  prevención, diagnóstico y tratamiento de condiciones ginecológicas.</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -375,7 +408,8 @@
               <div class="member-info">
                 <h4>Lourdes Guzmán</h4>
                 <span>Cirugía Plástica</span>
-                <p>Cirujana plástica especializada en embellecer y transformar mediante procedimientos quirúrgicos, brindando resultados naturales y satisfactorios</p>
+                <p>Cirujana plástica especializada en embellecer y transformar mediante procedimientos quirúrgicos,
+                  brindando resultados naturales y satisfactorios</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
                   <a href=""><i class="ri-facebook-fill"></i></a>
@@ -406,7 +440,8 @@
                   <h4>Ceo &amp; Founder</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    ¡La organización de esta clínica es excepcional! Se adaptaron perfectamente a mi horario y pude agendar mi cita sin ningún inconveniente.
+                    ¡La organización de esta clínica es excepcional! Se adaptaron perfectamente a mi horario y pude
+                    agendar mi cita sin ningún inconveniente.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -421,7 +456,8 @@
                   <h4>Designer</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    ¡Increíble sistema de base de datos! Nunca antes había sido tan fácil y rápido agendar citas en esta clínica.
+                    ¡Increíble sistema de base de datos! Nunca antes había sido tan fácil y rápido agendar citas en esta
+                    clínica.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -436,7 +472,8 @@
                   <h4>Store Owner</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    La manera en que se organizan en esta clínica es admirable. Acomodaron mi cita según mi disponibilidad horaria, brindándome comodidad y flexibilidad.
+                    La manera en que se organizan en esta clínica es admirable. Acomodaron mi cita según mi
+                    disponibilidad horaria, brindándome comodidad y flexibilidad.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -451,7 +488,8 @@
                   <h4>Freelancer</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    La organización de esta clínica es impecable. Se tomaron el tiempo de ajustar mi cita para que se adaptara a mi horario, demostrando un excelente servicio al paciente.
+                    La organización de esta clínica es impecable. Se tomaron el tiempo de ajustar mi cita para que se
+                    adaptara a mi horario, demostrando un excelente servicio al paciente.
                   </p>
                 </div>
               </div>
@@ -465,7 +503,8 @@
                   <h4>Entrepreneur</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Estoy encantado con la organización de esta clínica. Fueron capaces de acomodar mi cita de manera eficiente, teniendo en cuenta mis horarios y necesidades.
+                    Estoy encantado con la organización de esta clínica. Fueron capaces de acomodar mi cita de manera
+                    eficiente, teniendo en cuenta mis horarios y necesidades.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -485,7 +524,9 @@
 
         <div class="section-title">
           <h2>Galería</h2>
-          <p>Nuestra galería de fotos muestra la esencia de nuestra clínica: calidez, profesionalismo y excelencia. Descubre nuestras instalaciones modernas, equipo médico dedicado y tecnología de vanguardia. Te invitamos a explorar y sentir la confianza que ofrecemos en cada imagen.</p>
+          <p>Nuestra galería de fotos muestra la esencia de nuestra clínica: calidez, profesionalismo y excelencia.
+            Descubre nuestras instalaciones modernas, equipo médico dedicado y tecnología de vanguardia. Te invitamos a
+            explorar y sentir la confianza que ofrecemos en cada imagen.</p>
         </div>
       </div>
 
@@ -567,12 +608,16 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
       </div>
 
       <div>
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        <iframe style="border:0; width: 100%; height: 350px;"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+          frameborder="0" allowfullscreen></iframe>
       </div>
 
       <div class="container">
@@ -688,7 +733,7 @@
         </div>
       </div>
     </div>
-        
+
 
     <div class="container d-md-flex py-4">
 
@@ -715,7 +760,8 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="static/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -726,6 +772,7 @@
 
   <!-- Template Main JS File -->
   <script src="static/js/main.js"></script>
+
    <!--  toastr-->
    <script type="text/javascript" src="{{ url_for('static', filename='js/toastr.min.js')}}"></script>
 

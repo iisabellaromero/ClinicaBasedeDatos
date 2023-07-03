@@ -248,7 +248,7 @@ BEGIN
         WHERE id = NEW.precio_deducible;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
-            cobertura_value := 100; -- Set a default value when paciente_dni is not found
+            cobertura_value := 0; -- Set a default value when paciente_dni is not found
     END;
 
     -- Calculate and set the value for Citas.precio_deducible

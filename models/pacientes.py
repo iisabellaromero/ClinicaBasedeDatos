@@ -85,3 +85,13 @@ class Paciente:
         persona = cls.get(dni)
         if persona.email == email:
             return persona
+
+    @classmethod
+    def edit(cls,form_data,dni):
+        query = '''
+                UPDATE clinica.pacientes SET nombre = %s, apellido = %s, apellido_materno = %s, telefono = %s, email = %s, fecha_nacimiento = %s
+                WHERE dni = %s;'''
+        cursor.execute(query,(form_data['nombre'],form_data['apellido'],form_data['apellido_materno'],form_data['telefono'],form_data['email'],form_data['fecha_nacimiento'],dni,))
+        conn.commit()
+        obj = cls.get(dni)
+        return obj
