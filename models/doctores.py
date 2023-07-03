@@ -55,7 +55,6 @@ class Doctor:
         for resultado in resultados:
             horario = Horario(resultado)
             horarios.append(horario)
-
         return horarios
 
     @classmethod
