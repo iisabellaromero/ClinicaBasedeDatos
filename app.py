@@ -7,6 +7,7 @@ from flask import flash
 from models.pacientes import Paciente
 from models.doctores import Doctor
 from models.citas import Cita
+from models.recetas import Receta
 
 
 
@@ -35,7 +36,7 @@ def show_login():
     if 'user' not in session or session == None:
         return render_template("login.html")
     else:
-        redirect('/home-paciente')
+        return redirect('/home-paciente')
 
 @app.route('/logout')
 def logout():
@@ -106,6 +107,20 @@ def get_day_name(date_string):
 
     return day_name_spanish
 
+@app.route('/delete/<fecha>/<hora_inicio>/<doctor_codigo>')
+def eliminar_cita(fecha,hora_inicio,doctor_codigo):
+    if 'user' not in session or session == None: 
+        flash("Debes iniciar sesion para sacar una cita", 'Error')
+        return redirect('/')
+    else: 
+        dni = session['user']['dni']
+        citas = Cita.delete(dni,doctor_codigo,fecha,hora_inicio)
+        return redirect('/home-paciente')
+
+# @app.route('/confirm-delete')
+# def confirmar_eliminacion():
+
+
 
 @app.route('/agendar-cita', methods=['POST'])
 def send_agendar():
@@ -142,7 +157,7 @@ def citas_agendadas_route():
     # dni = session['user']['dni']
     paciente = Paciente.get(session['user']['dni'])
     citas = Cita.get_by_dni(session['user']['dni'])
-    # recetas = Recetas.get_by_dni(dni)
+
     return render_template('home_paciente.html', paciente = paciente, citas = citas) #recetas = recetas
 
 

@@ -20,42 +20,24 @@ DROP TABLE IF EXISTS turnos;
 DROP TABLE IF EXISTS medicamento;
 
 
--- Tabla doctores DONE
+-- TABLA DOCTORES
 CREATE TABLE IF NOT EXISTS doctores (
-                                        Codigo VARCHAR(5) NOT NULL,
-                                        Codigo_cmp VARCHAR(6) NOT NULL,
-                                        Nombre VARCHAR(45) NOT NULL,
-                                        Apellido VARCHAR(255) NOT NULL,
-                                        Apellido_materno VARCHAR(255) NOT NULL,
-                                        Fecha_nacimiento DATE NOT NULL,
-                                        Telefono VARCHAR(9) NOT NULL,
-                                        DNI INT NOT NULL,
-                                        Email VARCHAR(255) NOT NULL,
-                                        PRIMARY KEY (Codigo)
+    Codigo VARCHAR(5) NOT NULL CONSTRAINT chk_codigo_doctor CHECK (Codigo LIKE 'D%'),
+    Codigo_cmp VARCHAR(6) NOT NULL,
+    Nombre VARCHAR(45) NOT NULL,
+    Apellido VARCHAR(255) NOT NULL,
+    Apellido_materno VARCHAR(255) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL CONSTRAINT chk_fecha_nacimiento CHECK (Fecha_nacimiento < CURRENT_DATE),
+    Telefono VARCHAR(9) NOT NULL CONSTRAINT chk_telefono CHECK (Telefono ~ '^9\d{8}$'),
+    DNI INT NOT NULL CONSTRAINT chk_dni CHECK (DNI BETWEEN 10000000 AND 99999999),
+    Email VARCHAR(255) NOT NULL CONSTRAINT chk_email CHECK (Email ~ '^.+@vitasalud\.com$'),
+    Especialidad VARCHAR(255) NOT NULL,
+    PRIMARY KEY (Codigo)
 );
 
--- Agregar restricción de fecha de nacimiento
-ALTER TABLE doctores
-    ADD CONSTRAINT chk_fecha_nacimiento CHECK (Fecha_nacimiento < CURRENT_DATE);
-
--- Agregar restricción de teléfono
-ALTER TABLE doctores
-    ADD CONSTRAINT chk_telefono CHECK (Telefono ~ '^9\d{8}$');
-
--- Agregar restricción de DNI
-ALTER TABLE doctores
-    ADD CONSTRAINT chk_dni CHECK (DNI BETWEEN 10000000 AND 99999999);
-
--- Agregar restricción de email para dominio @vitasalud.com
-ALTER TABLE doctores
-    ADD CONSTRAINT chk_email CHECK (Email ~ '^.+@vitasalud\.com$');
-
--- Agregar restricción de código de doctor en doctores
-ALTER TABLE doctores
-    ADD CONSTRAINT chk_codigo_doctor CHECK (Codigo LIKE 'D%');
 
 
--- Tabla Consultorio DONE
+-- TABLA CONSULTORIO
 CREATE TABLE IF NOT EXISTS Consultorio (
     doctor_codigo VARCHAR(5) NOT NULL,
     numero VARCHAR(4) NOT NULL,
@@ -68,242 +50,186 @@ CREATE TABLE IF NOT EXISTS Consultorio (
   );
 
 
--- Tabla farmacistas DONE
+-- TABLA FARMACISTAS
 CREATE TABLE IF NOT EXISTS farmacistas (
-                                           Codigo VARCHAR(5) NOT NULL,
-                                           Nombre VARCHAR(45) NOT NULL,
-                                           Apellido VARCHAR(255) NOT NULL,
-                                           Apellido_materno VARCHAR(255) NOT NULL,
-                                           Fecha_nacimiento DATE NOT NULL,
-                                           Telefono VARCHAR(9) NULL,
-                                           DNI VARCHAR(9) NOT NULL,
-                                           Email VARCHAR(255) NOT NULL,
-                                           PRIMARY KEY (Codigo)
+    Codigo VARCHAR(5) NOT NULL CONSTRAINT chk_codigo_farmacista CHECK (Codigo LIKE 'F%'),
+    Nombre VARCHAR(45) NOT NULL,
+    Apellido VARCHAR(255) NOT NULL,
+    Apellido_materno VARCHAR(255) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL CONSTRAINT chk_fecha_nacimientof CHECK (Fecha_nacimiento < CURRENT_DATE),
+    Telefono VARCHAR(9) NULL CONSTRAINT chk_telefonof CHECK (Telefono ~ '^9\d{8}$'),
+    DNI VARCHAR(9) NOT NULL CONSTRAINT chk_dnif CHECK (DNI BETWEEN '10000000' AND '99999999'),
+    Email VARCHAR(255) NOT NULL CONSTRAINT chk_emailf CHECK (Email ~ '^.+@vitasalud\.com$'),
+    PRIMARY KEY (Codigo)
 );
 
--- Agregar restricción de DNI
-ALTER TABLE farmacistas
-    ADD CONSTRAINT chk_dnif CHECK (DNI BETWEEN '10000000' AND '99999999');
 
--- Agregar restricción de email para dominio @vitasalud.com
-ALTER TABLE farmacistas
-    ADD CONSTRAINT chk_emailf CHECK (Email ~ '^.+@vitasalud\.com$');
-
--- Agregar restricción de código de farmacista en farmacistas
-ALTER TABLE farmacistas
-    ADD CONSTRAINT chk_codigo_farmacista CHECK (Codigo LIKE 'F%');
-
-ALTER TABLE farmacistas
-    ADD CONSTRAINT chk_telefonof CHECK (Telefono ~ '^9\d{8}$');
-
--- Agregar restricción de fecha de nacimiento
-ALTER TABLE farmacistas
-    ADD CONSTRAINT chk_fecha_nacimientof CHECK (Fecha_nacimiento < CURRENT_DATE);
-
-
--- Agregar restricción de teléfono
+-- TABLA HORARIO
 CREATE TABLE IF NOT EXISTS Horario (
-                                       Dia VARCHAR(9) NOT NULL,
-                                       Hora_inicio time NOT NULL,
-                                       Hora_fin time NOT NULL,
-                                       doctor_codigo VARCHAR(6) NOT NULL,
-                                       Estado BOOLEAN NOT NULL DEFAULT TRUE,
-                                       PRIMARY KEY (dia, hora_inicio, doctor_codigo),
-                                        FOREIGN KEY (doctor_codigo)
-                                               REFERENCES doctores (Codigo)
-                                               ON DELETE cascade
-                                               ON UPDATE CASCADE
+    Dia VARCHAR(9) NOT NULL,
+    Hora_inicio TIME NOT NULL,
+    Hora_fin TIME NOT NULL,
+    Doctor_codigo VARCHAR(6) NOT NULL,
+    PRIMARY KEY (Dia, Hora_inicio, Doctor_codigo),
+    CONSTRAINT fk_horario_doctores FOREIGN KEY (Doctor_codigo)
+        REFERENCES Doctores (Codigo)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT chk_horario CHECK (Hora_inicio < Hora_fin - INTERVAL '1 hour')
 );
 
--- Agregar restricción de hora de inicio y fin en Horario
-ALTER TABLE Horario
-    ADD CONSTRAINT chk_horario CHECK (Hora_inicio < Hora_fin - INTERVAL '1 hour');
 
--- Alter the data type of Hora_inicio column and handle leading spaces
-ALTER TABLE Horario
-    ALTER COLUMN Hora_inicio TYPE TIME USING CAST(REPLACE(Hora_inicio::TEXT, ' ', '') AS TIME);
-
--- Alter the data type of Hora_fin column and handle leading spaces
-ALTER TABLE Horario
-    ALTER COLUMN Hora_fin TYPE TIME USING CAST(REPLACE(Hora_fin::TEXT, ' ', '') AS TIME);
-
-
--- Tabla pacientes DONE                                 CHECK
+-- TABLA PACIENTES
 CREATE TABLE IF NOT EXISTS pacientes (
-                                         Nombre VARCHAR(45) NOT NULL,
-                                         Apellido VARCHAR(255) NOT NULL,
-                                         Apellido_materno VARCHAR(255) NOT NULL,
-                                         Fecha_nacimiento DATE NOT NULL,
-                                         Telefono VARCHAR(9) NOT NULL,
-                                         DNI INT NOT NULL,
-                                         Email VARCHAR(255) NOT NULL,
-                                         PRIMARY KEY (DNI)
+    Nombre VARCHAR(45) NOT NULL,
+    Apellido VARCHAR(255) NOT NULL,
+    Apellido_materno VARCHAR(255) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL,
+    Telefono VARCHAR(9) NOT NULL,
+    DNI INT NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    PRIMARY KEY (DNI),
+    CONSTRAINT chk_fecha_nacimiento_paciente CHECK (Fecha_nacimiento < CURRENT_DATE),
+    CONSTRAINT chk_telefono_paciente CHECK (Telefono ~ '^9\d{8}$'),
+    CONSTRAINT chk_dni_paciente CHECK (DNI BETWEEN 10000000 AND 99999999),
+    CONSTRAINT chk_email_paciente CHECK (Email ~ '^.+@.+\..+$')
 );
 
--- Agregar restricción de fecha de nacimiento
-ALTER TABLE pacientes
-    ADD CONSTRAINT chk_fecha_nacimiento_paciente CHECK (Fecha_nacimiento < CURRENT_DATE);
 
--- Agregar restricción de teléfono
-ALTER TABLE pacientes
-    ADD CONSTRAINT chk_telefono_paciente CHECK (Telefono ~ '^9\d{8}$');
-
--- Agregar restricción de DNI
-ALTER TABLE pacientes
-    ADD CONSTRAINT chk_dni_paciente CHECK (DNI BETWEEN 10000000 AND 99999999);
-
--- Agregar restricción de email
-ALTER TABLE pacientes
-    ADD CONSTRAINT chk_email_paciente CHECK (Email ~ '^.+@.+\..+$');
-
--- Tabla Seguro DONE                                 CHECK
+-- TABLA SEGURO
 CREATE TABLE IF NOT EXISTS Seguro (
-                                      Id INT NOT NULL,
-                                      Nombre VARCHAR(255) NOT NULL,
-                                      PRIMARY KEY (Id)
+    Id INT NOT NULL,
+    Nombre VARCHAR(255) NOT NULL,
+    PRIMARY KEY (Id)
 );
 
--- Tabla Poliza DONE                                 CHECK
+
+-- TABLA POLIZA
 CREATE TABLE IF NOT EXISTS Poliza (
-                                      Seguro_Id INT NOT NULL,
-                                      ID INT NOT NULL,
-                                      Nombre VARCHAR(255) NOT NULL,
-                                      Cobertura INT NOT NULL,
-                                      PRIMARY KEY (ID, Seguro_Id),
-                                      CONSTRAINT fk_poliza_seguro
-                                          FOREIGN KEY (Seguro_Id)
-                                              REFERENCES Seguro (Id)
-                                              ON DELETE CASCADE
-                                              ON UPDATE CASCADE
+    Seguro_Id INT NOT NULL,
+    ID INT NOT NULL,
+    Nombre VARCHAR(255) NOT NULL,
+    Cobertura INT NOT NULL,
+    PRIMARY KEY (ID, Seguro_Id),
+    CONSTRAINT fk_poliza_seguro
+        FOREIGN KEY (Seguro_Id)
+            REFERENCES Seguro (Id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    CONSTRAINT chk_cobertura CHECK (Cobertura > 0)
 );
 
--- Check para que la cobertura sea mayor a cero
-ALTER TABLE Poliza
-    ADD CONSTRAINT chk_cobertura CHECK (Cobertura > 0);
 
--- Tabla asegurados DONE                                 CHECK
+-- TABLA ASEGURADOS
 CREATE TABLE IF NOT EXISTS asegurados (
-                                          paciente_dni INT NOT NULL,
-                                          poliza_id INT NOT NULL,
-                                          seguro_id INT NOT NULL,
-                                          PRIMARY KEY (paciente_dni), --la llave primaria deberia ser paciente dni, ya que un paciente no puede tener mas de un seguro de salud
-                                          CONSTRAINT fk_asegurados_pacientes
-                                              FOREIGN KEY (paciente_dni)
-                                                  REFERENCES pacientes (DNI)
-                                                  ON DELETE CASCADE
-                                                  ON UPDATE CASCADE,
-                                          CONSTRAINT fk_asegurados_poliza
-                                              FOREIGN KEY (poliza_id, seguro_id)
-                                                  REFERENCES Poliza (id, Seguro_Id)
-                                                  ON DELETE CASCADE
-                                                  ON UPDATE CASCADE
+    paciente_dni INT NOT NULL,
+    poliza_id INT NOT NULL,
+    seguro_id INT NOT NULL,
+    PRIMARY KEY (paciente_dni), 
+    CONSTRAINT fk_asegurados_pacientes
+        FOREIGN KEY (paciente_dni)
+            REFERENCES pacientes (DNI)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    CONSTRAINT fk_asegurados_poliza
+        FOREIGN KEY (poliza_id, seguro_id)
+            REFERENCES Poliza (id, Seguro_Id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
 );
 
 
--- Tabla Citas DONE                                 CHECK
 CREATE TABLE IF NOT EXISTS Citas (
-                                     paciente_dni INT NOT NULL,
-                                     fecha DATE NOT NULL,
-                                     Hora_inicio time NOT NULL,
-                                     doctor_codigo VARCHAR(5) NOT NULL,
-                                     especialidad VARCHAR(45) NOT NULL,
-                                     consultorio VARCHAR(4) NOT NULL,
-                                     precio INT DEFAULT 200,
-                                     precio_deducible INT DEFAULT 200,
-                                     dia varchar(9),
-                                     Hora_fin time,
-                                     PRIMARY KEY (fecha,doctor_codigo,paciente_dni),
-                                     CONSTRAINT unique_cita_time unique (fecha, hora_inicio, doctor_codigo),
-                                     CONSTRAINT fk_citas_horario
-                                         FOREIGN KEY ( dia, Hora_inicio, doctor_codigo)
-                                             REFERENCES Horario ( dia, Hora_inicio, doctor_codigo)
-                                             ON DELETE CASCADE
-                                             ON UPDATE CASCADE,
-                                     CONSTRAINT fk_citas_pacientes
-                                         FOREIGN KEY (paciente_dni)
-                                             REFERENCES pacientes (DNI)
-                                             ON DELETE CASCADE
-                                             ON UPDATE CASCADE
+    paciente_dni INT NOT NULL,
+    fecha DATE NOT NULL,
+    Hora_inicio TIME NOT NULL,
+    doctor_codigo VARCHAR(5) NOT NULL,
+    precio INT DEFAULT 200,
+    precio_deducible INT,
+    dia VARCHAR(9),
+    PRIMARY KEY (fecha, doctor_codigo, paciente_dni),
+    CONSTRAINT unique_cita_time UNIQUE (fecha, Hora_inicio, doctor_codigo),
+    CONSTRAINT fk_citas_horario
+        FOREIGN KEY (dia, Hora_inicio, doctor_codigo)
+        REFERENCES Horario (dia, Hora_inicio, doctor_codigo)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT fk_citas_pacientes
+        FOREIGN KEY (paciente_dni)
+        REFERENCES pacientes (DNI)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 
---
+
+-- TABLA RECETAS
 CREATE TABLE IF NOT EXISTS recetas (
-                                       Codigo INT NOT NULL,
-                                       fecha DATE NOT NULL,
-                                       Doctor_codigo VARCHAR(5) NOT NULL,
-                                       paciente_dni INT NOT NULL,
-                                       PRIMARY KEY (Codigo),
-                                       CONSTRAINT fk_recetas_citas
-                                           FOREIGN KEY (fecha, Doctor_codigo, paciente_dni)
-                                               REFERENCES Citas (fecha, doctor_codigo, paciente_dni)
-                                               ON DELETE CASCADE
-                                               ON UPDATE CASCADE
+    Codigo INT NOT NULL,
+    fecha DATE NOT NULL,
+    Doctor_codigo VARCHAR(5) NOT NULL,
+    paciente_dni INT NOT NULL,
+    PRIMARY KEY (Codigo),
+    CONSTRAINT fk_recetas_citas
+        FOREIGN KEY (fecha, Doctor_codigo, paciente_dni)
+            REFERENCES Citas (fecha, doctor_codigo, paciente_dni)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
 );
 
--- Tabla medicamento DONE                                 CHECK
+
+-- TABLA MEDICAMENTOS
 CREATE TABLE IF NOT EXISTS medicamentos (
-                                           ID INT NOT NULL,
-                                           Nombre VARCHAR(255) NOT NULL,
-                                           Laboratorio VARCHAR(255) NOT NULL,
-                                           Precio DOUBLE PRECISION NOT NULL,
-                                           Unidad INT NOT NULL,
-                                           Stock INT NOT NULL,
-                                           PRIMARY KEY (ID)
+    ID INT NOT NULL,
+    Nombre VARCHAR(255) NOT NULL,
+    Laboratorio VARCHAR(255) NOT NULL,
+    Precio DOUBLE PRECISION NOT NULL CHECK (Precio > 0),
+    Unidad INT NOT NULL CHECK (Unidad > 0),
+    Stock INT NOT NULL CHECK (Stock >= 0),
+    PRIMARY KEY (ID)
 );
 
--- Check que el precio sea mayor a cero
-ALTER TABLE medicamentos
-    ADD CONSTRAINT chk_precio_medicamento CHECK (Precio > 0);
 
--- Check que la unidad sea mayor a cero
-ALTER TABLE medicamentos
-    ADD CONSTRAINT chk_unidad_medicamento CHECK (Unidad > 0);
-
--- Check que el stock sea igual o mayor a cero
-ALTER TABLE medicamentos
-    ADD CONSTRAINT chk_stock_medicamento CHECK (Stock >= 0);
-
--- Tabla medicamentos_recetados DONE                                 CHECK
+-- TABLA MEDICAMENTOS_RECETADOS
 CREATE TABLE IF NOT EXISTS medicamentos_recetados (
-                                                      receta_codigo INT NOT NULL,
-                                                      medicamento_codigo INT NOT NULL,
-                                                      nombre_medicamento VARCHAR(45) NOT NULL,
-                                                        cantidad INT NOT NULL,
-                                                        precio_regular double precision  not null,
-                                                        precio_deducible double precision,
-                                                      PRIMARY KEY (receta_codigo, medicamento_codigo),
-                                                      CONSTRAINT fk_codigo_receta
-                                                          FOREIGN KEY (receta_codigo)
-                                                              REFERENCES recetas (Codigo)
-                                                              ON DELETE CASCADE
-                                                              ON UPDATE CASCADE,
-                                                      CONSTRAINT fk_medicamento_codigo
-                                                          FOREIGN KEY (medicamento_codigo)
-                                                              REFERENCES medicamentos (ID)
-                                                              ON DELETE CASCADE
-                                                              ON UPDATE CASCADE
+    receta_codigo INT NOT NULL,
+    medicamento_codigo INT NOT NULL,
+    nombre_medicamento VARCHAR(45) NOT NULL,
+    cantidad INT NOT NULL,
+    precio_regular double precision  not null,
+    precio_deducible double precision,
+    PRIMARY KEY (receta_codigo, medicamento_codigo),
+    CONSTRAINT fk_codigo_receta
+        FOREIGN KEY (receta_codigo)
+            REFERENCES recetas (Codigo)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    CONSTRAINT fk_medicamento_codigo
+        FOREIGN KEY (medicamento_codigo)
+            REFERENCES medicamentos (ID)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
 );
 
--- Tabla recetas_aprobadas
+-- TABLA RECETAS_APROBADAS
 CREATE TABLE IF NOT EXISTS recetas_aprobadas (
-                                                 receta_codigo INT NOT NULL,
-                                                 farmacista_codigo VARCHAR(5) NOT NULL,
-                                                 Hora time NOT NULL,
-                                                 codigo_venta INT NOT NULL,
-                                                 PRIMARY KEY (codigo_venta),
-                                                 CONSTRAINT fk_recetas_aprobadas_recetas
-                                                     FOREIGN KEY (receta_codigo)
-                                                         REFERENCES recetas (codigo)
-                                                         ON DELETE CASCADE
-                                                         ON UPDATE CASCADE,
-                                                 CONSTRAINT fk_recetas_aprobadas_farmacistas
-                                                     FOREIGN KEY (farmacista_codigo)
-                                                         REFERENCES farmacistas (Codigo)
-                                                         ON DELETE CASCADE
-                                                         ON UPDATE CASCADE
-); --2/2
-delete from citas;
+    receta_codigo INT NOT NULL,
+    farmacista_codigo VARCHAR(5) NOT NULL,
+    Hora time NOT NULL,
+    codigo_venta INT NOT NULL,
+    PRIMARY KEY (codigo_venta),
+    CONSTRAINT fk_recetas_aprobadas_recetas
+        FOREIGN KEY (receta_codigo)
+            REFERENCES recetas (codigo)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+    CONSTRAINT fk_recetas_aprobadas_farmacistas
+        FOREIGN KEY (farmacista_codigo)
+            REFERENCES farmacistas (Codigo)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+); 
+
 
 CREATE OR REPLACE FUNCTION calculate_citas_precio_deducible()
     RETURNS TRIGGER AS $$
@@ -322,7 +248,7 @@ BEGIN
         WHERE id = NEW.precio_deducible;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
-            cobertura_value := 100; -- Set a default value when paciente_dni is not found
+            cobertura_value := 0; -- Set a default value when paciente_dni is not found
     END;
 
     -- Calculate and set the value for Citas.precio_deducible
@@ -373,20 +299,6 @@ CREATE TRIGGER set_medicamento_recetado_precios
     BEFORE INSERT ON medicamentos_recetados
     FOR EACH ROW
 EXECUTE FUNCTION calculate_medicamento_recetado_precios();
-
-
--- alteraciones: 
-ALTER TABLE citas
-DROP COLUMN especialidad;
-
-ALTER TABLE citas 
-drop column hora_fin;
-
-alter table horario
-drop column estado;
-
-alter table citas
-drop column consultorio;
 
 
 CREATE VIEW Horarios_Doctores as
@@ -457,4 +369,3 @@ select * from clinica.horarios_doctores where
                                             horarios_doctores.doctor_codigo in
                                         (select codigo from clinica.doctores where especialidad= 'Pediatria')
 and dia  = 'Martes'
-

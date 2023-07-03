@@ -5,7 +5,7 @@
 {%block main%}
 
 <div class="main" style="padding-top:10rem;">
-    <div class="container" style="height: 50vh
+    <div class="container" style="height: 100vh
     ;">
 
         <h2 class="mb-5">Bienvenid@ {{paciente.nombre}}</h2>
@@ -14,20 +14,31 @@
                 <div class="col-5">
                     <h3>Tus citas</h3>
                     {%for cita in citas%}
-                    <br>
-                    <!-- CITA -->
-                    <h5>{{cita.fecha}} {{cita.hora_inicio}}</h5>
-                    <h6>Dr.{{cita.doctor.nombre}} {{cita.doctor.apellido}} {{cita.doctor.especialidad}}</h6>
-                    {%endfor%}
-                    <br> 
+                    <div class="container" style="background-color: white; border-radius: 1rem; padding: 1rem; margin-bottom: 1rem;">
+                        <br>
+                        <!-- CITA -->
+                        <h3>{{cita.doctor.especialidad}}</h3>
+                        <h4>Dr. {{cita.doctor.nombre}} {{cita.doctor.apellido}} </h4>
+                        <div class="row">
+                            <div class="col-6">                    <h5>{{cita.fecha}} {{cita.hora_inicio}}</h5>
+                            </div>
+                            <div class="col-6">
+                                <a style="color:rgb(135, 34, 34); font-weight: bolder;" href="/delete/{{cita.fecha}}/{{cita.hora_inicio}}/{{cita.doctor_codigo}}"> <ion-icon name="trash-outline"></ion-icon> </a>
+                            </div>
+                        </div>
+                    </div>
+                        {%endfor%}
+                        <br> 
+                    
                 </div>
                 <div class="col-5">
                     <h3>Tus Recetas</h3>
                 </div>
             </div>
+            <a href="/agendar-cita" class="appointment-btn scrollto mt-5 m-5" > Agenda una cita </a>
+
         </div>
         
-        <a href="/agendar-cita" class="appointment-btn scrollto mt-5 m-5" > Agenda una cita </a>
         
     </div>
 </div>

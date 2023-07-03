@@ -77,3 +77,12 @@ class Cita:
             cita.doctor = Doctor.get(cita.doctor_codigo)
             citas.append(cita)
         return citas
+
+    @classmethod
+    def delete(cls,dni,doctor_codigo,fecha,hora_inicio):
+        dni = int(dni)
+        query='''Delete FROM clinica.citas where paciente_dni = %s and doctor_codigo = %s and fecha = %s and hora_inicio = %s;'''  
+        cursor.execute(query,(dni,doctor_codigo,fecha,hora_inicio,))
+        conn.commit()  # Explicitly commit the changes
+
+        return True
