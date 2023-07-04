@@ -8,6 +8,7 @@ import psycopg2
 import ast
 from datetime import datetime, time
 from models.medicamentos import Medicamento
+from models.doctores import Doctor
 
 
 conn = psycopg2.connect(
@@ -33,15 +34,21 @@ class Receta:
         query='''SELECT * FROM clinica.recetas where paciente_dni = %s;'''  
         cursor.execute(query,(paciente_dni,))
         resultados = cursor.fetchall()
-        print(resultados)
-        receta = cls(resultados[0])
-        receta.medicamentos = Receta.get_medicamentos(resultados[0][0])
-        return receta
+        if len(resultados) == 0: 
+            return []
+
+        recetas = []
+        for resultado in resultados:
+            receta = cls(resultado)
+            receta.medicamentos = cls.get_medicamentos(resultado[0])
+            receta.doctor = Doctor.get(resultado[2])
+            recetas.append(receta)
+        return recetas
 
     @classmethod
     def get_medicamentos(cls,codigo):
-        query='''SELECT * FROM clinica.medicamentos_recetados where receta_codigo = %s;'''  
-        cursor.execute(query,(dni,))
+        query='''SELECT * FROM clinica.medicamentos_recetados where receta_codigo = %s order by cantidad desc;'''  
+        cursor.execute(query,(codigo,))
         resultados = cursor.fetchall()
         medicamentos = []
         for resultado in resultados:

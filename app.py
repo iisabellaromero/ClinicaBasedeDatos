@@ -159,9 +159,8 @@ def citas_agendadas_route():
     # dni = session['user']['dni']
     paciente = Paciente.get(session['user']['dni'])
     citas = Cita.get_by_dni(session['user']['dni'])
-
-    return render_template('home_paciente.html', paciente = paciente, citas = citas) #recetas = recetas
-
+    recetas = Receta.get(session['user']['dni'])
+    return render_template('home_paciente.html', paciente = paciente, citas = citas,recetas = recetas)
 
 
 
